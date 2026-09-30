@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="theme-color" content="#12091f">
+<meta name="theme-color" content="#10081d">
 
 <title>ময়না পাখি AI</title>
 
@@ -16,313 +16,657 @@
 }
 
 body{
+  min-height:100vh;
+  overflow-x:hidden;
+  color:white;
   font-family:
     system-ui,
     "Noto Sans Bengali",
     sans-serif;
-  min-height:100vh;
-  color:#fff;
+
   background:
-    radial-gradient(circle at 50% 20%,#6e3b91 0%,transparent 35%),
-    radial-gradient(circle at 20% 80%,#30205d 0%,transparent 35%),
-    linear-gradient(145deg,#080611,#160b25,#080611);
-  overflow-x:hidden;
+    radial-gradient(
+      circle at 50% 18%,
+      #7c4d9d 0%,
+      transparent 31%
+    ),
+    radial-gradient(
+      circle at 10% 80%,
+      #3b2161 0%,
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #07050d,
+      #170b27,
+      #090611
+    );
 }
 
-/* background lights */
-
-.bg-light{
+body::before{
+  content:"";
   position:fixed;
-  width:220px;
-  height:220px;
-  border-radius:50%;
-  filter:blur(80px);
-  opacity:.35;
+  inset:0;
   pointer-events:none;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255,120,220,.08),
+      transparent 38%
+    );
 }
 
-.light1{
-  background:#d95cff;
-  top:-80px;
-  left:-60px;
-}
-
-.light2{
-  background:#695cff;
-  right:-80px;
-  bottom:80px;
-}
-
-/* app */
+/* =========================
+   APP
+========================= */
 
 .app{
   width:100%;
   max-width:520px;
   min-height:100vh;
   margin:auto;
-  padding:18px 15px 25px;
+  padding:16px 15px 24px;
   display:flex;
   flex-direction:column;
 }
 
-/* header */
+/* =========================
+   HEADER
+========================= */
 
 .header{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  padding:8px 3px 15px;
+  align-items:center;
 }
 
-.logo{
+.brand{
   display:flex;
   align-items:center;
   gap:10px;
 }
 
-.logo-icon{
-  width:43px;
-  height:43px;
-  border-radius:14px;
+.brandIcon{
+  width:45px;
+  height:45px;
+  border-radius:15px;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,#ff72c8,#7659ff);
-  box-shadow:0 8px 25px rgba(202,83,255,.3);
-  font-size:23px;
+
+  font-size:24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff67bd,
+      #7857ff
+    );
+
+  box-shadow:
+    0 8px 30px
+    rgba(205,70,255,.35);
 }
 
-.logo-text h1{
+.brandText h1{
   font-size:20px;
   font-weight:800;
 }
 
-.logo-text p{
+.brandText p{
+  color:#c9b9d5;
   font-size:11px;
-  color:#cdbddd;
   margin-top:2px;
 }
 
-.status{
+.online{
   display:flex;
   align-items:center;
   gap:6px;
   font-size:11px;
-  color:#cdbddd;
+  color:#bdb0c7;
 }
 
-.status-dot{
+.onlineDot{
   width:8px;
   height:8px;
   border-radius:50%;
-  background:#42ff9b;
-  box-shadow:0 0 12px #42ff9b;
+  background:#4dff9b;
+
+  box-shadow:
+    0 0 13px #4dff9b;
 }
 
-/* girl */
+/* =========================
+   GIRL AREA
+========================= */
 
-.girl-section{
+.girlArea{
   position:relative;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding-top:8px;
-}
+  height:350px;
 
-.girl-glow{
-  position:absolute;
-  width:280px;
-  height:280px;
-  border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(232,100,255,.35),
-    rgba(117,77,255,.12),
-    transparent 70%
-  );
-  filter:blur(5px);
-}
-
-.girl{
-  position:relative;
-  width:245px;
-  height:310px;
   display:flex;
   align-items:center;
   justify-content:center;
-  z-index:2;
+
+  margin-top:5px;
 }
 
-/* avatar */
+.glow{
+  position:absolute;
 
-.avatar{
+  width:280px;
+  height:280px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(238,102,255,.38),
+      rgba(118,83,255,.12),
+      transparent 70%
+    );
+
+  filter:blur(6px);
+
+  animation:
+    glowMove 4s ease-in-out infinite;
+}
+
+@keyframes glowMove{
+
+  0%,100%{
+    transform:scale(.95);
+    opacity:.75;
+  }
+
+  50%{
+    transform:scale(1.08);
+    opacity:1;
+  }
+
+}
+
+/* =========================
+   GIRL
+========================= */
+
+.girl{
   position:relative;
-  width:185px;
-  height:245px;
-}
 
-/* hair */
+  width:230px;
+  height:310px;
 
-.hair{
-  position:absolute;
-  width:150px;
-  height:190px;
-  top:12px;
-  left:18px;
-  background:
-    linear-gradient(120deg,#1a1027,#39204b 50%,#160d22);
-  border-radius:80px 80px 65px 65px;
-  box-shadow:
-    0 12px 35px rgba(0,0,0,.55),
-    inset -15px 0 20px rgba(255,255,255,.04);
-}
-
-/* face */
-
-.face{
-  position:absolute;
-  width:112px;
-  height:137px;
-  left:37px;
-  top:42px;
-  background:
-    linear-gradient(145deg,#ffe4d1,#f4c1ad);
-  border-radius:52% 48% 48% 50%;
   z-index:2;
+
+  animation:
+    girlFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes girlFloat{
+
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-6px);
+  }
+
+}
+
+/* =========================
+   HAIR BACK
+========================= */
+
+.hairBack{
+  position:absolute;
+
+  width:170px;
+  height:215px;
+
+  left:30px;
+  top:15px;
+
+  border-radius:
+    85px
+    85px
+    70px
+    70px;
+
+  background:
+    linear-gradient(
+      120deg,
+      #140c1c,
+      #382047,
+      #171020
+    );
+
   box-shadow:
-    0 8px 20px rgba(0,0,0,.25);
+    0 15px 35px
+    rgba(0,0,0,.55);
 }
 
-/* hair front */
+/* hair shine */
 
-.bang{
+.hairShine{
   position:absolute;
-  width:105px;
-  height:63px;
-  top:25px;
-  left:42px;
-  background:#24142f;
-  border-radius:55% 55% 40% 35%;
-  z-index:4;
-  transform:rotate(-4deg);
-}
 
-/* eyes */
+  width:40px;
+  height:125px;
 
-.eye{
-  position:absolute;
-  width:17px;
-  height:11px;
-  top:96px;
-  background:#24152b;
+  left:48px;
+  top:34px;
+
   border-radius:50%;
-  z-index:5;
-  transition:.2s;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.11),
+      transparent
+    );
+
+  transform:rotate(18deg);
+
+  filter:blur(2px);
 }
 
-.eye.left{
-  left:63px;
-}
-
-.eye.right{
-  left:108px;
-}
-
-.eye::after{
-  content:"";
-  position:absolute;
-  width:4px;
-  height:4px;
-  border-radius:50%;
-  background:white;
-  top:2px;
-  left:3px;
-}
-
-/* nose */
-
-.nose{
-  position:absolute;
-  width:5px;
-  height:9px;
-  border-right:2px solid rgba(160,100,90,.5);
-  top:112px;
-  left:93px;
-  z-index:5;
-}
-
-/* mouth */
-
-.mouth{
-  position:absolute;
-  width:24px;
-  height:9px;
-  left:82px;
-  top:132px;
-  border-bottom:3px solid #c75b78;
-  border-radius:0 0 50% 50%;
-  z-index:5;
-  transition:.15s;
-}
-
-/* neck */
+/* =========================
+   NECK
+========================= */
 
 .neck{
   position:absolute;
-  width:42px;
-  height:45px;
-  background:#efb9a7;
-  left:70px;
-  top:164px;
-  z-index:1;
+
+  width:46px;
+  height:55px;
+
+  left:92px;
+  top:190px;
+
+  background:#e9b19f;
+
+  z-index:2;
 }
 
-/* body */
+/* =========================
+   BODY
+========================= */
 
 .body{
   position:absolute;
-  width:150px;
-  height:92px;
-  left:18px;
-  top:175px;
-  border-radius:65px 65px 25px 25px;
+
+  width:165px;
+  height:105px;
+
+  left:33px;
+  top:205px;
+
+  border-radius:
+    70px
+    70px
+    25px
+    25px;
+
   background:
-    linear-gradient(135deg,#a946d5,#6845d8);
-  z-index:2;
+    linear-gradient(
+      135deg,
+      #bd55df,
+      #6549d9
+    );
+
   box-shadow:
-    0 15px 30px rgba(0,0,0,.35);
+    0 20px 40px
+    rgba(0,0,0,.4);
+
+  z-index:3;
 }
 
-/* talking */
+.body::before{
+  content:"";
+
+  position:absolute;
+
+  width:80px;
+  height:35px;
+
+  top:10px;
+  left:43px;
+
+  border-radius:50%;
+
+  background:
+    rgba(255,255,255,.08);
+}
+
+/* =========================
+   FACE
+========================= */
+
+.face{
+  position:absolute;
+
+  width:119px;
+  height:148px;
+
+  left:56px;
+  top:50px;
+
+  border-radius:
+    54%
+    54%
+    48%
+    48%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffe6d7,
+      #f0b9a8
+    );
+
+  z-index:4;
+
+  box-shadow:
+    0 8px 20px
+    rgba(0,0,0,.25);
+}
+
+/* =========================
+   BANGS
+========================= */
+
+.bangs{
+  position:absolute;
+
+  width:118px;
+  height:75px;
+
+  left:56px;
+  top:37px;
+
+  background:#25132f;
+
+  border-radius:
+    65%
+    55%
+    45%
+    35%;
+
+  transform:rotate(-4deg);
+
+  z-index:7;
+}
+
+.bangs::after{
+  content:"";
+
+  position:absolute;
+
+  width:55px;
+  height:80px;
+
+  right:-7px;
+  top:18px;
+
+  background:#25132f;
+
+  border-radius:50%;
+
+  transform:rotate(-18deg);
+}
+
+/* =========================
+   EARS
+========================= */
+
+.ear{
+  position:absolute;
+
+  width:14px;
+  height:28px;
+
+  top:108px;
+
+  background:#efb8a7;
+
+  border-radius:50%;
+
+  z-index:3;
+}
+
+.ear.left{
+  left:48px;
+}
+
+.ear.right{
+  left:169px;
+}
+
+/* =========================
+   EYES
+========================= */
+
+.eye{
+  position:absolute;
+
+  width:19px;
+  height:13px;
+
+  top:111px;
+
+  background:#24142b;
+
+  border-radius:50%;
+
+  z-index:9;
+
+  transform-origin:center;
+}
+
+.eye.left{
+  left:78px;
+}
+
+.eye.right{
+  left:127px;
+}
+
+.eye::before{
+  content:"";
+
+  position:absolute;
+
+  width:5px;
+  height:5px;
+
+  left:3px;
+  top:2px;
+
+  border-radius:50%;
+
+  background:white;
+}
+
+/* blinking */
+
+.blink .eye{
+  transform:scaleY(.08);
+}
+
+/* =========================
+   EYEBROWS
+========================= */
+
+.brow{
+  position:absolute;
+
+  width:23px;
+  height:5px;
+
+  top:102px;
+
+  border-top:
+    2px solid
+    #6e4053;
+
+  border-radius:50%;
+
+  z-index:10;
+}
+
+.brow.left{
+  left:76px;
+  transform:rotate(-5deg);
+}
+
+.brow.right{
+  left:126px;
+  transform:rotate(5deg);
+}
+
+/* =========================
+   NOSE
+========================= */
+
+.nose{
+  position:absolute;
+
+  width:5px;
+  height:12px;
+
+  left:115px;
+  top:125px;
+
+  border-right:
+    2px solid
+    rgba(150,90,80,.45);
+
+  z-index:10;
+}
+
+/* =========================
+   CHEEKS
+========================= */
+
+.cheek{
+  position:absolute;
+
+  width:23px;
+  height:12px;
+
+  top:139px;
+
+  border-radius:50%;
+
+  background:
+    rgba(245,105,140,.18);
+
+  filter:blur(2px);
+
+  z-index:8;
+}
+
+.cheek.left{
+  left:69px;
+}
+
+.cheek.right{
+  left:135px;
+}
+
+/* =========================
+   MOUTH
+========================= */
+
+.mouth{
+  position:absolute;
+
+  width:27px;
+  height:9px;
+
+  left:102px;
+  top:157px;
+
+  border-bottom:
+    3px solid
+    #bd5876;
+
+  border-radius:
+    0 0 50% 50%;
+
+  z-index:10;
+
+  transition:
+    all .08s ease;
+}
+
+/* talking mouth */
 
 .talking .mouth{
-  width:26px;
-  height:18px;
-  border:3px solid #b74f72;
-  background:#7f274e;
+  width:27px;
+  height:17px;
+
+  background:#76294d;
+
+  border:
+    3px solid
+    #b94d70;
+
   border-radius:50%;
+
+  animation:
+    mouthTalk .13s infinite alternate;
 }
 
-.talking .eye{
-  transform:scaleY(.75);
+@keyframes mouthTalk{
+
+  from{
+    transform:scaleY(.6);
+  }
+
+  to{
+    transform:scaleY(1.15);
+  }
+
 }
 
-.talking .avatar{
-  animation:talkMove .55s infinite alternate;
+/* talking face */
+
+.talking .girl{
+  animation:
+    talkFloat .45s ease-in-out infinite alternate;
 }
 
-@keyframes talkMove{
-  from{transform:translateY(0)}
-  to{transform:translateY(-3px)}
+@keyframes talkFloat{
+
+  from{
+    transform:translateY(0);
+  }
+
+  to{
+    transform:translateY(-2px);
+  }
+
 }
 
-/* greeting */
+/* =========================
+   STATUS
+========================= */
 
 .greeting{
-  position:relative;
-  z-index:3;
-  margin-top:-5px;
+  position:absolute;
+
+  bottom:0;
+
+  width:100%;
+
   text-align:center;
+
+  z-index:5;
 }
 
 .greeting h2{
@@ -331,19 +675,22 @@ body{
 }
 
 .greeting p{
-  color:#cdbddd;
+  color:#c7b8d2;
   font-size:13px;
   margin-top:5px;
 }
 
-/* chat */
+/* =========================
+   CHAT
+========================= */
 
 .chat{
-  margin-top:18px;
-  flex:1;
-  max-height:245px;
+  height:205px;
+
   overflow-y:auto;
-  padding:4px 2px;
+
+  padding:3px;
+
   scrollbar-width:none;
 }
 
@@ -353,148 +700,70 @@ body{
 
 .message{
   max-width:88%;
+
   padding:11px 14px;
+
   margin:8px 0;
+
   border-radius:18px;
+
   font-size:14px;
+
   line-height:1.55;
-  animation:appear .25s ease;
+
+  animation:
+    messageIn .25s ease;
 }
 
-@keyframes appear{
+@keyframes messageIn{
+
   from{
     opacity:0;
     transform:translateY(8px);
   }
+
   to{
     opacity:1;
     transform:translateY(0);
   }
+
 }
 
 .message.ai{
   margin-right:auto;
-  background:rgba(255,255,255,.09);
-  border:1px solid rgba(255,255,255,.08);
+
+  background:
+    rgba(255,255,255,.08);
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
 }
 
 .message.user{
   margin-left:auto;
-  background:linear-gradient(135deg,#c94de9,#7658ed);
+
+  background:
+    linear-gradient(
+      135deg,
+      #c64de6,
+      #7057ed
+    );
 }
 
-/* input */
-
-.input-area{
-  margin-top:12px;
-  display:flex;
-  gap:9px;
-  align-items:center;
-}
-
-.input-box{
-  flex:1;
-  height:52px;
-  display:flex;
-  align-items:center;
-  padding:0 14px;
-  border-radius:18px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.1);
-  backdrop-filter:blur(15px);
-}
-
-.input-box input{
-  width:100%;
-  background:none;
-  border:none;
-  outline:none;
-  color:#fff;
-  font-size:14px;
-}
-
-.input-box input::placeholder{
-  color:#aaa0b5;
-}
-
-.send{
-  width:52px;
-  height:52px;
-  border:none;
-  border-radius:18px;
-  color:#fff;
-  font-size:20px;
-  background:linear-gradient(135deg,#ed55b5,#7659ff);
-  box-shadow:0 8px 25px rgba(181,67,231,.3);
-}
-
-/* mic */
-
-.mic-area{
-  display:flex;
-  justify-content:center;
-  margin-top:13px;
-}
-
-.mic{
-  width:68px;
-  height:68px;
-  border:none;
-  border-radius:50%;
-  background:linear-gradient(135deg,#f15fc1,#7259ff);
-  color:white;
-  font-size:27px;
-  box-shadow:
-    0 10px 30px rgba(196,70,239,.35);
-  transition:.2s;
-}
-
-.mic:active{
-  transform:scale(.92);
-}
-
-.listening .mic{
-  animation:pulse 1s infinite;
-}
-
-@keyframes pulse{
-  0%{
-    box-shadow:0 0 0 0 rgba(240,93,194,.6);
-  }
-  70%{
-    box-shadow:0 0 0 22px rgba(240,93,194,0);
-  }
-  100%{
-    box-shadow:0 0 0 0 rgba(240,93,194,0);
-  }
-}
-
-/* controls */
-
-.controls{
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  margin-top:12px;
-  flex-wrap:wrap;
-}
-
-.control{
-  border:1px solid rgba(255,255,255,.1);
-  background:rgba(255,255,255,.06);
-  color:#ddd3e4;
-  border-radius:12px;
-  padding:8px 11px;
-  font-size:11px;
-}
-
-/* quick */
+/* =========================
+   QUICK BUTTONS
+========================= */
 
 .quick{
   display:flex;
+
   gap:8px;
+
   overflow-x:auto;
-  margin-top:13px;
+
+  margin-top:8px;
+
   scrollbar-width:none;
 }
 
@@ -504,36 +773,210 @@ body{
 
 .quick button{
   flex:0 0 auto;
-  border:1px solid rgba(255,255,255,.1);
-  background:rgba(255,255,255,.06);
-  color:#eee;
+
   padding:9px 13px;
-  border-radius:14px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.1);
+
+  border-radius:13px;
+
+  background:
+    rgba(255,255,255,.06);
+
+  color:white;
+
   font-size:11px;
 }
 
-/* footer */
+/* =========================
+   INPUT
+========================= */
 
-.footer{
-  text-align:center;
-  color:#80758b;
-  font-size:9px;
-  margin-top:13px;
+.inputArea{
+  display:flex;
+
+  gap:8px;
+
+  margin-top:10px;
 }
 
-/* loading */
+.inputBox{
+  flex:1;
+
+  height:51px;
+
+  display:flex;
+
+  align-items:center;
+
+  padding:0 14px;
+
+  border-radius:17px;
+
+  background:
+    rgba(255,255,255,.08);
+
+  border:
+    1px solid
+    rgba(255,255,255,.1);
+}
+
+.inputBox input{
+  width:100%;
+
+  border:none;
+
+  outline:none;
+
+  background:none;
+
+  color:white;
+
+  font-size:14px;
+}
+
+.inputBox input::placeholder{
+  color:#9d91a7;
+}
+
+.send{
+  width:52px;
+  height:52px;
+
+  border:none;
+
+  border-radius:17px;
+
+  color:white;
+
+  font-size:21px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ef58b9,
+      #7159ff
+    );
+}
+
+/* =========================
+   MIC
+========================= */
+
+.micArea{
+  display:flex;
+
+  justify-content:center;
+
+  margin-top:11px;
+}
+
+.mic{
+  width:67px;
+  height:67px;
+
+  border:none;
+
+  border-radius:50%;
+
+  color:white;
+
+  font-size:27px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ed60bd,
+      #7359ff
+    );
+
+  box-shadow:
+    0 10px 30px
+    rgba(195,67,240,.35);
+}
+
+.listening .mic{
+  animation:
+    micPulse 1s infinite;
+}
+
+@keyframes micPulse{
+
+  0%{
+    box-shadow:
+      0 0 0 0
+      rgba(239,91,190,.65);
+  }
+
+  70%{
+    box-shadow:
+      0 0 0 22px
+      rgba(239,91,190,0);
+  }
+
+  100%{
+    box-shadow:
+      0 0 0 0
+      rgba(239,91,190,0);
+  }
+
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls{
+  display:flex;
+
+  justify-content:center;
+
+  gap:7px;
+
+  margin-top:10px;
+
+  flex-wrap:wrap;
+}
+
+.control{
+  border:
+    1px solid
+    rgba(255,255,255,.1);
+
+  background:
+    rgba(255,255,255,.06);
+
+  color:#d7cadf;
+
+  border-radius:11px;
+
+  padding:8px 11px;
+
+  font-size:11px;
+}
+
+/* =========================
+   LOADING
+========================= */
 
 .loading{
-  display:inline-flex;
-  gap:4px;
+  display:flex;
+
+  gap:5px;
 }
 
 .loading span{
   width:5px;
   height:5px;
+
   border-radius:50%;
-  background:#d88cff;
-  animation:dot 1s infinite;
+
+  background:#d786ff;
+
+  animation:
+    loadingDot 1s infinite;
 }
 
 .loading span:nth-child(2){
@@ -544,73 +987,135 @@ body{
   animation-delay:.3s;
 }
 
-@keyframes dot{
-  0%,100%{opacity:.25;transform:translateY(0)}
-  50%{opacity:1;transform:translateY(-4px)}
+@keyframes loadingDot{
+
+  0%,100%{
+    opacity:.2;
+    transform:translateY(0);
+  }
+
+  50%{
+    opacity:1;
+    transform:translateY(-4px);
+  }
+
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+  text-align:center;
+
+  color:#786c82;
+
+  font-size:9px;
+
+  margin-top:10px;
 }
 </style>
 </head>
 
-<body>
 
-<div class="bg-light light1"></div>
-<div class="bg-light light2"></div>
+<body>
 
 <div class="app">
 
+  <!-- HEADER -->
+
   <div class="header">
 
-    <div class="logo">
+    <div class="brand">
 
-      <div class="logo-icon">🐦</div>
+      <div class="brandIcon">
+        🐦
+      </div>
 
-      <div class="logo-text">
+      <div class="brandText">
+
         <h1>ময়না পাখি</h1>
-        <p>তোমার AI সহকারী</p>
+
+        <p>
+          তোমার AI ভয়েস সহকারী
+        </p>
+
       </div>
 
     </div>
 
-    <div class="status">
-      <span class="status-dot"></span>
+
+    <div class="online">
+
+      <span class="onlineDot"></span>
+
       অনলাইন
+
     </div>
 
   </div>
 
 
-  <div class="girl-section">
+  <!-- GIRL -->
 
-    <div class="girl-glow"></div>
+  <div class="girlArea">
 
-    <div class="girl" id="girl">
+    <div class="glow"></div>
 
-      <div class="avatar">
 
-        <div class="hair"></div>
+    <div
+      class="girl"
+      id="girl"
+    >
 
-        <div class="face"></div>
+      <div class="hairBack">
 
-        <div class="bang"></div>
-
-        <div class="eye left"></div>
-        <div class="eye right"></div>
-
-        <div class="nose"></div>
-
-        <div class="mouth"></div>
-
-        <div class="neck"></div>
-
-        <div class="body"></div>
+        <div class="hairShine"></div>
 
       </div>
 
+
+      <div class="neck"></div>
+
+
+      <div class="body"></div>
+
+
+      <div class="face"></div>
+
+
+      <div class="bangs"></div>
+
+
+      <div class="ear left"></div>
+      <div class="ear right"></div>
+
+
+      <div class="brow left"></div>
+      <div class="brow right"></div>
+
+
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+
+
+      <div class="nose"></div>
+
+
+      <div class="cheek left"></div>
+      <div class="cheek right"></div>
+
+
+      <div class="mouth"></div>
+
     </div>
+
 
     <div class="greeting">
 
-      <h2>হ্যালো! আমি ময়না 🩷</h2>
+      <h2>
+        হ্যালো! আমি ময়না 🩷
+      </h2>
 
       <p id="statusText">
         আমার সাথে কথা বলো...
@@ -621,39 +1126,59 @@ body{
   </div>
 
 
-  <div class="chat" id="chat">
+  <!-- CHAT -->
+
+  <div
+    class="chat"
+    id="chat"
+  >
 
     <div class="message ai">
-      হ্যালো! আমি ময়না পাখি। তুমি আমাকে যেকোনো প্রশ্ন করতে পারো। 🩷
+
+      হ্যালো! আমি ময়না পাখি। 🩷
+      আমাকে যেকোনো প্রশ্ন করতে পারো।
+
     </div>
 
   </div>
 
 
+  <!-- QUICK -->
+
   <div class="quick">
 
-    <button onclick="quickAsk('আজকের তারিখ কত?')">
+    <button
+      onclick="quickAsk('আজকের তারিখ কত?')"
+    >
       📅 তারিখ
     </button>
 
-    <button onclick="quickAsk('এখন কয়টা বাজে?')">
+    <button
+      onclick="quickAsk('এখন কয়টা বাজে?')"
+    >
       🕐 সময়
     </button>
 
-    <button onclick="quickAsk('তুমি কী কী করতে পারো?')">
+    <button
+      onclick="quickAsk('তুমি কী কী করতে পারো?')"
+    >
       🤖 কী পারো
     </button>
 
-    <button onclick="quickAsk('একটা মজার কথা বলো')">
+    <button
+      onclick="quickAsk('একটা মজার কথা বলো')"
+    >
       😄 মজা
     </button>
 
   </div>
 
 
-  <div class="input-area">
+  <!-- INPUT -->
 
-    <div class="input-box">
+  <div class="inputArea">
+
+    <div class="inputBox">
 
       <input
         id="textInput"
@@ -664,14 +1189,20 @@ body{
 
     </div>
 
-    <button class="send" onclick="sendText()">
+
+    <button
+      class="send"
+      onclick="sendText()"
+    >
       ➤
     </button>
 
   </div>
 
 
-  <div class="mic-area">
+  <!-- MIC -->
+
+  <div class="micArea">
 
     <button
       class="mic"
@@ -684,6 +1215,8 @@ body{
   </div>
 
 
+  <!-- CONTROLS -->
+
   <div class="controls">
 
     <button
@@ -694,12 +1227,14 @@ body{
       🔊 ভয়েস চালু
     </button>
 
+
     <button
       class="control"
       onclick="stopSpeaking()"
     >
       ⏹️ থামাও
     </button>
+
 
     <button
       class="control"
@@ -712,7 +1247,9 @@ body{
 
 
   <div class="footer">
-    Moyna Pakhi AI • তোমার ব্যক্তিগত ভয়েস সহকারী
+
+    Moyna Pakhi AI • Powered by AI
+
   </div>
 
 </div>
@@ -721,29 +1258,38 @@ body{
 <script>
 
 /* =========================================
-   CONFIG
+   SERVER
 ========================================= */
 
 const RENDER_URL =
   "https://jarvis-1-0yao.onrender.com";
 
+
+/* =========================================
+   VARIABLES
+========================================= */
+
 let voiceEnabled = true;
+
 let recognition = null;
+
 let listening = false;
+
+let blinkTimer = null;
 
 
 /* =========================================
    ELEMENTS
 ========================================= */
 
+const girl =
+  document.getElementById("girl");
+
 const chat =
   document.getElementById("chat");
 
 const input =
   document.getElementById("textInput");
-
-const girl =
-  document.getElementById("girl");
 
 const statusText =
   document.getElementById("statusText");
@@ -753,10 +1299,49 @@ const micBtn =
 
 
 /* =========================================
-   CHAT
+   RANDOM BLINK
 ========================================= */
 
-function addMessage(text,type){
+function startBlinking(){
+
+  if(blinkTimer)
+    clearInterval(blinkTimer);
+
+  blinkTimer =
+    setInterval(() => {
+
+      if(
+        !girl.classList.contains("talking")
+      ){
+
+        girl.classList.add("blink");
+
+        setTimeout(() => {
+
+          girl.classList.remove("blink");
+
+        },130);
+
+      }
+
+    },
+    3500 +
+    Math.random()*2500
+    );
+
+}
+
+startBlinking();
+
+
+/* =========================================
+   CHAT MESSAGE
+========================================= */
+
+function addMessage(
+  text,
+  type
+){
 
   const div =
     document.createElement("div");
@@ -771,35 +1356,40 @@ function addMessage(text,type){
 
   chat.scrollTop =
     chat.scrollHeight;
+
 }
 
 
 /* =========================================
-   REMOVE EMOJI FROM SPEECH
+   CLEAN SPEECH
 ========================================= */
 
 function cleanForSpeech(text){
 
   return text
+
     .replace(
       /[\u{1F000}-\u{1FAFF}]/gu,
       ""
     )
+
     .replace(
       /[\u{2600}-\u{27BF}]/gu,
       ""
     )
+
     .replace(
       /\s+/g,
       " "
     )
+
     .trim();
 
 }
 
 
 /* =========================================
-   GET BANGLA VOICE
+   BANGLA VOICE
 ========================================= */
 
 function getBanglaVoice(){
@@ -808,21 +1398,31 @@ function getBanglaVoice(){
     speechSynthesis.getVoices();
 
   return (
-    voices.find(v =>
-      v.lang === "bn-BD"
-    ) ||
 
-    voices.find(v =>
-      v.lang === "bn-IN"
-    ) ||
+    voices.find(
+      v => v.lang === "bn-BD"
+    )
 
-    voices.find(v =>
-      v.lang &&
-      v.lang.toLowerCase()
-       .startsWith("bn")
-    ) ||
+    ||
+
+    voices.find(
+      v => v.lang === "bn-IN"
+    )
+
+    ||
+
+    voices.find(
+      v =>
+        v.lang &&
+        v.lang
+         .toLowerCase()
+         .startsWith("bn")
+    )
+
+    ||
 
     null
+
   );
 
 }
@@ -837,79 +1437,121 @@ function speak(text){
   if(!voiceEnabled)
     return;
 
-  if(!("speechSynthesis" in window))
+  if(
+    !("speechSynthesis" in window)
+  )
     return;
 
+
   speechSynthesis.cancel();
+
 
   const clean =
     cleanForSpeech(text);
 
+
   if(!clean)
     return;
 
+
   const utter =
-    new SpeechSynthesisUtterance(clean);
+    new SpeechSynthesisUtterance(
+      clean
+    );
+
 
   const voice =
     getBanglaVoice();
 
+
   if(voice)
     utter.voice = voice;
+
 
   utter.lang =
     voice?.lang || "bn-BD";
 
+
   /*
-     একটু মিষ্টি/স্বাভাবিক করার জন্য
+    মিষ্টি ও ধীর voice
   */
 
-  utter.rate = 0.88;
-  utter.pitch = 1.12;
-  utter.volume = 1;
+  utter.rate =
+    0.86;
 
-  utter.onstart = () => {
+  utter.pitch =
+    1.14;
 
-    girl.classList.add("talking");
+  utter.volume =
+    1;
 
-    statusText.textContent =
-      "আমি কথা বলছি... 🩷";
 
-  };
+  utter.onstart =
+    () => {
 
-  utter.onend = () => {
+      girl.classList.add(
+        "talking"
+      );
 
-    girl.classList.remove("talking");
+      statusText.textContent =
+        "আমি কথা বলছি... 🩷";
 
-    statusText.textContent =
-      "আর কিছু বলবে?";
+    };
 
-  };
 
-  utter.onerror = () => {
+  utter.onend =
+    () => {
 
-    girl.classList.remove("talking");
+      girl.classList.remove(
+        "talking"
+      );
 
-    statusText.textContent =
-      "আবার বলো...";
+      statusText.textContent =
+        "আর কিছু বলবে?";
 
-  };
+    };
 
-  speechSynthesis.speak(utter);
+
+  utter.onerror =
+    () => {
+
+      girl.classList.remove(
+        "talking"
+      );
+
+      statusText.textContent =
+        "আবার চেষ্টা করো...";
+
+    };
+
+
+  speechSynthesis.speak(
+    utter
+  );
 
 }
 
 
 /* =========================================
-   STOP SPEAKING
+   STOP
 ========================================= */
 
 function stopSpeaking(){
 
-  if("speechSynthesis" in window)
+  if(
+    "speechSynthesis"
+    in window
+  ){
+
     speechSynthesis.cancel();
 
-  girl.classList.remove("talking");
+  }
+
+
+  girl.classList.remove(
+    "talking"
+  );
+
 
   statusText.textContent =
     "আমি শুনছি...";
@@ -918,7 +1560,7 @@ function stopSpeaking(){
 
 
 /* =========================================
-   VOICE TOGGLE
+   VOICE BUTTON
 ========================================= */
 
 function toggleVoice(){
@@ -926,8 +1568,12 @@ function toggleVoice(){
   voiceEnabled =
     !voiceEnabled;
 
+
   const btn =
-    document.getElementById("voiceBtn");
+    document.getElementById(
+      "voiceBtn"
+    );
+
 
   if(voiceEnabled){
 
@@ -938,7 +1584,9 @@ function toggleVoice(){
 
     speechSynthesis.cancel();
 
-    girl.classList.remove("talking");
+    girl.classList.remove(
+      "talking"
+    );
 
     btn.textContent =
       "🔇 ভয়েস বন্ধ";
@@ -955,13 +1603,16 @@ function toggleVoice(){
 function showLoading(){
 
   const div =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
+
+  div.id =
+    "loadingMessage";
 
   div.className =
     "message ai";
 
-  div.id =
-    "loadingMessage";
 
   div.innerHTML = `
     <div class="loading">
@@ -970,6 +1621,7 @@ function showLoading(){
       <span></span>
     </div>
   `;
+
 
   chat.appendChild(div);
 
@@ -981,49 +1633,19 @@ function showLoading(){
 
 function removeLoading(){
 
-  const el =
+  const loading =
     document.getElementById(
       "loadingMessage"
     );
 
-  if(el)
-    el.remove();
+  if(loading)
+    loading.remove();
 
 }
 
 
 /* =========================================
-   SEND TEXT
-========================================= */
-
-async function sendText(){
-
-  const text =
-    input.value.trim();
-
-  if(!text)
-    return;
-
-  input.value = "";
-
-  await askAI(text);
-
-}
-
-
-/* =========================================
-   QUICK ASK
-========================================= */
-
-function quickAsk(text){
-
-  askAI(text);
-
-}
-
-
-/* =========================================
-   ASK AI
+   AI
 ========================================= */
 
 async function askAI(message){
@@ -1031,21 +1653,26 @@ async function askAI(message){
   if(!message)
     return;
 
+
   addMessage(
     message,
     "user"
   );
 
+
   statusText.textContent =
     "ভাবছি... 🤔";
 
+
   showLoading();
+
 
   try{
 
     const response =
       await fetch(
-        RENDER_URL + "/api/ai",
+        RENDER_URL +
+        "/api/ai",
         {
           method:"POST",
 
@@ -1056,7 +1683,8 @@ async function askAI(message){
 
           body:
             JSON.stringify({
-              message: message
+              message:
+                message
             })
         }
       );
@@ -1073,7 +1701,7 @@ async function askAI(message){
 
       throw new Error(
         data.error ||
-        "AI উত্তর পাওয়া যায়নি"
+        "AI error"
       );
 
     }
@@ -1095,19 +1723,24 @@ async function askAI(message){
 
   }catch(error){
 
-    removeLoading();
-
     console.error(error);
 
-    const errorText =
-      "দুঃখিত, AI-এর সাথে এখন যোগাযোগ করা যাচ্ছে না। একটু পরে আবার চেষ্টা করো।";
+
+    removeLoading();
+
+
+    const msg =
+      "দুঃখিত, AI-এর সাথে যোগাযোগ করা যাচ্ছে না। একটু পরে আবার চেষ্টা করো।";
+
 
     addMessage(
-      errorText,
+      msg,
       "ai"
     );
 
-    speak(errorText);
+
+    speak(msg);
+
 
     statusText.textContent =
       "সংযোগে সমস্যা হয়েছে";
@@ -1115,6 +1748,61 @@ async function askAI(message){
   }
 
 }
+
+
+/* =========================================
+   TEXT SEND
+========================================= */
+
+function sendText(){
+
+  const text =
+    input.value.trim();
+
+
+  if(!text)
+    return;
+
+
+  input.value = "";
+
+
+  askAI(text);
+
+}
+
+
+/* =========================================
+   QUICK
+========================================= */
+
+function quickAsk(text){
+
+  askAI(text);
+
+}
+
+
+/* =========================================
+   ENTER
+========================================= */
+
+input.addEventListener(
+  "keydown",
+  function(event){
+
+    if(
+      event.key === "Enter"
+    ){
+
+      event.preventDefault();
+
+      sendText();
+
+    }
+
+  }
+);
 
 
 /* =========================================
@@ -1137,7 +1825,7 @@ function setupRecognition(){
       "❌";
 
     statusText.textContent =
-      "এই ব্রাউজারে ভয়েস ইনপুট নেই";
+      "এই ব্রাউজারে voice input নেই";
 
     return;
 
@@ -1151,11 +1839,14 @@ function setupRecognition(){
   recognition.lang =
     "bn-BD";
 
+
   recognition.continuous =
     false;
 
+
   recognition.interimResults =
     false;
+
 
   recognition.maxAlternatives =
     1;
@@ -1166,12 +1857,15 @@ function setupRecognition(){
 
       listening = true;
 
+
       document.body.classList.add(
         "listening"
       );
 
+
       micBtn.textContent =
         "⏹️";
+
 
       statusText.textContent =
         "আমি শুনছি... বলো 🩷";
@@ -1183,10 +1877,14 @@ function setupRecognition(){
     event => {
 
       const text =
-        event.results[0][0].transcript;
+        event
+          .results[0][0]
+          .transcript;
+
 
       input.value =
         text;
+
 
       askAI(text);
 
@@ -1201,6 +1899,7 @@ function setupRecognition(){
         event.error
       );
 
+
       statusText.textContent =
         "ঠিকমতো শুনতে পারিনি";
 
@@ -1212,9 +1911,11 @@ function setupRecognition(){
 
       listening = false;
 
+
       document.body.classList.remove(
         "listening"
       );
+
 
       micBtn.textContent =
         "🎙️";
@@ -1232,6 +1933,7 @@ function startListening(){
 
   if(!recognition)
     setupRecognition();
+
 
   if(!recognition)
     return;
@@ -1260,45 +1962,13 @@ function startListening(){
 
 
 /* =========================================
-   ENTER KEY
-========================================= */
-
-input.addEventListener(
-  "keydown",
-  event => {
-
-    if(event.key === "Enter"){
-
-      event.preventDefault();
-
-      sendText();
-
-    }
-
-  }
-);
-
-
-/* =========================================
-   CLEAR CHAT
-========================================= */
-
-function clearChat(){
-
-  chat.innerHTML = `
-    <div class="message ai">
-      ঠিক আছে। আবার নতুন করে শুরু করি। 🩷
-    </div>
-  `;
-
-}
-
-
-/* =========================================
    LOAD VOICES
 ========================================= */
 
-if("speechSynthesis" in window){
+if(
+  "speechSynthesis"
+  in window
+){
 
   speechSynthesis.onvoiceschanged =
     () => {
@@ -1311,7 +1981,7 @@ if("speechSynthesis" in window){
 
 
 /* =========================================
-   START
+   START APP
 ========================================= */
 
 setupRecognition();
