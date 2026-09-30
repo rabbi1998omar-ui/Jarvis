@@ -7,7 +7,13 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 const INDEX_FILE = path.join(__dirname, "index.html");
 
+
+// =====================================================
+// JSON RESPONSE
+// =====================================================
+
 function sendJSON(res, status, data) {
+
   res.writeHead(status, {
     "Content-Type": "application/json; charset=utf-8",
     "Access-Control-Allow-Origin": "*",
@@ -18,15 +24,24 @@ function sendJSON(res, status, data) {
   res.end(JSON.stringify(data));
 }
 
+
+// =====================================================
+// HTML RESPONSE
+// =====================================================
+
 function sendHTML(res) {
+
   if (!fs.existsSync(INDEX_FILE)) {
+
     res.writeHead(404, {
       "Content-Type": "text/plain; charset=utf-8"
     });
 
     res.end("index.html পাওয়া যায়নি");
+
     return;
   }
+
 
   res.writeHead(200, {
     "Content-Type": "text/html; charset=utf-8"
@@ -43,14 +58,20 @@ function sendHTML(res) {
 async function askGemini(message) {
 
   if (!GEMINI_API_KEY) {
-    throw new Error("GEMINI_API_KEY পাওয়া যায়নি");
+
+    throw new Error(
+      "GEMINI_API_KEY পাওয়া যায়নি। Render Environment চেক করো।"
+    );
   }
 
+
   const url =
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" +
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=" +
     encodeURIComponent(GEMINI_API_KEY);
 
+
   const response = await fetch(url, {
+
     method: "POST",
 
     headers: {
@@ -60,42 +81,81 @@ async function askGemini(message) {
     body: JSON.stringify({
 
       systemInstruction: {
+
         parts: [
+
           {
+
             text:
               "তোমার নাম ময়না পাখি। " +
+
               "তুমি একজন বন্ধুসুলভ বাংলা AI ভয়েস অ্যাসিস্ট্যান্ট। " +
-              "ব্যবহারকারীর সাথে স্বাভাবিক, মিষ্টি ও সহজ বাংলায় কথা বলবে। " +
+
+              "ব্যবহারকারীর সাথে স্বাভাবিক, মিষ্টি এবং সহজ বাংলায় কথা বলবে। " +
+
               "ব্যবহারকারী বাংলা ভাষায় প্রশ্ন করলে বাংলায় উত্তর দেবে। " +
-              "প্রয়োজন হলে সংক্ষিপ্ত কিন্তু তথ্যপূর্ণ উত্তর দেবে। " +
-              "নিজেকে AI assistant হিসেবে পরিচয় দিতে পারো।"
+
+              "প্রয়োজন হলে বিস্তারিত ব্যাখ্যা করবে। " +
+
+              "তথ্য নিশ্চিত না হলে সেটা পরিষ্কারভাবে জানাবে। " +
+
+              "ব্যবহারকারী চাইলে ইংরেজিতেও উত্তর দিতে পারবে। " +
+
+              "তোমার উত্তর যেন স্বাভাবিক মানুষের কথার মতো হয়।"
+
           }
+
         ]
+
       },
 
+
       contents: [
+
         {
+
           role: "user",
+
           parts: [
+
             {
+
               text: message
+
             }
+
           ]
+
         }
+
       ],
 
+
       generationConfig: {
+
         temperature: 0.7,
-        maxOutputTokens: 1000
+
+        maxOutputTokens: 1200
+
       }
+
     })
+
   });
+
 
   const data = await response.json();
 
+
+  // Gemini error
+
   if (!response.ok) {
 
-    console.error("Gemini API Error:", data);
+    console.error(
+      "Gemini API Error:",
+      JSON.stringify(data, null, 2)
+    );
+
 
     throw new Error(
       data?.error?.message ||
@@ -103,56 +163,87 @@ async function askGemini(message) {
     );
   }
 
+
+  // ===================================================
+  // GEMINI ANSWER
+  // ===================================================
+
   let answer = "";
+
 
   if (
     data.candidates &&
     data.candidates.length > 0
   ) {
 
-    const candidate = data.candidates[0];
+    const candidate =
+      data.candidates[0];
+
 
     if (
       candidate.content &&
-      Array.isArray(candidate.content.parts)
+      Array.isArray(
+        candidate.content.parts
+      )
     ) {
 
-      for (const part of candidate.content.parts) {
+      for (
+        const part of candidate.content.parts
+      ) {
 
         if (part.text) {
+
           answer += part.text;
+
         }
 
       }
+
     }
+
   }
 
+
+  // ===================================================
+  // EMPTY ANSWER
+  // ===================================================
+
   if (!answer.trim()) {
+
     answer =
       "দুঃখিত, এখন কোনো উত্তর পাওয়া যাচ্ছে না।";
+
   }
+
 
   return answer.trim();
 }
 
 
 // =====================================================
-// SERVER
+// HTTP SERVER
 // =====================================================
 
 const server = http.createServer(
   async (req, res) => {
 
-    // -----------------------------------------------
-    // OPTIONS / CORS
-    // -----------------------------------------------
+
+    // =================================================
+    // CORS OPTIONS
+    // =================================================
 
     if (req.method === "OPTIONS") {
 
       res.writeHead(204, {
+
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "GET,POST,OPTIONS"
+
+        "Access-Control-Allow-Headers":
+          "Content-Type",
+
+        "Access-Control-Allow-Methods":
+          "GET,POST,OPTIONS"
+
       });
 
       res.end();
@@ -161,9 +252,9 @@ const server = http.createServer(
     }
 
 
-    // -----------------------------------------------
+    // =================================================
     // HOME PAGE
-    // -----------------------------------------------
+    // =================================================
 
     if (
       req.method === "GET" &&
@@ -179,9 +270,9 @@ const server = http.createServer(
     }
 
 
-    // -----------------------------------------------
+    // =================================================
     // HEALTH CHECK
-    // -----------------------------------------------
+    // =================================================
 
     if (
       req.method === "GET" &&
@@ -189,20 +280,27 @@ const server = http.createServer(
     ) {
 
       sendJSON(res, 200, {
+
         status: "ok",
+
         app: "Moyna Pakhi",
+
         ai: "Gemini",
+
+        model: "gemini-3.8-flash",
+
         geminiKeyConfigured:
           Boolean(GEMINI_API_KEY)
+
       });
 
       return;
     }
 
 
-    // -----------------------------------------------
+    // =================================================
     // AI API
-    // -----------------------------------------------
+    // =================================================
 
     if (
       req.method === "POST" &&
@@ -211,12 +309,20 @@ const server = http.createServer(
 
       let body = "";
 
+
       req.on("data", chunk => {
 
         body += chunk;
 
-        if (body.length > 100000) {
+
+        // Prevent huge requests
+
+        if (
+          body.length > 100000
+        ) {
+
           req.destroy();
+
         }
 
       });
@@ -226,16 +332,32 @@ const server = http.createServer(
 
         try {
 
-          const data = JSON.parse(body);
+
+          // -------------------------------------------
+          // Parse JSON
+          // -------------------------------------------
+
+          const data =
+            JSON.parse(body);
+
 
           const message =
-            String(data.message || "").trim();
+            String(
+              data.message || ""
+            ).trim();
 
+
+          // -------------------------------------------
+          // Empty message
+          // -------------------------------------------
 
           if (!message) {
 
             sendJSON(res, 400, {
-              error: "বার্তা পাওয়া যায়নি"
+
+              error:
+                "বার্তা পাওয়া যায়নি"
+
             });
 
             return;
@@ -243,26 +365,39 @@ const server = http.createServer(
 
 
           console.log(
-            "User asked:",
+            "User:",
             message
           );
 
 
+          // -------------------------------------------
+          // Ask Gemini
+          // -------------------------------------------
+
           const answer =
-            await askGemini(message);
+            await askGemini(
+              message
+            );
 
 
           console.log(
-            "Gemini answered successfully"
+            "Gemini response received"
           );
 
 
+          // -------------------------------------------
+          // Send answer
+          // -------------------------------------------
+
           sendJSON(res, 200, {
+
             answer: answer
+
           });
 
 
         } catch (error) {
+
 
           console.error(
             "AI Server Error:",
@@ -271,25 +406,30 @@ const server = http.createServer(
 
 
           sendJSON(res, 500, {
+
             error:
               error.message ||
               "AI Server Error"
+
           });
 
         }
 
       });
 
+
       return;
     }
 
 
-    // -----------------------------------------------
+    // =================================================
     // 404
-    // -----------------------------------------------
+    // =================================================
 
     sendJSON(res, 404, {
+
       error: "Not Found"
+
     });
 
   }
@@ -300,10 +440,41 @@ const server = http.createServer(
 // START SERVER
 // =====================================================
 
-server.listen(PORT, () => {
+server.listen(
+  PORT,
+  () => {
 
-  console.log(
-    `Moyna Pakhi Gemini server started on port ${PORT}`
-  );
+    console.log(
+      "===================================="
+    );
 
-});
+    console.log(
+      "🐦 Moyna Pakhi AI Server"
+    );
+
+    console.log(
+      "🤖 AI: Gemini"
+    );
+
+    console.log(
+      "🧠 Model: gemini-3.8-flash"
+    );
+
+    console.log(
+      "🔐 Gemini Key:",
+      GEMINI_API_KEY
+        ? "Configured"
+        : "Missing"
+    );
+
+    console.log(
+      "🚀 Server started on port",
+      PORT
+    );
+
+    console.log(
+      "===================================="
+    );
+
+  }
+);
