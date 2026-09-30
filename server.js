@@ -3,14 +3,10 @@ const fs = require("fs");
 const path = require("path");
 
 const PORT = process.env.PORT || 10000;
-
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const INDEX_FILE = path.join(__dirname, "index.html");
 
-
 function sendJSON(res, status, data) {
-
   res.writeHead(status, {
     "Content-Type": "application/json; charset=utf-8",
     "Access-Control-Allow-Origin": "*",
@@ -19,335 +15,270 @@ function sendJSON(res, status, data) {
   });
 
   res.end(JSON.stringify(data));
-
 }
 
-
 function sendHTML(res) {
-
   if (!fs.existsSync(INDEX_FILE)) {
-
     res.writeHead(404, {
       "Content-Type": "text/plain; charset=utf-8"
     });
 
     res.end("index.html পাওয়া যায়নি");
-
     return;
-
   }
-
 
   res.writeHead(200, {
     "Content-Type": "text/html; charset=utf-8"
   });
 
   fs.createReadStream(INDEX_FILE).pipe(res);
-
 }
 
 
+// ========================================
+// GEMINI AI
+// ========================================
+
 async function askAI(message) {
 
-  if (!OPENAI_API_KEY) {
-
-    throw new Error(
-      "OPENAI_API_KEY পাওয়া যায়নি"
-    );
-
+  if (!GEMINI_API_KEY) {
+    throw new Error("GEMINI_API_KEY পাওয়া যায়নি");
   }
 
+  const url =
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" +
+    encodeURIComponent(GEMINI_API_KEY);
 
-  const response = await fetch(
-    "https://api.openai.com/v1/responses",
-    {
+  const response = await fetch(url, {
+    method: "POST",
 
-      method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
 
-      headers: {
+    body: JSON.stringify({
 
-        "Content-Type":
-          "application/json",
-
-        "Authorization":
-          "Bearer " + OPENAI_API_KEY
-
+      systemInstruction: {
+        parts: [
+          {
+            text:
+              "তুমি ময়না পাখি নামে একজন বন্ধুসুলভ বাংলা AI ভয়েস অ্যাসিস্ট্যান্ট। " +
+              "ব্যবহারকারীর সাথে স্বাভাবিক ও সহজ বাংলায় কথা বলবে। " +
+              "উত্তর সংক্ষিপ্ত, পরিষ্কার এবং স্বাভাবিক রাখবে। " +
+              "ব্যবহারকারী বাংলা ভাষায় প্রশ্ন করলে বাংলায় উত্তর দেবে।"
+          }
+        ]
       },
 
-      body: JSON.stringify({
+      contents: [
+        {
+          role: "user",
 
-        model: "gpt-5.6-luna",
+          parts: [
+            {
+              text: message
+            }
+          ]
+        }
+      ],
 
-        instructions:
-          "তুমি ময়না পাখি নামে একজন বন্ধুসুলভ বাংলা ভয়েস অ্যাসিস্ট্যান্ট। ব্যবহারকারীর প্রশ্নের সহজ, স্বাভাবিক এবং সংক্ষিপ্ত বাংলায় উত্তর দাও। তথ্য নিশ্চিত না হলে সেটা পরিষ্কারভাবে বলো।",
+      generationConfig: {
+        temperature: 0.7,
+        maxOutputTokens: 1000
+      }
 
-        input: message
+    })
+  });
 
-      })
-
-    }
-  );
-
-
-  const data =
-    await response.json();
-
+  const data = await response.json();
 
   if (!response.ok) {
 
-    console.error(
-      "OpenAI Error:",
-      data
-    );
+    console.error("Gemini Error:", data);
 
     throw new Error(
       data?.error?.message ||
-      "AI response পাওয়া যায়নি"
+      "Gemini থেকে উত্তর পাওয়া যায়নি"
     );
-
   }
 
 
   let answer = "";
 
+  if (
+    data.candidates &&
+    data.candidates.length > 0
+  ) {
 
-  if (data.output_text) {
+    const candidate = data.candidates[0];
 
-    answer =
-      data.output_text;
-
-  } else if (data.output) {
-
-    for (
-      const item of data.output
+    if (
+      candidate.content &&
+      candidate.content.parts
     ) {
 
-      if (
-        item.type === "message" &&
-        Array.isArray(item.content)
-      ) {
+      for (const part of candidate.content.parts) {
 
-        for (
-          const content of item.content
-        ) {
-
-          if (
-            content.type === "output_text"
-          ) {
-
-            answer +=
-              content.text || "";
-
-          }
-
+        if (part.text) {
+          answer += part.text;
         }
 
       }
-
     }
-
   }
 
 
   if (!answer.trim()) {
-
     answer =
-      "দুঃখিত, এখন কোনো উত্তর পাওয়া যায়নি।";
-
+      "দুঃখিত, এই মুহূর্তে কোনো উত্তর পাওয়া যায়নি।";
   }
 
-
   return answer.trim();
-
 }
 
 
-const server =
-  http.createServer(
-    async (req, res) => {
+// ========================================
+// SERVER
+// ========================================
 
-      /* =========================
-         CORS OPTIONS
-      ========================= */
+const server = http.createServer(
+  async (req, res) => {
 
-      if (req.method === "OPTIONS") {
+    // CORS
+    if (req.method === "OPTIONS") {
 
-        res.writeHead(204, {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Headers":
-            "Content-Type",
-          "Access-Control-Allow-Methods":
-            "GET,POST,OPTIONS"
-        });
+      res.writeHead(204, {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers":
+          "Content-Type",
+        "Access-Control-Allow-Methods":
+          "GET,POST,OPTIONS"
+      });
 
-        res.end();
+      res.end();
 
-        return;
-
-      }
-
-
-      /* =========================
-         HOME
-      ========================= */
-
-      if (
-        req.method === "GET" &&
-        (req.url === "/" ||
-         req.url === "/index.html")
-      ) {
-
-        sendHTML(res);
-
-        return;
-
-      }
-
-
-      /* =========================
-         HEALTH
-      ========================= */
-
-      if (
-        req.method === "GET" &&
-        req.url === "/health"
-      ) {
-
-        sendJSON(res, 200, {
-          status: "ok",
-          app: "Moyna Pakhi"
-        });
-
-        return;
-
-      }
-
-
-      /* =========================
-         AI
-      ========================= */
-
-      if (
-        req.method === "POST" &&
-        req.url === "/api/ai"
-      ) {
-
-        let body = "";
-
-        req.on(
-          "data",
-          chunk => {
-
-            body += chunk;
-
-            if (
-              body.length >
-              100000
-            ) {
-
-              req.destroy();
-
-            }
-
-          }
-        );
-
-
-        req.on(
-          "end",
-          async () => {
-
-            try {
-
-              const data =
-                JSON.parse(body);
-
-
-              const message =
-                String(
-                  data.message || ""
-                ).trim();
-
-
-              if (!message) {
-
-                sendJSON(
-                  res,
-                  400,
-                  {
-                    error:
-                      "বার্তা পাওয়া যায়নি"
-                  }
-                );
-
-                return;
-
-              }
-
-
-              const answer =
-                await askAI(message);
-
-
-              sendJSON(
-                res,
-                200,
-                {
-                  answer
-                }
-              );
-
-
-            } catch (error) {
-
-              console.error(error);
-
-
-              sendJSON(
-                res,
-                500,
-                {
-                  error:
-                    error.message ||
-                    "Server error"
-                }
-              );
-
-            }
-
-          }
-        );
-
-
-        return;
-
-      }
-
-
-      /* =========================
-         404
-      ========================= */
-
-      sendJSON(
-        res,
-        404,
-        {
-          error:
-            "Not Found"
-        }
-      );
-
+      return;
     }
-  );
 
 
-server.listen(
-  PORT,
-  () => {
+    // HOME
+    if (
+      req.method === "GET" &&
+      (
+        req.url === "/" ||
+        req.url === "/index.html"
+      )
+    ) {
 
-    console.log(
-      `Moyna Pakhi server started on port ${PORT}`
-    );
+      sendHTML(res);
+
+      return;
+    }
+
+
+    // HEALTH CHECK
+    if (
+      req.method === "GET" &&
+      req.url === "/health"
+    ) {
+
+      sendJSON(res, 200, {
+        status: "ok",
+        app: "Moyna Pakhi",
+        ai: "Gemini"
+      });
+
+      return;
+    }
+
+
+    // AI API
+    if (
+      req.method === "POST" &&
+      req.url === "/api/ai"
+    ) {
+
+      let body = "";
+
+      req.on("data", chunk => {
+
+        body += chunk;
+
+        if (body.length > 100000) {
+          req.destroy();
+        }
+
+      });
+
+
+      req.on("end", async () => {
+
+        try {
+
+          const data = JSON.parse(body);
+
+          const message =
+            String(data.message || "").trim();
+
+
+          if (!message) {
+
+            sendJSON(res, 400, {
+              error: "বার্তা পাওয়া যায়নি"
+            });
+
+            return;
+          }
+
+
+          const answer =
+            await askAI(message);
+
+
+          sendJSON(res, 200, {
+            answer: answer
+          });
+
+
+        } catch (error) {
+
+          console.error(
+            "Server Error:",
+            error
+          );
+
+
+          sendJSON(res, 500, {
+            error:
+              error.message ||
+              "Server error"
+          });
+
+        }
+
+      });
+
+      return;
+    }
+
+
+    // NOT FOUND
+    sendJSON(res, 404, {
+      error: "Not Found"
+    });
 
   }
 );
+
+
+// ========================================
+// START
+// ========================================
+
+server.listen(PORT, () => {
+
+  console.log(
+    `Moyna Pakhi Gemini server started on port ${PORT}`
+  );
+
+});
