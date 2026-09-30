@@ -30,6 +30,10 @@ body{
   overflow-x:hidden;
 }
 
+button{
+  font-family:inherit;
+}
+
 .heart{
   position:fixed;
   font-size:20px;
@@ -48,7 +52,11 @@ body{
     transform:translateY(30px);
     opacity:0;
   }
-  30%{opacity:.4}
+
+  30%{
+    opacity:.4;
+  }
+
   100%{
     transform:translateY(-160px);
     opacity:0;
@@ -182,8 +190,13 @@ body{
   top:3px;
 }
 
-.eye.left{left:29px}
-.eye.right{right:29px}
+.eye.left{
+  left:29px;
+}
+
+.eye.right{
+  right:29px;
+}
 
 .blush{
   position:absolute;
@@ -195,8 +208,13 @@ body{
   top:68px;
 }
 
-.blush.left{left:13px}
-.blush.right{right:13px}
+.blush.left{
+  left:13px;
+}
+
+.blush.right{
+  right:13px;
+}
 
 .beak{
   position:absolute;
@@ -218,18 +236,33 @@ body{
 }
 
 @keyframes breathe{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.04)}
+  0%,100%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.04);
+  }
 }
 
 @keyframes rotate{
-  from{transform:rotate(0deg)}
-  to{transform:rotate(360deg)}
+  from{
+    transform:rotate(0deg);
+  }
+
+  to{
+    transform:rotate(360deg);
+  }
 }
 
 @keyframes rotateReverse{
-  from{transform:rotate(360deg)}
-  to{transform:rotate(0deg)}
+  from{
+    transform:rotate(360deg);
+  }
+
+  to{
+    transform:rotate(0deg);
+  }
 }
 
 .greeting{
@@ -250,12 +283,16 @@ body{
 
 .commandCard{
   margin-top:24px;
-  min-height:95px;
+  min-height:110px;
   padding:18px;
+
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
+
   text-align:center;
+
   border-radius:24px;
 
   background:rgba(255,255,255,.75);
@@ -272,6 +309,12 @@ body{
   font-size:15px;
   line-height:1.7;
   color:#68465a;
+}
+
+.userText{
+  margin-top:6px;
+  font-size:12px;
+  color:#b0889c;
 }
 
 .micArea{
@@ -308,6 +351,7 @@ body{
 }
 
 @keyframes listening{
+
   0%,100%{
     transform:scale(1);
     box-shadow:0 0 20px #ff8fba;
@@ -317,6 +361,42 @@ body{
     transform:scale(1.1);
     box-shadow:0 0 50px #bd80e8;
   }
+
+}
+
+.controlArea{
+  display:flex;
+  justify-content:center;
+  gap:9px;
+  margin-top:14px;
+  flex-wrap:wrap;
+}
+
+.controlBtn{
+  border:none;
+  padding:9px 13px;
+  border-radius:20px;
+
+  background:rgba(255,255,255,.75);
+
+  color:#81566e;
+
+  font-size:11px;
+
+  box-shadow:
+    0 5px 15px rgba(150,80,120,.08);
+
+  cursor:pointer;
+}
+
+.controlBtn.active{
+  background:linear-gradient(
+    135deg,
+    #ff8fba,
+    #bd80e8
+  );
+
+  color:white;
 }
 
 .sectionTitle{
@@ -347,6 +427,14 @@ body{
 
   box-shadow:
     0 5px 15px rgba(150,80,120,.07);
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.commandTag:active{
+  transform:scale(.94);
 }
 
 .footer{
@@ -355,6 +443,40 @@ body{
   text-align:center;
   color:#b08e9f;
   font-size:11px;
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+
+  transform:
+    translateX(-50%)
+    translateY(30px);
+
+  background:rgba(80,50,75,.92);
+  color:white;
+
+  padding:10px 17px;
+
+  border-radius:20px;
+
+  font-size:12px;
+
+  opacity:0;
+
+  pointer-events:none;
+
+  transition:.3s;
+
+  z-index:999;
+}
+
+.toast.show{
+  opacity:1;
+  transform:
+    translateX(-50%)
+    translateY(0);
 }
 
 @media(max-height:700px){
@@ -386,6 +508,7 @@ body{
   .beak{
     top:49px;
   }
+
 }
 
 </style>
@@ -400,89 +523,182 @@ body{
 
 <div class="app">
 
-<div class="header">
+  <div class="header">
 
-  <div class="logo">
-    <span>🐦</span>
-    ময়না পাখি
-  </div>
+    <div class="logo">
+      <span>🐦</span>
+      ময়না পাখি
+    </div>
 
-  <div class="status">
-    <span class="statusDot"></span>
-    ONLINE
-  </div>
-
-</div>
-
-<div class="character">
-
-  <div class="myna">
-
-    <div class="ribbon">🎀</div>
-
-    <div class="eye left"></div>
-    <div class="eye right"></div>
-
-    <div class="blush left"></div>
-    <div class="blush right"></div>
-
-    <div class="beak"></div>
+    <div class="status">
+      <span class="statusDot"></span>
+      ONLINE
+    </div>
 
   </div>
 
-</div>
 
-<div class="greeting">
+  <div class="character">
 
-  <h1>হ্যালো 🌸</h1>
+    <div class="myna">
 
-  <p>
-    আমি তোমার ময়না পাখি 🐦
-  </p>
+      <div class="ribbon">🎀</div>
 
-</div>
+      <div class="eye left"></div>
+      <div class="eye right"></div>
 
-<div class="commandCard">
+      <div class="blush left"></div>
+      <div class="blush right"></div>
 
-  <div id="command">
-    মাইক্রোফোনে চাপ দিয়ে কথা বলো... 💕
+      <div class="beak"></div>
+
+    </div>
+
+  </div>
+
+
+  <div class="greeting">
+
+    <h1>হ্যালো 🌸</h1>
+
+    <p>
+      আমি তোমার ময়না পাখি 🐦
+    </p>
+
+  </div>
+
+
+  <div class="commandCard">
+
+    <div id="command">
+      মাইক্রোফোনে চাপ দিয়ে কথা বলো... 💕
+    </div>
+
+    <div
+      class="userText"
+      id="userText">
+    </div>
+
+  </div>
+
+
+  <div class="micArea">
+
+    <button
+      class="mic"
+      id="mic"
+      aria-label="ময়না পাখির সাথে কথা বলুন">
+      🎙️
+    </button>
+
+  </div>
+
+
+  <div class="controlArea">
+
+    <button
+      class="controlBtn"
+      id="conversationBtn">
+      🔄 কথোপকথন
+    </button>
+
+    <button
+      class="controlBtn active"
+      id="voiceBtn">
+      🔊 ভয়েস চালু
+    </button>
+
+    <button
+      class="controlBtn"
+      id="stopBtn">
+      ⏹ থামাও
+    </button>
+
+  </div>
+
+
+  <div class="sectionTitle">
+    আমাকে যা বলতে পারো 🌷
+  </div>
+
+
+  <div class="commands">
+
+    <div
+      class="commandTag"
+      data-command="হ্যালো">
+      হ্যালো 👋
+    </div>
+
+    <div
+      class="commandTag"
+      data-command="ময়না পাখি">
+      ময়না পাখি 🐦
+    </div>
+
+    <div
+      class="commandTag"
+      data-command="কেমন আছো">
+      কেমন আছো? 😊
+    </div>
+
+    <div
+      class="commandTag"
+      data-command="সময় কত">
+      সময় কত? ⏰
+    </div>
+
+    <div
+      class="commandTag"
+      data-command="আজ কত তারিখ">
+      আজ কত তারিখ? 📅
+    </div>
+
+    <div
+      class="commandTag"
+      data-command="YouTube খোলো">
+      YouTube ▶️
+    </div>
+
+    <div
+      class="commandTag"
+      data-command="Google খোলো">
+      Google 🔎
+    </div>
+
+    <div
+      class="commandTag"
+      data-command="কী করতে পারো">
+      কী করতে পারো? 🌸
+    </div>
+
+    <div
+      class="commandTag"
+      data-command="পাঁচ মিনিটের টাইমার">
+      ৫ মিনিট টাইমার ⏱️
+    </div>
+
+    <div
+      class="commandTag"
+      data-command="আবহাওয়া দেখাও">
+      আবহাওয়া 🌤️
+    </div>
+
+  </div>
+
+
+  <div class="footer">
+    ময়না পাখি 🐦 • Personal AI Assistant
   </div>
 
 </div>
 
-<div class="micArea">
 
-  <button
-    class="mic"
-    id="mic"
-    aria-label="ময়না পাখির সাথে কথা বলুন">
-    🎙️
-  </button>
-
+<div
+  class="toast"
+  id="toast">
 </div>
 
-<div class="sectionTitle">
-  আমাকে যা বলতে পারো 🌷
-</div>
-
-<div class="commands">
-
-  <div class="commandTag">হ্যালো 👋</div>
-  <div class="commandTag">ময়না পাখি 🐦</div>
-  <div class="commandTag">কেমন আছো? 😊</div>
-  <div class="commandTag">সময় কত? ⏰</div>
-  <div class="commandTag">আজ কত তারিখ? 📅</div>
-  <div class="commandTag">YouTube খোলো ▶️</div>
-  <div class="commandTag">Google খোলো 🔎</div>
-  <div class="commandTag">কী করতে পারো? 🌸</div>
-
-</div>
-
-<div class="footer">
-  ময়না পাখি 🐦 • Personal AI Assistant
-</div>
-
-</div>
 
 <script>
 
@@ -496,6 +712,53 @@ const mic =
 const command =
   document.getElementById("command");
 
+const userText =
+  document.getElementById("userText");
+
+const conversationBtn =
+  document.getElementById("conversationBtn");
+
+const voiceBtn =
+  document.getElementById("voiceBtn");
+
+const stopBtn =
+  document.getElementById("stopBtn");
+
+const toast =
+  document.getElementById("toast");
+
+
+/* =================================================
+   SETTINGS
+================================================= */
+
+let conversationMode = false;
+
+let voiceEnabled = true;
+
+let recognitionRunning = false;
+
+let timerId = null;
+
+
+/* =================================================
+   TOAST
+================================================= */
+
+function showToast(text){
+
+  toast.innerText = text;
+
+  toast.classList.add("show");
+
+  setTimeout(function(){
+
+    toast.classList.remove("show");
+
+  },2200);
+
+}
+
 
 /* =================================================
    SPEECH RECOGNITION
@@ -506,6 +769,7 @@ const SpeechRecognition =
   window.webkitSpeechRecognition;
 
 let recognition = null;
+
 
 if(SpeechRecognition){
 
@@ -521,32 +785,69 @@ if(SpeechRecognition){
   recognition.interimResults =
     false;
 
+  recognition.maxAlternatives =
+    1;
+
+
   recognition.onstart =
     function(){
+
+      recognitionRunning = true;
 
       mic.classList.add("listening");
 
       command.innerText =
         "হুম... বলো, শুনছি 😊";
+
     };
+
 
   recognition.onend =
     function(){
 
+      recognitionRunning = false;
+
       mic.classList.remove("listening");
 
     };
+
 
   recognition.onerror =
-    function(){
+    function(event){
+
+      recognitionRunning = false;
 
       mic.classList.remove("listening");
 
-      respond(
-        "উফ্, কথাটা ঠিক বুঝতে পারিনি। আবার বলো তো"
+      console.log(
+        "Recognition error:",
+        event.error
       );
 
+      if(event.error === "not-allowed"){
+
+        respond(
+          "মাইক্রোফোনের অনুমতি দেওয়া হয়নি। Chrome-এর microphone permission চালু করো।"
+        );
+
+        return;
+
+      }
+
+      if(event.error === "no-speech"){
+
+        command.innerText =
+          "কোনো কথা শুনতে পাইনি। আবার বলো 😊";
+
+        return;
+
+      }
+
+      command.innerText =
+        "কথাটা ঠিক বুঝতে পারিনি। আবার বলো 😊";
+
     };
+
 
   recognition.onresult =
     function(event){
@@ -554,7 +855,7 @@ if(SpeechRecognition){
       const text =
         event.results[0][0].transcript;
 
-      command.innerText =
+      userText.innerText =
         "তুমি বলেছ: " + text;
 
       processCommand(text);
@@ -571,33 +872,93 @@ else{
 
 
 /* =================================================
-   MICROPHONE
+   START LISTENING
+================================================= */
+
+function startListening(){
+
+  if(!recognition){
+
+    alert(
+      "Chrome ব্যবহার করে আবার চেষ্টা করো।"
+    );
+
+    return;
+
+  }
+
+  if(recognitionRunning){
+
+    return;
+
+  }
+
+  try{
+
+    recognition.start();
+
+  }
+  catch(error){
+
+    console.log(
+      "Recognition error:",
+      error
+    );
+
+  }
+
+}
+
+
+/* =================================================
+   MICROPHONE BUTTON
 ================================================= */
 
 mic.addEventListener(
   "click",
   function(){
 
-    if(!recognition){
+    startListening();
 
-      alert(
-        "Chrome ব্যবহার করে আবার চেষ্টা করো।"
+  }
+);
+
+
+/* =================================================
+   CONVERSATION MODE
+================================================= */
+
+conversationBtn.addEventListener(
+  "click",
+  function(){
+
+    conversationMode =
+      !conversationMode;
+
+    conversationBtn.classList.toggle(
+      "active",
+      conversationMode
+    );
+
+    if(conversationMode){
+
+      conversationBtn.innerText =
+        "🔄 কথোপকথন চালু";
+
+      showToast(
+        "কথোপকথন মোড চালু হয়েছে"
       );
 
-      return;
+      startListening();
 
     }
+    else{
 
-    try{
+      conversationBtn.innerText =
+        "🔄 কথোপকথন";
 
-      recognition.start();
-
-    }
-    catch(error){
-
-      console.log(
-        "Recognition error:",
-        error
+      showToast(
+        "কথোপকথন মোড বন্ধ"
       );
 
     }
@@ -607,7 +968,87 @@ mic.addEventListener(
 
 
 /* =================================================
-   REMOVE EMOJI
+   VOICE ON/OFF
+================================================= */
+
+voiceBtn.addEventListener(
+  "click",
+  function(){
+
+    voiceEnabled =
+      !voiceEnabled;
+
+    voiceBtn.classList.toggle(
+      "active",
+      voiceEnabled
+    );
+
+    if(voiceEnabled){
+
+      voiceBtn.innerText =
+        "🔊 ভয়েস চালু";
+
+      showToast(
+        "ময়না পাখির ভয়েস চালু"
+      );
+
+    }
+    else{
+
+      voiceBtn.innerText =
+        "🔇 ভয়েস বন্ধ";
+
+      speechSynthesis.cancel();
+
+      showToast(
+        "ভয়েস বন্ধ করা হয়েছে"
+      );
+
+    }
+
+  }
+);
+
+
+/* =================================================
+   STOP VOICE
+================================================= */
+
+stopBtn.addEventListener(
+  "click",
+  function(){
+
+    if(
+      "speechSynthesis" in window
+    ){
+
+      speechSynthesis.cancel();
+
+    }
+
+    if(
+      recognition &&
+      recognitionRunning
+    ){
+
+      try{
+
+        recognition.stop();
+
+      }
+      catch(e){}
+
+    }
+
+    command.innerText =
+      "ঠিক আছে, থামলাম 😊";
+
+  }
+);
+
+
+/* =================================================
+   REMOVE EMOJI FROM TTS
 ================================================= */
 
 function cleanForSpeech(text){
@@ -615,11 +1056,17 @@ function cleanForSpeech(text){
   let result =
     String(text);
 
+
+  /*
+     Unicode emoji
+  */
+
   result =
     result.replace(
       /[\u{1F000}-\u{1FAFF}]/gu,
       ""
     );
+
 
   result =
     result.replace(
@@ -627,17 +1074,35 @@ function cleanForSpeech(text){
       ""
     );
 
+
+  /*
+     অতিরিক্ত symbols
+  */
+
   result =
     result.replace(
-      /[❤️💕💗💖💓💞💝💘💟💜💙💚💛🧡🤍🖤🤎🩷🩵🩶🫶🥰😘😊😄😃😁😌🌸🌷🌹🌺🌻🌼🎀🐦👋⏰📅▶️🔎]/gu,
+      /[❤️💕💗💖💓💞💝💘💟💜💙💚💛🧡🤍🖤🤎🩷🩵🩶🫶🥰😘😊😄😃😁😌🌸🌷🌹🌺🌻🌼🎀🐦👋⏰📅▶️🔎🌤️⏱️🔊🔇⏹🔄]/gu,
       ""
     );
+
+
+  /*
+     Website URL-এর অদ্ভুত অংশ বাদ
+  */
+
+  result =
+    result.replace(
+      /https?:\/\/\S+/gi,
+      ""
+    );
+
 
   result =
     result.replace(
       /\s+/g,
       " "
     );
+
 
   return result.trim();
 
@@ -657,8 +1122,12 @@ let availableVoices = [];
 
 function loadVoices(){
 
-  if(!("speechSynthesis" in window)){
+  if(
+    !("speechSynthesis" in window)
+  ){
+
     return;
+
   }
 
   availableVoices =
@@ -667,18 +1136,19 @@ function loadVoices(){
   console.log(
     "Available voices:",
     availableVoices.map(
-      v => v.name + " | " + v.lang
+      v =>
+        v.name +
+        " | " +
+        v.lang
     )
   );
 
 }
 
 
-/*
-   Android Chrome-এ voice পরে load হতে পারে।
-*/
-
-if("speechSynthesis" in window){
+if(
+  "speechSynthesis" in window
+){
 
   loadVoices();
 
@@ -715,19 +1185,16 @@ function getBanglaVoice(){
   }
 
 
-  /* -----------------------------------------------
-     বাংলা voice
-  ----------------------------------------------- */
-
   const bangla =
     voices.filter(
       function(v){
 
         const lang =
-          String(v.lang || "")
-            .toLowerCase();
+          String(
+            v.lang || ""
+          ).toLowerCase();
 
-        return (
+        return(
           lang === "bn-bd" ||
           lang === "bn-in" ||
           lang.startsWith("bn")
@@ -737,14 +1204,6 @@ function getBanglaVoice(){
     );
 
 
-  console.log(
-    "Bangla voices:",
-    bangla.map(
-      v => v.name + " | " + v.lang
-    )
-  );
-
-
   if(!bangla.length){
 
     return null;
@@ -752,9 +1211,9 @@ function getBanglaVoice(){
   }
 
 
-  /* -----------------------------------------------
-     নারী voice-এর সম্ভাব্য নাম
-  ----------------------------------------------- */
+  /*
+     সম্ভাব্য natural/female voice
+  */
 
   const femaleKeywords = [
 
@@ -782,8 +1241,9 @@ function getBanglaVoice(){
       function(v){
 
         const name =
-          String(v.name || "")
-            .toLowerCase();
+          String(
+            v.name || ""
+          ).toLowerCase();
 
         return femaleKeywords.some(
           keyword =>
@@ -802,18 +1262,18 @@ function getBanglaVoice(){
 
 
   /*
-     Google Bangla voice অগ্রাধিকার
+     Google voice
   */
 
   const google =
     bangla.find(
       function(v){
 
-        const name =
-          String(v.name || "")
-            .toLowerCase();
-
-        return name.includes("google");
+        return String(
+          v.name || ""
+        )
+        .toLowerCase()
+        .includes("google");
 
       }
     );
@@ -826,10 +1286,6 @@ function getBanglaVoice(){
   }
 
 
-  /*
-     Bangla voice-এর প্রথমটি
-  */
-
   return bangla[0];
 
 }
@@ -840,6 +1296,13 @@ function getBanglaVoice(){
 ================================================= */
 
 function speak(text){
+
+  if(!voiceEnabled){
+
+    return;
+
+  }
+
 
   if(
     !("speechSynthesis" in window)
@@ -861,16 +1324,7 @@ function speak(text){
   }
 
 
-  /*
-     আগের speech বন্ধ
-  */
-
   speechSynthesis.cancel();
-
-
-  /*
-     Voice list এখনো না এলে আবার load
-  */
 
   loadVoices();
 
@@ -885,19 +1339,11 @@ function speak(text){
     );
 
 
-  /*
-     বাংলা language
-  */
-
   speech.lang =
     voice && voice.lang
       ? voice.lang
       : "bn-BD";
 
-
-  /*
-     নির্বাচিত voice
-  */
 
   if(voice){
 
@@ -914,7 +1360,7 @@ function speak(text){
 
 
   /*
-     মিষ্টি ও স্বাভাবিক গতি
+     মিষ্টি গতি
   */
 
   speech.rate =
@@ -922,9 +1368,7 @@ function speak(text){
 
 
   /*
-     Pitch একটু বাড়ানো হয়েছে।
-     এটি voice-এর gender পরিবর্তন করে না,
-     শুধু স্বর কিছুটা উঁচু করে।
+     Pitch সামান্য বেশি
   */
 
   speech.pitch =
@@ -933,16 +1377,6 @@ function speak(text){
 
   speech.volume =
     1;
-
-
-  speech.onstart =
-    function(){
-
-      console.log(
-        "Voice started"
-      );
-
-    };
 
 
   speech.onerror =
@@ -974,6 +1408,181 @@ function respond(text){
 
   speak(text);
 
+
+  /*
+     কথোপকথন মোডে উত্তর দেওয়ার
+     কিছুক্ষণ পর আবার শুনবে
+  */
+
+  if(conversationMode){
+
+    setTimeout(
+      function(){
+
+        if(conversationMode){
+
+          startListening();
+
+        }
+
+      },
+      1800
+    );
+
+  }
+
+}
+
+
+/* =================================================
+   OPEN URL
+================================================= */
+
+function openURL(url){
+
+  window.location.href =
+    url;
+
+}
+
+
+/* =================================================
+   GOOGLE SEARCH
+================================================= */
+
+function googleSearch(query){
+
+  const url =
+    "https://www.google.com/search?q=" +
+    encodeURIComponent(query);
+
+  window.location.href =
+    url;
+
+}
+
+
+/* =================================================
+   YOUTUBE SEARCH
+================================================= */
+
+function youtubeSearch(query){
+
+  const url =
+    "https://www.youtube.com/results?search_query=" +
+    encodeURIComponent(query);
+
+  window.location.href =
+    url;
+
+}
+
+
+/* =================================================
+   CALCULATOR
+================================================= */
+
+function calculateExpression(text){
+
+  let expression =
+    text
+      .replace(/যোগ/gi,"+")
+      .replace(/বিয়োগ/gi,"-")
+      .replace(/বিয়োগ/gi,"-")
+      .replace(/গুণ/gi,"*")
+      .replace(/ভাগ/gi,"/")
+      .replace(/প্লাস/gi,"+")
+      .replace(/মাইনাস/gi,"-")
+      .replace(/×/g,"*")
+      .replace(/÷/g,"/");
+
+
+  /*
+     শুধু নিরাপদ mathematical characters
+  */
+
+  expression =
+    expression.replace(
+      /[^0-9+\-*/().\s]/g,
+      ""
+    );
+
+
+  if(!expression){
+
+    return null;
+
+  }
+
+
+  try{
+
+    const result =
+      Function(
+        '"use strict";return (' +
+        expression +
+        ')'
+      )();
+
+
+    if(
+      typeof result === "number" &&
+      Number.isFinite(result)
+    ){
+
+      return result;
+
+    }
+
+  }
+  catch(error){
+
+    return null;
+
+  }
+
+  return null;
+
+}
+
+
+/* =================================================
+   TIMER
+================================================= */
+
+function startTimer(minutes){
+
+  if(timerId){
+
+    clearTimeout(timerId);
+
+  }
+
+
+  const milliseconds =
+    minutes * 60 * 1000;
+
+
+  timerId =
+    setTimeout(
+      function(){
+
+        respond(
+          "তোমার " +
+          minutes +
+          " মিনিটের টাইমার শেষ হয়েছে।"
+        );
+
+      },
+      milliseconds
+    );
+
+
+  respond(
+    minutes +
+    " মিনিটের টাইমার শুরু করেছি।"
+  );
+
 }
 
 
@@ -989,6 +1598,21 @@ function processCommand(text){
       .trim();
 
 
+  /* -----------------------------------------------
+     EMPTY
+  ----------------------------------------------- */
+
+  if(!c){
+
+    return;
+
+  }
+
+
+  /* -----------------------------------------------
+     MYNA
+  ----------------------------------------------- */
+
   if(
     c.includes("ময়না") ||
     c.includes("ময়না") ||
@@ -997,29 +1621,38 @@ function processCommand(text){
   ){
 
     respond(
-      "হুম, ময়না পাখি এখানে আছি 😊 বলো, কী করতে হবে?"
+      "হুম, ময়না পাখি এখানে আছি। বলো, কী করতে হবে?"
     );
 
     return;
 
   }
 
+
+  /* -----------------------------------------------
+     HELLO
+  ----------------------------------------------- */
 
   if(
     c.includes("হ্যালো") ||
     c.includes("হাই") ||
     c.includes("হেই") ||
-    c.includes("hello")
+    c.includes("hello") ||
+    c.includes("hi")
   ){
 
     respond(
-      "হ্যালো 🌸 বলো, কীভাবে সাহায্য করতে পারি?"
+      "হ্যালো। বলো, কীভাবে সাহায্য করতে পারি?"
     );
 
     return;
 
   }
 
+
+  /* -----------------------------------------------
+     HOW ARE YOU
+  ----------------------------------------------- */
 
   if(
     c.includes("কেমন আছ") ||
@@ -1028,13 +1661,17 @@ function processCommand(text){
   ){
 
     respond(
-      "আমি ভালো আছি 😊 তোমার কথা শুনতে প্রস্তুত।"
+      "আমি ভালো আছি। তোমার কথা শুনতে প্রস্তুত।"
     );
 
     return;
 
   }
 
+
+  /* -----------------------------------------------
+     WHAT ARE YOU DOING
+  ----------------------------------------------- */
 
   if(
     c.includes("কি করছ") ||
@@ -1044,13 +1681,17 @@ function processCommand(text){
   ){
 
     respond(
-      "তোমার কমান্ডের অপেক্ষায় আছি 🌸 বলো কী কাজ করব?"
+      "তোমার কমান্ডের অপেক্ষায় আছি। বলো কী কাজ করব?"
     );
 
     return;
 
   }
 
+
+  /* -----------------------------------------------
+     WHO ARE YOU
+  ----------------------------------------------- */
 
   if(
     c.includes("তুমি কে") ||
@@ -1058,13 +1699,17 @@ function processCommand(text){
   ){
 
     respond(
-      "আমি ময়না পাখি 🐦 তোমার ব্যক্তিগত এআই অ্যাসিস্ট্যান্ট।"
+      "আমি ময়না পাখি। তোমার ব্যক্তিগত এআই অ্যাসিস্ট্যান্ট।"
     );
 
     return;
 
   }
 
+
+  /* -----------------------------------------------
+     WHAT CAN YOU DO
+  ----------------------------------------------- */
 
   if(
     c.includes("কি করতে পার") ||
@@ -1074,13 +1719,17 @@ function processCommand(text){
   ){
 
     respond(
-      "আমি তোমার কথা শুনতে, সময় ও তারিখ বলতে এবং কিছু ওয়েবসাইট খুলতে পারি। আমাকে আরও অনেক কাজ শেখানো যাবে।"
+      "আমি সময় ও তারিখ বলতে, গুগল সার্চ করতে, ইউটিউব খুলতে, হিসাব করতে, টাইমার দিতে এবং আরও কিছু কাজ করতে পারি।"
     );
 
     return;
 
   }
 
+
+  /* -----------------------------------------------
+     TIME
+  ----------------------------------------------- */
 
   if(
     c.includes("সময়") ||
@@ -1093,6 +1742,7 @@ function processCommand(text){
     const now =
       new Date();
 
+
     const time =
       now.toLocaleTimeString(
         "bn-BD",
@@ -1102,14 +1752,21 @@ function processCommand(text){
         }
       );
 
+
     respond(
-      "এখন সময় " + time + " ⏰"
+      "এখন সময় " +
+      time +
+      "।"
     );
 
     return;
 
   }
 
+
+  /* -----------------------------------------------
+     DATE
+  ----------------------------------------------- */
 
   if(
     c.includes("আজ কত তারিখ") ||
@@ -1119,6 +1776,7 @@ function processCommand(text){
 
     const now =
       new Date();
+
 
     const date =
       now.toLocaleDateString(
@@ -1130,14 +1788,155 @@ function processCommand(text){
         }
       );
 
+
     respond(
-      "আজ " + date + " 📅"
+      "আজ " +
+      date +
+      "।"
     );
 
     return;
 
   }
 
+
+  /* -----------------------------------------------
+     CALCULATOR
+  ----------------------------------------------- */
+
+  if(
+    c.includes("কত হবে") ||
+    c.includes("হিসাব কর") ||
+    c.includes("হিসাব") ||
+    c.includes("যোগ") ||
+    c.includes("বিয়োগ") ||
+    c.includes("বিয়োগ") ||
+    c.includes("গুণ") ||
+    c.includes("ভাগ")
+  ){
+
+    const result =
+      calculateExpression(c);
+
+
+    if(result !== null){
+
+      respond(
+        "হিসাবের ফলাফল " +
+        result +
+        "।"
+      );
+
+      return;
+
+    }
+
+  }
+
+
+  /* -----------------------------------------------
+     GOOGLE SEARCH
+  ----------------------------------------------- */
+
+  if(
+    c.startsWith("গুগলে") ||
+    c.startsWith("google এ") ||
+    c.startsWith("google-এ") ||
+    c.startsWith("গুগল সার্চ")
+  ){
+
+    let query =
+      c
+        .replace("গুগলে","")
+        .replace("google এ","")
+        .replace("google-এ","")
+        .replace("গুগল সার্চ","")
+        .trim();
+
+
+    if(!query){
+
+      respond(
+        "কী সার্চ করতে হবে বলো।"
+      );
+
+      return;
+
+    }
+
+
+    respond(
+      "ঠিক আছে। গুগলে সার্চ করছি।"
+    );
+
+
+    setTimeout(
+      function(){
+
+        googleSearch(query);
+
+      },
+      1000
+    );
+
+    return;
+
+  }
+
+
+  /* -----------------------------------------------
+     YOUTUBE SEARCH
+  ----------------------------------------------- */
+
+  if(
+    c.startsWith("ইউটিউবে") ||
+    c.startsWith("youtube এ") ||
+    c.startsWith("youtube-এ") ||
+    c.startsWith("ইউটিউব সার্চ")
+  ){
+
+    let query =
+      c
+        .replace("ইউটিউবে","")
+        .replace("youtube এ","")
+        .replace("youtube-এ","")
+        .replace("ইউটিউব সার্চ","")
+        .trim();
+
+
+    if(!query){
+
+      respond(
+        "ইউটিউবে কী খুঁজতে হবে বলো।"
+      );
+
+      return;
+
+    }
+
+
+    respond(
+      "ঠিক আছে। ইউটিউবে সার্চ করছি।"
+    );
+
+
+    setTimeout(
+      function(){
+
+        youtubeSearch(query);
+
+      },
+      1000
+    );
+
+    return;
+
+  }
+
+
+  /* -----------------------------------------------
+     YOUTUBE OPEN
+  ----------------------------------------------- */
 
   if(
     c.includes("youtube") ||
@@ -1145,23 +1944,29 @@ function processCommand(text){
   ){
 
     respond(
-      "আচ্ছা 🌸 ইউটিউব খুলছি।"
+      "আচ্ছা। ইউটিউব খুলছি।"
     );
+
 
     setTimeout(
       function(){
 
-        window.location.href =
-          "https://www.youtube.com/";
+        openURL(
+          "https://www.youtube.com/"
+        );
 
       },
-      1200
+      1000
     );
 
     return;
 
   }
 
+
+  /* -----------------------------------------------
+     GOOGLE OPEN
+  ----------------------------------------------- */
 
   if(
     c.includes("google") ||
@@ -1169,23 +1974,29 @@ function processCommand(text){
   ){
 
     respond(
-      "ঠিক আছে 🌸 গুগল খুলছি।"
+      "ঠিক আছে। গুগল খুলছি।"
     );
+
 
     setTimeout(
       function(){
 
-        window.location.href =
-          "https://www.google.com/";
+        openURL(
+          "https://www.google.com/"
+        );
 
       },
-      1200
+      1000
     );
 
     return;
 
   }
 
+
+  /* -----------------------------------------------
+     FACEBOOK
+  ----------------------------------------------- */
 
   if(
     c.includes("facebook") ||
@@ -1193,23 +2004,108 @@ function processCommand(text){
   ){
 
     respond(
-      "আচ্ছা 🌸 ফেসবুক খুলছি।"
+      "আচ্ছা। ফেসবুক খুলছি।"
     );
+
 
     setTimeout(
       function(){
 
-        window.location.href =
-          "https://www.facebook.com/";
+        openURL(
+          "https://www.facebook.com/"
+        );
 
       },
-      1200
+      1000
     );
 
     return;
 
   }
 
+
+  /* -----------------------------------------------
+     WEATHER
+  ----------------------------------------------- */
+
+  if(
+    c.includes("আবহাওয়া") ||
+    c.includes("আবহাওয়া") ||
+    c.includes("weather")
+  ){
+
+    respond(
+      "ঠিক আছে। আবহাওয়ার তথ্য দেখাচ্ছি।"
+    );
+
+
+    setTimeout(
+      function(){
+
+        openURL(
+          "https://www.google.com/search?q=আজকের+আবহাওয়া"
+        );
+
+      },
+      1000
+    );
+
+    return;
+
+  }
+
+
+  /* -----------------------------------------------
+     TIMER
+  ----------------------------------------------- */
+
+  if(
+    c.includes("মিনিটের টাইমার") ||
+    c.includes("মিনিট টাইমার")
+  ){
+
+    const match =
+      c.match(
+        /(\d+)\s*মিনিট/
+      );
+
+
+    if(match){
+
+      const minutes =
+        Number(
+          match[1]
+        );
+
+
+      if(
+        minutes > 0 &&
+        minutes <= 120
+      ){
+
+        startTimer(
+          minutes
+        );
+
+        return;
+
+      }
+
+    }
+
+
+    respond(
+      "কত মিনিটের টাইমার দিতে হবে বলো।"
+    );
+
+    return;
+
+  }
+
+
+  /* -----------------------------------------------
+     THANK YOU
+  ----------------------------------------------- */
 
   if(
     c.includes("ধন্যবাদ") ||
@@ -1218,13 +2114,17 @@ function processCommand(text){
   ){
 
     respond(
-      "স্বাগতম 😊 আর কোনো কাজে সাহায্য করতে পারি?"
+      "স্বাগতম। আর কোনো কাজে সাহায্য করতে পারি?"
     );
 
     return;
 
   }
 
+
+  /* -----------------------------------------------
+     GOOD MORNING
+  ----------------------------------------------- */
 
   if(
     c.includes("শুভ সকাল") ||
@@ -1232,13 +2132,17 @@ function processCommand(text){
   ){
 
     respond(
-      "শুভ সকাল 🌸 আশা করি আজকের দিনটা ভালো কাটবে।"
+      "শুভ সকাল। আশা করি আজকের দিনটা ভালো কাটবে।"
     );
 
     return;
 
   }
 
+
+  /* -----------------------------------------------
+     GOOD NIGHT
+  ----------------------------------------------- */
 
   if(
     c.includes("শুভ রাত্রি") ||
@@ -1247,13 +2151,17 @@ function processCommand(text){
   ){
 
     respond(
-      "শুভ রাত্রি 🌙 ভালোভাবে বিশ্রাম নাও।"
+      "শুভ রাত্রি। ভালোভাবে বিশ্রাম নাও।"
     );
 
     return;
 
   }
 
+
+  /* -----------------------------------------------
+     YES
+  ----------------------------------------------- */
 
   if(
     c === "হ্যাঁ" ||
@@ -1262,20 +2170,24 @@ function processCommand(text){
   ){
 
     respond(
-      "ঠিক আছে 😊"
+      "ঠিক আছে।"
     );
 
     return;
 
   }
 
+
+  /* -----------------------------------------------
+     NO
+  ----------------------------------------------- */
 
   if(
     c === "না"
   ){
 
     respond(
-      "আচ্ছা, ঠিক আছে 😊"
+      "আচ্ছা, ঠিক আছে।"
     );
 
     return;
@@ -1283,11 +2195,85 @@ function processCommand(text){
   }
 
 
+  /* -----------------------------------------------
+     UNKNOWN
+  ----------------------------------------------- */
+
   respond(
-    "হুম, এই কাজটা এখনো আমাকে শেখানো হয়নি 😊"
+    "হুম, এই কাজটা এখনো আমাকে শেখানো হয়নি। চাইলে আমাকে আরও কাজ শেখানো যাবে।"
   );
 
 }
+
+
+/* =================================================
+   CLICK COMMAND TAG
+================================================= */
+
+const commandTags =
+  document.querySelectorAll(
+    ".commandTag"
+  );
+
+
+commandTags.forEach(
+  function(tag){
+
+    tag.addEventListener(
+      "click",
+      function(){
+
+        const text =
+          tag.getAttribute(
+            "data-command"
+          );
+
+
+        userText.innerText =
+          "তুমি বলেছ: " +
+          text;
+
+
+        processCommand(
+          text
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =================================================
+   PAGE LOAD
+================================================= */
+
+window.addEventListener(
+  "load",
+  function(){
+
+    loadVoices();
+
+    setTimeout(
+      function(){
+
+        if(
+          availableVoices.length
+        ){
+
+          console.log(
+            "Voice system ready"
+          );
+
+        }
+
+      },
+      1000
+    );
+
+  }
+);
 
 </script>
 
