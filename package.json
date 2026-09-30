@@ -1,0 +1,12 @@
+{
+  "name": "moyna-pakhi",
+  "version": "1.0.0",
+  "description": "Moyna Pakhi AI Voice Assistant",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
