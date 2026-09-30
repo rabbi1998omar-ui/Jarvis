@@ -1,83 +1,1235 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>ময়না পাখি 🐦</title>
+
+<meta name="theme-color"
+content="#ffd6e8">
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+
+  min-height:100vh;
+
+  font-family:
+    Arial,
+    "Noto Sans Bengali",
+    sans-serif;
+
+  color:#5b3850;
+
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      #fff5fa 0%,
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at 85% 20%,
+      #eee4ff 0%,
+      transparent 30%
+    ),
+
+    linear-gradient(
+      160deg,
+      #fff0f7,
+      #f6edff,
+      #fff8fb
+    );
+
+  overflow-x:hidden;
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart{
+
+  position:fixed;
+
+  font-size:18px;
+
+  opacity:.35;
+
+  pointer-events:none;
+
+  animation:
+    floatHeart 7s linear infinite;
+
+}
+
+.heart1{
+  left:8%;
+  top:80%;
+}
+
+.heart2{
+  left:85%;
+  top:65%;
+  animation-delay:2s;
+}
+
+.heart3{
+  left:15%;
+  top:30%;
+  animation-delay:4s;
+}
+
+.heart4{
+  left:75%;
+  top:35%;
+  animation-delay:1s;
+}
+
+
+@keyframes floatHeart{
+
+  0%{
+    transform:translateY(30px);
+    opacity:0;
+  }
+
+  30%{
+    opacity:.4;
+  }
+
+  100%{
+    transform:translateY(-160px);
+    opacity:0;
+  }
+
+}
+
+
+/* =========================
+   APP
+========================= */
+
+.app{
+
+  width:100%;
+
+  max-width:520px;
+
+  min-height:100vh;
+
+  margin:auto;
+
+  padding:22px 18px;
+
+  display:flex;
+
+  flex-direction:column;
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  padding:12px 5px;
+
+}
+
+
+.logo{
+
+  font-size:23px;
+
+  font-weight:bold;
+
+  color:#b34f83;
+
+  letter-spacing:1px;
+
+}
+
+
+.logo span{
+  font-size:27px;
+}
+
+
+.status{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:7px;
+
+  font-size:11px;
+
+  color:#58a87a;
+
+  background:
+    rgba(255,255,255,.65);
+
+  padding:7px 11px;
+
+  border-radius:20px;
+
+}
+
+
+.statusDot{
+
+  width:7px;
+
+  height:7px;
+
+  border-radius:50%;
+
+  background:#58c98a;
+
+  box-shadow:
+    0 0 10px #58c98a;
+
+}
+
+
+/* =========================
+   CHARACTER
+========================= */
+
+.character{
+
+  width:215px;
+
+  height:215px;
+
+  margin:30px auto 20px;
+
+  border-radius:50%;
+
+  position:relative;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  background:
+
+    radial-gradient(
+      circle,
+      #ffffff 0%,
+      #ffe3ef 42%,
+      #f7c5dd 70%,
+      transparent 71%
+    );
+
+  box-shadow:
+
+    0 15px 50px
+    rgba(196,104,150,.22),
+
+    inset 0 0 30px
+    rgba(255,255,255,.8);
+
+}
+
+
+.character::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:215px;
+  height:215px;
+
+  border-radius:50%;
+
+  border:1px solid
+    rgba(211,111,161,.3);
+
+  animation:
+    rotate 12s linear infinite;
+
+}
+
+
+.character::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:180px;
+  height:180px;
+
+  border-radius:50%;
+
+  border:1px dashed
+    rgba(166,126,201,.35);
+
+  animation:
+    rotateReverse 9s linear infinite;
+
+}
+
+
+/* =========================
+   MYNA FACE
+========================= */
+
+.myna{
+
+  position:relative;
+
+  width:120px;
+
+  height:120px;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffdfd,
+      #ffe4ef
+    );
+
+  box-shadow:
+    0 10px 30px
+    rgba(150,70,110,.15);
+
+  animation:
+    breathe 3s ease-in-out infinite;
+
+}
+
+
+.eye{
+
+  position:absolute;
+
+  width:15px;
+
+  height:18px;
+
+  border-radius:50%;
+
+  background:#5b3d52;
+
+  top:42px;
+
+}
+
+
+.eye::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:5px;
+
+  height:5px;
+
+  background:white;
+
+  border-radius:50%;
+
+  left:3px;
+
+  top:3px;
+
+}
+
+
+.eye.left{
+  left:29px;
+}
+
+
+.eye.right{
+  right:29px;
+}
+
+
+.blush{
+
+  position:absolute;
+
+  width:25px;
+
+  height:12px;
+
+  border-radius:50%;
+
+  background:#ffb6d0;
+
+  opacity:.65;
+
+  top:68px;
+
+}
+
+
+.blush.left{
+  left:13px;
+}
+
+
+.blush.right{
+  right:13px;
+}
+
+
+.beak{
+
+  position:absolute;
+
+  left:50%;
+
+  top:57px;
+
+  transform:
+    translateX(-50%);
+
+  width:0;
+
+  height:0;
+
+  border-left:
+    13px solid transparent;
+
+  border-right:
+    13px solid transparent;
+
+  border-top:
+    18px solid #f3a04e;
+
+}
+
+
+.ribbon{
+
+  position:absolute;
+
+  top:-8px;
+
+  right:15px;
+
+  font-size:31px;
+
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes breathe{
+
+  0%,100%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.04);
+  }
+
+}
+
+@keyframes rotate{
+
+  from{
+    transform:rotate(0);
+  }
+
+  to{
+    transform:rotate(360deg);
+  }
+
+}
+
+@keyframes rotateReverse{
+
+  from{
+    transform:rotate(360deg);
+  }
+
+  to{
+    transform:rotate(0);
+  }
+
+}
+
+
+/* =========================
+   GREETING
+========================= */
+
+.greeting{
+
+  text-align:center;
+
+  margin-top:10px;
+
+}
+
+
+.greeting h1{
+
+  font-size:27px;
+
+  color:#a94c79;
+
+  margin-bottom:7px;
+
+}
+
+
+.greeting p{
+
+  color:#9a7488;
+
+  font-size:14px;
+
+}
+
+
+/* =========================
+   COMMAND CARD
+========================= */
+
+.commandCard{
+
+  margin-top:24px;
+
+  min-height:92px;
+
+  padding:18px;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  text-align:center;
+
+  border-radius:24px;
+
+  background:
+    rgba(255,255,255,.72);
+
+  border:
+    1px solid
+    rgba(255,255,255,.9);
+
+  box-shadow:
+    0 12px 35px
+    rgba(155,83,125,.12);
+
+  backdrop-filter:
+    blur(15px);
+
+}
+
+
+#command{
+
+  font-size:15px;
+
+  line-height:1.7;
+
+  color:#68465a;
+
+}
+
+
+/* =========================
+   MIC
+========================= */
+
+.micArea{
+
+  display:flex;
+
+  justify-content:center;
+
+  margin-top:25px;
+
+}
+
+
+.mic{
+
+  width:82px;
+
+  height:82px;
+
+  border:none;
+
+  border-radius:50%;
+
+  cursor:pointer;
+
+  color:white;
+
+  font-size:30px;
+
+  background:
+
+    linear-gradient(
+      145deg,
+      #ff8fba,
+      #bd80e8
+    );
+
+  box-shadow:
+
+    0 12px 30px
+    rgba(190,100,155,.28),
+
+    0 0 25px
+    rgba(255,143,186,.25);
+
+  transition:.2s;
+
+}
+
+
+.mic:active{
+  transform:scale(.91);
+}
+
+
+.mic.listening{
+
+  animation:
+    listening 1s infinite;
+
+}
+
+
+@keyframes listening{
+
+  0%,100%{
+
+    transform:scale(1);
+
+    box-shadow:
+      0 0 20px #ff8fba;
+
+  }
+
+  50%{
+
+    transform:scale(1.1);
+
+    box-shadow:
+      0 0 50px #bd80e8;
+
+  }
+
+}
+
+
+/* =========================
+   COMMANDS
+========================= */
+
+.sectionTitle{
+
+  margin-top:30px;
+
+  margin-bottom:12px;
+
+  text-align:center;
+
+  font-size:13px;
+
+  color:#a2788c;
+
+}
+
+
+.commands{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  justify-content:center;
+
+  gap:9px;
+
+}
+
+
+.commandTag{
+
+  padding:10px 14px;
+
+  border-radius:22px;
+
+  background:
+    rgba(255,255,255,.7);
+
+  border:
+    1px solid
+    rgba(255,255,255,.9);
+
+  color:#795569;
+
+  font-size:12px;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+
+  margin-top:auto;
+
+  padding-top:35px;
+
+  text-align:center;
+
+  color:#b08e9f;
+
+  font-size:11px;
+
+}
+
+
+@media(max-height:700px){
+
+  .character{
+
+    width:175px;
+    height:175px;
+
+  }
+
+  .character::before{
+
+    width:175px;
+    height:175px;
+
+  }
+
+  .character::after{
+
+    width:145px;
+    height:145px;
+
+  }
+
+  .myna{
+
+    width:100px;
+    height:100px;
+
+  }
+
+  .eye{
+    top:34px;
+  }
+
+  .beak{
+    top:49px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="heart heart1">♡</div>
+<div class="heart heart2">♡</div>
+<div class="heart heart3">♡</div>
+<div class="heart heart4">♡</div>
+
+
+<div class="app">
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+  <div class="logo">
+
+    <span>🐦</span>
+
+    ময়না পাখি
+
+  </div>
+
+
+  <div class="status">
+
+    <span class="statusDot"></span>
+
+    ONLINE
+
+  </div>
+
+</div>
+
+
+<!-- CHARACTER -->
+
+<div class="character">
+
+  <div class="myna">
+
+    <div class="ribbon">
+      🎀
+    </div>
+
+    <div class="eye left"></div>
+
+    <div class="eye right"></div>
+
+    <div class="blush left"></div>
+
+    <div class="blush right"></div>
+
+    <div class="beak"></div>
+
+  </div>
+
+</div>
+
+
+<!-- GREETING -->
+
+<div class="greeting">
+
+  <h1>
+    হ্যালো 🌸
+  </h1>
+
+  <p>
+    আমি তোমার ময়না পাখি 🐦
+  </p>
+
+</div>
+
+
+<!-- COMMAND -->
+
+<div class="commandCard">
+
+  <div id="command">
+
+    মাইক্রোফোনে চাপ দিয়ে কথা বলো... 💕
+
+  </div>
+
+</div>
+
+
+<!-- MIC -->
+
+<div class="micArea">
+
+  <button
+    class="mic"
+    id="mic"
+    aria-label="Voice Assistant">
+
+    🎙️
+
+  </button>
+
+</div>
+
+
+<!-- COMMAND LIST -->
+
+<div class="sectionTitle">
+
+  আমাকে যা বলতে পারো 🌷
+
+</div>
+
+
+<div class="commands">
+
+  <div class="commandTag">
+    হ্যালো 👋
+  </div>
+
+  <div class="commandTag">
+    ময়না পাখি 🐦
+  </div>
+
+  <div class="commandTag">
+    কেমন আছো? 😊
+  </div>
+
+  <div class="commandTag">
+    সময় কত? ⏰
+  </div>
+
+  <div class="commandTag">
+    আজ কত তারিখ? 📅
+  </div>
+
+  <div class="commandTag">
+    YouTube খোলো ▶️
+  </div>
+
+  <div class="commandTag">
+    Google খোলো 🔎
+  </div>
+
+  <div class="commandTag">
+    কী করতে পারো? 🌸
+  </div>
+
+</div>
+
+
+<div class="footer">
+
+  ময়না পাখি 🐦 • Personal AI Assistant
+
+</div>
+
+
+</div>
+
+
+<script>
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const mic =
+  document.getElementById("mic");
+
+const command =
+  document.getElementById("command");
+
+
+/* =========================================
+   SPEECH RECOGNITION
+========================================= */
+
+const SpeechRecognition =
+  window.SpeechRecognition ||
+  window.webkitSpeechRecognition;
+
+
+let recognition = null;
+
+
+if(SpeechRecognition){
+
+  recognition =
+    new SpeechRecognition();
+
+  recognition.lang =
+    "bn-BD";
+
+  recognition.continuous =
+    false;
+
+  recognition.interimResults =
+    false;
+
+
+  recognition.onstart =
+    function(){
+
+      mic.classList.add(
+        "listening"
+      );
+
+      command.innerText =
+        "হুম... বলো, শুনছি 😊";
+
+    };
+
+
+  recognition.onend =
+    function(){
+
+      mic.classList.remove(
+        "listening"
+      );
+
+    };
+
+
+  recognition.onerror =
+    function(){
+
+      mic.classList.remove(
+        "listening"
+      );
+
+      respond(
+        "উফ্, কথাটা ঠিক বুঝতে পারিনি। আবার বলো তো"
+      );
+
+    };
+
+
+  recognition.onresult =
+    function(event){
+
+      const text =
+        event.results[0][0]
+        .transcript;
+
+      command.innerText =
+        "তুমি বলেছ: " + text;
+
+      processCommand(text);
+
+    };
+
+}
+
+
+else{
+
+  command.innerText =
+    "এই ব্রাউজারে Voice Recognition নেই। Chrome ব্যবহার করো।";
+
+}
+
+
+/* =========================================
+   MICROPHONE
+========================================= */
+
+mic.addEventListener(
+  "click",
+  function(){
+
+    if(!recognition){
+
+      alert(
+        "Chrome ব্যবহার করে আবার চেষ্টা করো।"
+      );
+
+      return;
+
+    }
+
+
+    try{
+
+      recognition.start();
+
+    }
+
+    catch(error){
+
+      console.log(error);
+
+    }
+
+  }
+);
+
+
+/* =========================================
+   REMOVE EMOJI FROM VOICE
+========================================= */
+
+function cleanForSpeech(text){
+
+  return text
+
+    /* emoji বাদ */
+
+    .replace(
+      /[\u{1F300}-\u{1FAFF}]/gu,
+      ""
+    )
+
+    .replace(
+      /[\u{2600}-\u{27BF}]/gu,
+      ""
+    )
+
+    /* অতিরিক্ত punctuation বাদ */
+
+    .replace(
+      /[❤️💕💗💖💓💞💝💘💟💜💙💚💛🧡🤍🖤🤎🩷🩵🩶🫶🥰😘😊😄😃😁😌🌸🌷🌹🌺🌻🌼🎀🐦👋⏰📅▶️🔎]/gu,
+      ""
+    )
+
+    .replace(
+      /\s+/g,
+      " "
+    )
+
+    .trim();
+
+}
+
+
+/* =========================================
+   FEMALE VOICE
+========================================= */
+
 function speak(text){
 
-  if(!("speechSynthesis" in window)){
+  if(
+    !("speechSynthesis" in window)
+  ){
+
     return;
+
   }
+
 
   speechSynthesis.cancel();
 
-  const voices = speechSynthesis.getVoices();
+
+  const cleanText =
+    cleanForSpeech(text);
+
+
+  if(!cleanText){
+    return;
+  }
+
+
+  const voices =
+    speechSynthesis.getVoices();
+
 
   /*
-    প্রথমে বাংলা female voice খোঁজা
+    বাংলা মহিলা voice
   */
 
-  let femaleVoice = voices.find(function(voice){
+  let femaleVoice =
+    voices.find(
+      function(voice){
 
-    const name =
-      voice.name.toLowerCase();
+        const name =
+          voice.name.toLowerCase();
 
-    const lang =
-      voice.lang.toLowerCase();
+        const lang =
+          voice.lang.toLowerCase();
 
-    return (
-      lang.startsWith("bn") &&
-      (
-        name.includes("female") ||
-        name.includes("woman") ||
-        name.includes("girl") ||
-        name.includes("zira") ||
-        name.includes("samantha") ||
-        name.includes("google")
-      )
+
+        return (
+
+          lang.startsWith("bn")
+
+          &&
+
+          (
+            name.includes("female") ||
+            name.includes("woman") ||
+            name.includes("girl") ||
+            name.includes("zira") ||
+            name.includes("samantha")
+          )
+
+        );
+
+      }
     );
-
-  });
 
 
   /*
-    বাংলা যেকোনো voice
+    বাংলা voice
   */
 
   if(!femaleVoice){
 
-    femaleVoice = voices.find(function(voice){
+    femaleVoice =
+      voices.find(
+        function(voice){
 
-      return voice.lang &&
-        voice.lang.toLowerCase().startsWith("bn");
+          return voice.lang &&
+            voice.lang
+              .toLowerCase()
+              .startsWith("bn");
 
-    });
+        }
+      );
 
   }
 
 
   /*
-    বাংলা voice না পাওয়া গেলে
-    English female-style voice খোঁজা
+    মহিলা English voice
   */
 
   if(!femaleVoice){
 
-    femaleVoice = voices.find(function(voice){
+    femaleVoice =
+      voices.find(
+        function(voice){
 
-      const name =
-        voice.name.toLowerCase();
+          const name =
+            voice.name.toLowerCase();
 
-      return (
-        name.includes("female") ||
-        name.includes("woman") ||
-        name.includes("girl") ||
-        name.includes("samantha") ||
-        name.includes("zira")
+
+          return (
+
+            name.includes("female") ||
+            name.includes("woman") ||
+            name.includes("girl") ||
+            name.includes("samantha") ||
+            name.includes("zira")
+
+          );
+
+        }
       );
-
-    });
 
   }
 
 
   const speech =
-    new SpeechSynthesisUtterance(text);
+    new SpeechSynthesisUtterance(
+      cleanText
+    );
 
 
   if(femaleVoice){
@@ -99,14 +1251,14 @@ function speak(text){
 
 
   /*
-    মিষ্টি ও নরম কণ্ঠের জন্য
+    নরম ও মিষ্টি sound
   */
 
   speech.rate =
     0.88;
 
   speech.pitch =
-    1.32;
+    1.30;
 
   speech.volume =
     1;
@@ -117,3 +1269,425 @@ function speak(text){
   );
 
 }
+
+
+/* =========================================
+   RESPONSE
+========================================= */
+
+function respond(text){
+
+  command.innerText =
+    text;
+
+  speak(text);
+
+}
+
+
+/* =========================================
+   COMMAND PROCESSOR
+========================================= */
+
+function processCommand(text){
+
+  const c =
+    text
+      .toLowerCase()
+      .trim();
+
+
+  /* ==============================
+     MYNA
+  ============================== */
+
+  if(
+
+    c.includes("ময়না") ||
+    c.includes("ময়না") ||
+    c.includes("পাখি") ||
+    c.includes("moyna")
+
+  ){
+
+    respond(
+      "হুম, ময়না পাখি এখানে আছি। বলো, কী করতে হবে?"
+    );
+
+    return;
+
+  }
+
+
+  /* ==============================
+     HELLO
+  ============================== */
+
+  if(
+
+    c.includes("হ্যালো") ||
+    c.includes("হাই") ||
+    c.includes("হেই") ||
+    c.includes("hello")
+
+  ){
+
+    respond(
+      "হ্যালো। বলো, কীভাবে সাহায্য করতে পারি?"
+    );
+
+    return;
+
+  }
+
+
+  /* ==============================
+     HOW ARE YOU
+  ============================== */
+
+  if(
+
+    c.includes("কেমন আছ") ||
+    c.includes("কেমন আছো")
+
+  ){
+
+    respond(
+      "আমি ভালো আছি। তোমার কথা শুনতে প্রস্তুত।"
+    );
+
+    return;
+
+  }
+
+
+  /* ==============================
+     WHAT ARE YOU DOING
+  ============================== */
+
+  if(
+
+    c.includes("কি করছ") ||
+    c.includes("কী করছ") ||
+    c.includes("কি করছো") ||
+    c.includes("কী করছো")
+
+  ){
+
+    respond(
+      "তোমার কমান্ডের অপেক্ষায় আছি। বলো কী কাজ করব?"
+    );
+
+    return;
+
+  }
+
+
+  /* ==============================
+     WHO ARE YOU
+  ============================== */
+
+  if(
+
+    c.includes("তুমি কে") ||
+    c.includes("কে তুমি")
+
+  ){
+
+    respond(
+      "আমি ময়না পাখি। তোমার ব্যক্তিগত এআই অ্যাসিস্ট্যান্ট।"
+    );
+
+    return;
+
+  }
+
+
+  /* ==============================
+     WHAT CAN YOU DO
+  ============================== */
+
+  if(
+
+    c.includes("কি করতে পার") ||
+    c.includes("কী করতে পার") ||
+    c.includes("কি কি করতে পার") ||
+    c.includes("কী কী করতে পার")
+
+  ){
+
+    respond(
+      "আমি তোমার কথা শুনতে, সময় ও তারিখ বলতে এবং কিছু ওয়েবসাইট খুলতে পারি। আমাকে আরও অনেক কাজ শেখানো যাবে।"
+    );
+
+    return;
+
+  }
+
+
+  /* ==============================
+     TIME
+  ============================== */
+
+  if(
+
+    c.includes("সময়") ||
+    c.includes("সময়") ||
+    c.includes("টাইম") ||
+    c.includes("কয়টা বাজে") ||
+    c.includes("কয়টা বাজে")
+
+  ){
+
+    const now =
+      new Date();
+
+
+    const time =
+      now.toLocaleTimeString(
+        "bn-BD",
+        {
+          hour:"numeric",
+          minute:"numeric"
+        }
+      );
+
+
+    respond(
+      "এখন সময় " +
+      time
+    );
+
+    return;
+
+  }
+
+
+  /* ==============================
+     DATE
+  ============================== */
+
+  if(
+
+    c.includes("আজ কত তারিখ") ||
+    c.includes("আজকের তারিখ") ||
+    c.includes("তারিখ কত")
+
+  ){
+
+    const now =
+      new Date();
+
+
+    const date =
+      now.toLocaleDateString(
+        "bn-BD",
+        {
+          year:"numeric",
+          month:"long",
+          day:"numeric"
+        }
+      );
+
+
+    respond(
+      "আজ " +
+      date
+    );
+
+    return;
+
+  }
+
+
+  /* ==============================
+     YOUTUBE
+  ============================== */
+
+  if(
+
+    c.includes("youtube") ||
+    c.includes("ইউটিউব")
+
+  ){
+
+    respond(
+      "আচ্ছা। ইউটিউব খুলছি।"
+    );
+
+
+    setTimeout(
+      function(){
+
+        window.location.href =
+          "https://www.youtube.com/";
+
+      },
+      1200
+    );
+
+
+    return;
+
+  }
+
+
+  /* ==============================
+     GOOGLE
+  ============================== */
+
+  if(
+
+    c.includes("google") ||
+    c.includes("গুগল")
+
+  ){
+
+    respond(
+      "ঠিক আছে। গুগল খুলছি।"
+    );
+
+
+    setTimeout(
+      function(){
+
+        window.location.href =
+          "https://www.google.com/";
+
+      },
+      1200
+    );
+
+
+    return;
+
+  }
+
+
+  /* ==============================
+     FACEBOOK
+  ============================== */
+
+  if(
+
+    c.includes("facebook") ||
+    c.includes("ফেসবুক")
+
+  ){
+
+    respond(
+      "আচ্ছা। ফেসবুক খুলছি।"
+    );
+
+
+    setTimeout(
+      function(){
+
+        window.location.href =
+          "https://www.facebook.com/";
+
+      },
+      1200
+    );
+
+
+    return;
+
+  }
+
+
+  /* ==============================
+     THANK YOU
+  ============================== */
+
+  if(
+
+    c.includes("ধন্যবাদ") ||
+    c.includes("থ্যাংক ইউ") ||
+    c.includes("thank you")
+
+  ){
+
+    respond(
+      "স্বাগতম। আর কোনো কাজে সাহায্য করতে পারি?"
+    );
+
+    return;
+
+  }
+
+
+  /* ==============================
+     GOOD MORNING
+  ============================== */
+
+  if(
+
+    c.includes("শুভ সকাল") ||
+    c.includes("গুড মর্নিং")
+
+  ){
+
+    respond(
+      "শুভ সকাল। আশা করি আজকের দিনটা ভালো কাটবে।"
+    );
+
+    return;
+
+  }
+
+
+  /* ==============================
+     GOOD NIGHT
+  ============================== */
+
+  if(
+
+    c.includes("শুভ রাত্রি") ||
+    c.includes("শুভ রাত") ||
+    c.includes("গুড নাইট")
+
+  ){
+
+    respond(
+      "শুভ রাত্রি। ভালোভাবে বিশ্রাম নাও।"
+    );
+
+    return;
+
+  }
+
+
+  /* ==============================
+     UNKNOWN
+  ============================== */
+
+  respond(
+    "হুম। এই কাজটা এখনো আমাকে শেখানো হয়নি।"
+  );
+
+}
+
+
+/* =========================================
+   LOAD VOICES
+========================================= */
+
+if(
+  "speechSynthesis" in window
+){
+
+  speechSynthesis.onvoiceschanged =
+    function(){
+
+      speechSynthesis.getVoices();
+
+    };
+
+}
+
+</script>
+
+</body>
+
+</html>
