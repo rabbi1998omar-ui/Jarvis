@@ -2,191 +2,450 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#120b1d">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#12091f">
 
-<title>🐦 ময়না পাখি</title>
+<title>ময়না পাখি AI</title>
 
 <style>
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
+  -webkit-tap-highlight-color:transparent;
 }
 
 body{
-  min-height:100vh;
   font-family:
     system-ui,
-    -apple-system,
     "Noto Sans Bengali",
     sans-serif;
+  min-height:100vh;
+  color:#fff;
   background:
-    radial-gradient(circle at top,#3b2050 0%,#160d20 42%,#08070c 100%);
-  color:white;
+    radial-gradient(circle at 50% 20%,#6e3b91 0%,transparent 35%),
+    radial-gradient(circle at 20% 80%,#30205d 0%,transparent 35%),
+    linear-gradient(145deg,#080611,#160b25,#080611);
   overflow-x:hidden;
 }
 
-body::before,
-body::after{
-  content:"";
+/* background lights */
+
+.bg-light{
   position:fixed;
   width:220px;
   height:220px;
   border-radius:50%;
-  filter:blur(70px);
-  opacity:.25;
+  filter:blur(80px);
+  opacity:.35;
   pointer-events:none;
 }
 
-body::before{
-  background:#ff4f91;
+.light1{
+  background:#d95cff;
   top:-80px;
-  left:-70px;
+  left:-60px;
 }
 
-body::after{
-  background:#814cff;
-  bottom:-90px;
-  right:-70px;
+.light2{
+  background:#695cff;
+  right:-80px;
+  bottom:80px;
 }
 
-.container{
-  width:min(94%,520px);
+/* app */
+
+.app{
+  width:100%;
+  max-width:520px;
+  min-height:100vh;
   margin:auto;
-  padding:20px 0 40px;
+  padding:18px 15px 25px;
+  display:flex;
+  flex-direction:column;
 }
+
+/* header */
 
 .header{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:12px 5px 20px;
+  justify-content:space-between;
+  padding:8px 3px 15px;
 }
 
 .logo{
-  font-size:22px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo-icon{
+  width:43px;
+  height:43px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#ff72c8,#7659ff);
+  box-shadow:0 8px 25px rgba(202,83,255,.3);
+  font-size:23px;
+}
+
+.logo-text h1{
+  font-size:20px;
   font-weight:800;
+}
+
+.logo-text p{
+  font-size:11px;
+  color:#cdbddd;
+  margin-top:2px;
 }
 
 .status{
   display:flex;
   align-items:center;
   gap:6px;
-  font-size:12px;
-  color:#cfc5d8;
+  font-size:11px;
+  color:#cdbddd;
 }
 
-.dot{
-  width:9px;
-  height:9px;
+.status-dot{
+  width:8px;
+  height:8px;
   border-radius:50%;
-  background:#35e878;
-  box-shadow:0 0 12px #35e878;
+  background:#42ff9b;
+  box-shadow:0 0 12px #42ff9b;
 }
 
-.card{
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.11);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  border-radius:25px;
-  padding:22px;
-  margin-bottom:15px;
-  box-shadow:0 15px 45px rgba(0,0,0,.25);
-}
+/* girl */
 
-.hero{
-  text-align:center;
-  padding:30px 20px;
-}
-
-.bird{
-  width:150px;
-  height:150px;
-  margin:auto;
-  border-radius:50%;
+.girl-section{
   position:relative;
   display:flex;
-  justify-content:center;
+  flex-direction:column;
   align-items:center;
-  background:
-    radial-gradient(circle at 35% 25%,#ffd7ec,#ff94c7 42%,#9b56ff 100%);
-  box-shadow:
-    0 0 45px rgba(255,79,145,.35),
-    inset 0 0 30px rgba(255,255,255,.2);
-  animation:float 3s ease-in-out infinite;
+  padding-top:8px;
 }
 
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
+.girl-glow{
+  position:absolute;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(232,100,255,.35),
+    rgba(117,77,255,.12),
+    transparent 70%
+  );
+  filter:blur(5px);
 }
+
+.girl{
+  position:relative;
+  width:245px;
+  height:310px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2;
+}
+
+/* avatar */
+
+.avatar{
+  position:relative;
+  width:185px;
+  height:245px;
+}
+
+/* hair */
+
+.hair{
+  position:absolute;
+  width:150px;
+  height:190px;
+  top:12px;
+  left:18px;
+  background:
+    linear-gradient(120deg,#1a1027,#39204b 50%,#160d22);
+  border-radius:80px 80px 65px 65px;
+  box-shadow:
+    0 12px 35px rgba(0,0,0,.55),
+    inset -15px 0 20px rgba(255,255,255,.04);
+}
+
+/* face */
+
+.face{
+  position:absolute;
+  width:112px;
+  height:137px;
+  left:37px;
+  top:42px;
+  background:
+    linear-gradient(145deg,#ffe4d1,#f4c1ad);
+  border-radius:52% 48% 48% 50%;
+  z-index:2;
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.25);
+}
+
+/* hair front */
+
+.bang{
+  position:absolute;
+  width:105px;
+  height:63px;
+  top:25px;
+  left:42px;
+  background:#24142f;
+  border-radius:55% 55% 40% 35%;
+  z-index:4;
+  transform:rotate(-4deg);
+}
+
+/* eyes */
 
 .eye{
   position:absolute;
-  top:52px;
-  width:18px;
-  height:22px;
-  background:#17111b;
+  width:17px;
+  height:11px;
+  top:96px;
+  background:#24152b;
   border-radius:50%;
+  z-index:5;
+  transition:.2s;
 }
 
-.eye.left{left:43px}
-.eye.right{right:43px}
+.eye.left{
+  left:63px;
+}
+
+.eye.right{
+  left:108px;
+}
 
 .eye::after{
   content:"";
   position:absolute;
-  width:5px;
-  height:5px;
-  background:white;
+  width:4px;
+  height:4px;
   border-radius:50%;
-  top:4px;
-  left:4px;
+  background:white;
+  top:2px;
+  left:3px;
 }
 
-.beak{
+/* nose */
+
+.nose{
   position:absolute;
-  top:75px;
-  width:0;
-  height:0;
-  border-left:20px solid transparent;
-  border-right:20px solid transparent;
-  border-top:30px solid #ffca4b;
+  width:5px;
+  height:9px;
+  border-right:2px solid rgba(160,100,90,.5);
+  top:112px;
+  left:93px;
+  z-index:5;
 }
 
-.ribbon{
+/* mouth */
+
+.mouth{
   position:absolute;
-  bottom:22px;
-  font-size:27px;
+  width:24px;
+  height:9px;
+  left:82px;
+  top:132px;
+  border-bottom:3px solid #c75b78;
+  border-radius:0 0 50% 50%;
+  z-index:5;
+  transition:.15s;
 }
 
-.title{
-  font-size:27px;
-  font-weight:900;
-  margin-top:20px;
+/* neck */
+
+.neck{
+  position:absolute;
+  width:42px;
+  height:45px;
+  background:#efb9a7;
+  left:70px;
+  top:164px;
+  z-index:1;
 }
 
-.subtitle{
-  color:#d6c9dc;
-  margin-top:8px;
-  line-height:1.7;
+/* body */
+
+.body{
+  position:absolute;
+  width:150px;
+  height:92px;
+  left:18px;
+  top:175px;
+  border-radius:65px 65px 25px 25px;
+  background:
+    linear-gradient(135deg,#a946d5,#6845d8);
+  z-index:2;
+  box-shadow:
+    0 15px 30px rgba(0,0,0,.35);
+}
+
+/* talking */
+
+.talking .mouth{
+  width:26px;
+  height:18px;
+  border:3px solid #b74f72;
+  background:#7f274e;
+  border-radius:50%;
+}
+
+.talking .eye{
+  transform:scaleY(.75);
+}
+
+.talking .avatar{
+  animation:talkMove .55s infinite alternate;
+}
+
+@keyframes talkMove{
+  from{transform:translateY(0)}
+  to{transform:translateY(-3px)}
+}
+
+/* greeting */
+
+.greeting{
+  position:relative;
+  z-index:3;
+  margin-top:-5px;
+  text-align:center;
+}
+
+.greeting h2{
+  font-size:22px;
+  font-weight:800;
+}
+
+.greeting p{
+  color:#cdbddd;
+  font-size:13px;
+  margin-top:5px;
+}
+
+/* chat */
+
+.chat{
+  margin-top:18px;
+  flex:1;
+  max-height:245px;
+  overflow-y:auto;
+  padding:4px 2px;
+  scrollbar-width:none;
+}
+
+.chat::-webkit-scrollbar{
+  display:none;
+}
+
+.message{
+  max-width:88%;
+  padding:11px 14px;
+  margin:8px 0;
+  border-radius:18px;
+  font-size:14px;
+  line-height:1.55;
+  animation:appear .25s ease;
+}
+
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.message.ai{
+  margin-right:auto;
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.message.user{
+  margin-left:auto;
+  background:linear-gradient(135deg,#c94de9,#7658ed);
+}
+
+/* input */
+
+.input-area{
+  margin-top:12px;
+  display:flex;
+  gap:9px;
+  align-items:center;
+}
+
+.input-box{
+  flex:1;
+  height:52px;
+  display:flex;
+  align-items:center;
+  padding:0 14px;
+  border-radius:18px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.1);
+  backdrop-filter:blur(15px);
+}
+
+.input-box input{
+  width:100%;
+  background:none;
+  border:none;
+  outline:none;
+  color:#fff;
+  font-size:14px;
+}
+
+.input-box input::placeholder{
+  color:#aaa0b5;
+}
+
+.send{
+  width:52px;
+  height:52px;
+  border:none;
+  border-radius:18px;
+  color:#fff;
+  font-size:20px;
+  background:linear-gradient(135deg,#ed55b5,#7659ff);
+  box-shadow:0 8px 25px rgba(181,67,231,.3);
+}
+
+/* mic */
+
+.mic-area{
+  display:flex;
+  justify-content:center;
+  margin-top:13px;
 }
 
 .mic{
-  width:90px;
-  height:90px;
-  margin:25px auto 10px;
-  border:0;
+  width:68px;
+  height:68px;
+  border:none;
   border-radius:50%;
-  cursor:pointer;
+  background:linear-gradient(135deg,#f15fc1,#7259ff);
   color:white;
-  font-size:38px;
-  background:linear-gradient(135deg,#ff4f91,#814cff);
+  font-size:27px;
   box-shadow:
-    0 0 30px rgba(255,79,145,.35),
-    0 10px 30px rgba(0,0,0,.35);
+    0 10px 30px rgba(196,70,239,.35);
   transition:.2s;
 }
 
@@ -194,303 +453,267 @@ body::after{
   transform:scale(.92);
 }
 
-.listening{
+.listening .mic{
   animation:pulse 1s infinite;
 }
 
 @keyframes pulse{
-  50%{
-    box-shadow:
-      0 0 0 18px rgba(255,79,145,.08),
-      0 0 45px rgba(255,79,145,.65);
+  0%{
+    box-shadow:0 0 0 0 rgba(240,93,194,.6);
+  }
+  70%{
+    box-shadow:0 0 0 22px rgba(240,93,194,0);
+  }
+  100%{
+    box-shadow:0 0 0 0 rgba(240,93,194,0);
   }
 }
 
-.answer{
-  min-height:70px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  line-height:1.7;
-  color:#fff;
-  font-size:16px;
-}
-
-.command-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-
-.command{
-  border:1px solid rgba(255,255,255,.1);
-  background:rgba(255,255,255,.06);
-  color:white;
-  border-radius:15px;
-  padding:13px 8px;
-  font-size:13px;
-  cursor:pointer;
-}
-
-.command:active{
-  transform:scale(.97);
-  background:rgba(255,255,255,.12);
-}
-
-.section-title{
-  font-size:17px;
-  font-weight:800;
-  margin-bottom:14px;
-}
+/* controls */
 
 .controls{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:12px;
+  flex-wrap:wrap;
 }
 
 .control{
-  border:0;
-  border-radius:15px;
-  padding:13px;
-  color:white;
-  background:rgba(255,255,255,.08);
-  cursor:pointer;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.06);
+  color:#ddd3e4;
+  border-radius:12px;
+  padding:8px 11px;
+  font-size:11px;
 }
 
-.control.active{
-  background:linear-gradient(135deg,#ff4f91,#814cff);
+/* quick */
+
+.quick{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  margin-top:13px;
+  scrollbar-width:none;
 }
 
-.help{
-  color:#cfc4d7;
-  font-size:13px;
-  line-height:1.8;
+.quick::-webkit-scrollbar{
+  display:none;
 }
 
-footer{
+.quick button{
+  flex:0 0 auto;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.06);
+  color:#eee;
+  padding:9px 13px;
+  border-radius:14px;
+  font-size:11px;
+}
+
+/* footer */
+
+.footer{
   text-align:center;
-  color:#9d92a6;
-  font-size:12px;
-  margin-top:15px;
+  color:#80758b;
+  font-size:9px;
+  margin-top:13px;
+}
+
+/* loading */
+
+.loading{
+  display:inline-flex;
+  gap:4px;
+}
+
+.loading span{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#d88cff;
+  animation:dot 1s infinite;
+}
+
+.loading span:nth-child(2){
+  animation-delay:.15s;
+}
+
+.loading span:nth-child(3){
+  animation-delay:.3s;
+}
+
+@keyframes dot{
+  0%,100%{opacity:.25;transform:translateY(0)}
+  50%{opacity:1;transform:translateY(-4px)}
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="bg-light light1"></div>
+<div class="bg-light light2"></div>
+
+<div class="app">
 
   <div class="header">
-    <div class="logo">🐦 ময়না পাখি</div>
+
+    <div class="logo">
+
+      <div class="logo-icon">🐦</div>
+
+      <div class="logo-text">
+        <h1>ময়না পাখি</h1>
+        <p>তোমার AI সহকারী</p>
+      </div>
+
+    </div>
 
     <div class="status">
-      <span class="dot"></span>
-      ONLINE
+      <span class="status-dot"></span>
+      অনলাইন
     </div>
+
   </div>
 
 
-  <div class="card hero">
+  <div class="girl-section">
 
-    <div class="bird">
+    <div class="girl-glow"></div>
 
-      <div class="eye left"></div>
-      <div class="eye right"></div>
+    <div class="girl" id="girl">
 
-      <div class="beak"></div>
+      <div class="avatar">
 
-      <div class="ribbon">🎀</div>
+        <div class="hair"></div>
+
+        <div class="face"></div>
+
+        <div class="bang"></div>
+
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+
+        <div class="nose"></div>
+
+        <div class="mouth"></div>
+
+        <div class="neck"></div>
+
+        <div class="body"></div>
+
+      </div>
 
     </div>
 
-    <div class="title">
-      হ্যালো 🌸
+    <div class="greeting">
+
+      <h2>হ্যালো! আমি ময়না 🩷</h2>
+
+      <p id="statusText">
+        আমার সাথে কথা বলো...
+      </p>
+
     </div>
 
-    <div class="subtitle">
-      আমি তোমার ময়না পাখি 🐦<br>
-      যা জানতে চাও বা করতে বলো।
+  </div>
+
+
+  <div class="chat" id="chat">
+
+    <div class="message ai">
+      হ্যালো! আমি ময়না পাখি। তুমি আমাকে যেকোনো প্রশ্ন করতে পারো। 🩷
     </div>
 
-    <button class="mic" id="mic">
+  </div>
+
+
+  <div class="quick">
+
+    <button onclick="quickAsk('আজকের তারিখ কত?')">
+      📅 তারিখ
+    </button>
+
+    <button onclick="quickAsk('এখন কয়টা বাজে?')">
+      🕐 সময়
+    </button>
+
+    <button onclick="quickAsk('তুমি কী কী করতে পারো?')">
+      🤖 কী পারো
+    </button>
+
+    <button onclick="quickAsk('একটা মজার কথা বলো')">
+      😄 মজা
+    </button>
+
+  </div>
+
+
+  <div class="input-area">
+
+    <div class="input-box">
+
+      <input
+        id="textInput"
+        type="text"
+        placeholder="ময়নাকে কিছু বলো..."
+        autocomplete="off"
+      >
+
+    </div>
+
+    <button class="send" onclick="sendText()">
+      ➤
+    </button>
+
+  </div>
+
+
+  <div class="mic-area">
+
+    <button
+      class="mic"
+      id="micBtn"
+      onclick="startListening()"
+    >
       🎙️
     </button>
 
-    <div id="micStatus" class="subtitle">
-      কথা বলার জন্য মাইক্রোফোন চাপো
-    </div>
+  </div>
+
+
+  <div class="controls">
+
+    <button
+      class="control"
+      id="voiceBtn"
+      onclick="toggleVoice()"
+    >
+      🔊 ভয়েস চালু
+    </button>
+
+    <button
+      class="control"
+      onclick="stopSpeaking()"
+    >
+      ⏹️ থামাও
+    </button>
+
+    <button
+      class="control"
+      onclick="clearChat()"
+    >
+      🗑️ পরিষ্কার
+    </button>
 
   </div>
 
 
-  <div class="card">
-
-    <div class="section-title">
-      💬 ময়না পাখির উত্তর
-    </div>
-
-    <div class="answer" id="answer">
-      তোমার কথা শোনার অপেক্ষায় আছি ❤️
-    </div>
-
+  <div class="footer">
+    Moyna Pakhi AI • তোমার ব্যক্তিগত ভয়েস সহকারী
   </div>
-
-
-  <div class="card">
-
-    <div class="section-title">
-      🎛️ নিয়ন্ত্রণ
-    </div>
-
-    <div class="controls">
-
-      <button class="control active" id="voiceBtn">
-        🔊 ভয়েস ON
-      </button>
-
-      <button class="control" id="stopBtn">
-        ⏹️ ভয়েস বন্ধ
-      </button>
-
-      <button class="control" id="conversationBtn">
-        🗣️ কথোপকথন OFF
-      </button>
-
-      <button class="control" id="clearBtn">
-        🧹 পরিষ্কার
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="section-title">
-      📱 ফোন কমান্ড
-    </div>
-
-    <div class="command-grid">
-
-      <button class="command" data-command="ফোন করো">
-        📞 ফোন
-      </button>
-
-      <button class="command" data-command="মেসেজ খোলো">
-        💬 SMS
-      </button>
-
-      <button class="command" data-command="কন্টাক্ট খোলো">
-        👤 Contacts
-      </button>
-
-      <button class="command" data-command="ক্যামেরা খোলো">
-        📷 Camera
-      </button>
-
-      <button class="command" data-command="গ্যালারি খোলো">
-        🖼️ Gallery
-      </button>
-
-      <button class="command" data-command="সেটিংস খোলো">
-        ⚙️ Settings
-      </button>
-
-      <button class="command" data-command="গুগল খোলো">
-        🌐 Google
-      </button>
-
-      <button class="command" data-command="ইউটিউব খোলো">
-        ▶️ YouTube
-      </button>
-
-      <button class="command" data-command="ম্যাপ খোলো">
-        📍 Maps
-      </button>
-
-      <button class="command" data-command="জিমেইল খোলো">
-        📧 Gmail
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="section-title">
-      🧠 সাধারণ কমান্ড
-    </div>
-
-    <div class="command-grid">
-
-      <button class="command" data-command="হ্যালো">
-        👋 হ্যালো
-      </button>
-
-      <button class="command" data-command="কেমন আছো">
-        😊 কেমন আছো
-      </button>
-
-      <button class="command" data-command="তুমি কে">
-        🐦 তুমি কে
-      </button>
-
-      <button class="command" data-command="তুমি কি করতে পারো">
-        ❓ কী পারো
-      </button>
-
-      <button class="command" data-command="সময় কত">
-        🕐 সময়
-      </button>
-
-      <button class="command" data-command="আজ কত তারিখ">
-        📅 তারিখ
-      </button>
-
-      <button class="command" data-command="ব্যাটারি কত">
-        🔋 ব্যাটারি
-      </button>
-
-      <button class="command" data-command="গুগলে সার্চ করো">
-        🔎 Search
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="section-title">
-      📖 কীভাবে বলবে?
-    </div>
-
-    <div class="help">
-
-      “ময়না পাখি, ফোন করো”<br>
-      “ময়না পাখি, মেসেজ খোলো”<br>
-      “ময়না পাখি, ক্যামেরা খোলো”<br>
-      “ময়না পাখি, গ্যালারি খোলো”<br>
-      “ময়না পাখি, সেটিংস খোলো”<br>
-      “ময়না পাখি, ইউটিউব খোলো”<br>
-      “ময়না পাখি, গুগলে সার্চ করো”<br>
-      “ময়না পাখি, সময় কত?”<br>
-      “ময়না পাখি, ব্যাটারি কত?”
-
-    </div>
-
-  </div>
-
-
-  <footer>
-    🐦 ময়না পাখি • তোমার ছোট্ট ভয়েস অ্যাসিস্ট্যান্ট ❤️
-  </footer>
 
 </div>
 
@@ -498,215 +721,109 @@ footer{
 <script>
 
 /* =========================================
+   CONFIG
+========================================= */
+
+const RENDER_URL =
+  "https://jarvis-1-0yao.onrender.com";
+
+let voiceEnabled = true;
+let recognition = null;
+let listening = false;
+
+
+/* =========================================
    ELEMENTS
 ========================================= */
 
-const mic =
-  document.getElementById("mic");
+const chat =
+  document.getElementById("chat");
 
-const answer =
-  document.getElementById("answer");
+const input =
+  document.getElementById("textInput");
 
-const micStatus =
-  document.getElementById("micStatus");
+const girl =
+  document.getElementById("girl");
 
-const voiceBtn =
-  document.getElementById("voiceBtn");
+const statusText =
+  document.getElementById("statusText");
 
-const stopBtn =
-  document.getElementById("stopBtn");
-
-const conversationBtn =
-  document.getElementById("conversationBtn");
-
-const clearBtn =
-  document.getElementById("clearBtn");
+const micBtn =
+  document.getElementById("micBtn");
 
 
 /* =========================================
-   SETTINGS
+   CHAT
 ========================================= */
 
-let voiceEnabled = true;
+function addMessage(text,type){
 
-let conversationMode = false;
+  const div =
+    document.createElement("div");
 
-let recognition = null;
+  div.className =
+    "message " + type;
 
-let voices = [];
+  div.textContent =
+    text;
 
+  chat.appendChild(div);
 
-/* =========================================
-   SPEECH RECOGNITION
-========================================= */
-
-const SpeechRecognition =
-  window.SpeechRecognition ||
-  window.webkitSpeechRecognition;
-
-if(SpeechRecognition){
-
-  recognition =
-    new SpeechRecognition();
-
-  recognition.lang = "bn-BD";
-
-  recognition.continuous = false;
-
-  recognition.interimResults = false;
-
-  recognition.maxAlternatives = 1;
-
-
-  recognition.onstart = () => {
-
-    mic.classList.add("listening");
-
-    mic.innerText = "🔴";
-
-    micStatus.innerText =
-      "শুনছি... বলো ❤️";
-
-  };
-
-
-  recognition.onend = () => {
-
-    mic.classList.remove("listening");
-
-    mic.innerText = "🎙️";
-
-    micStatus.innerText =
-      "আবার কথা বলতে মাইক্রোফোন চাপো";
-
-  };
-
-
-  recognition.onerror = (event) => {
-
-    mic.classList.remove("listening");
-
-    mic.innerText = "🎙️";
-
-    if(event.error === "not-allowed"){
-
-      respond(
-        "মাইক্রোফোন ব্যবহারের অনুমতি দেওয়া হয়নি।"
-      );
-
-    }else{
-
-      micStatus.innerText =
-        "কথা ঠিকমতো বুঝতে পারিনি। আবার বলো।";
-
-    }
-
-  };
-
-
-  recognition.onresult = (event) => {
-
-    const text =
-      event.results[0][0].transcript;
-
-    processCommand(text);
-
-  };
-
-}else{
-
-  micStatus.innerText =
-    "এই ব্রাউজারে ভয়েস রিকগনিশন সাপোর্ট নেই।";
-
+  chat.scrollTop =
+    chat.scrollHeight;
 }
 
 
 /* =========================================
-   VOICES
-========================================= */
-
-function loadVoices(){
-
-  voices =
-    window.speechSynthesis
-      ? speechSynthesis.getVoices()
-      : [];
-
-}
-
-loadVoices();
-
-if("speechSynthesis" in window){
-
-  speechSynthesis.onvoiceschanged =
-    loadVoices;
-
-}
-
-
-/* =========================================
-   FIND BANGLA VOICE
-========================================= */
-
-function getBanglaVoice(){
-
-  if(!voices.length)
-    return null;
-
-
-  let voice =
-    voices.find(v =>
-      /^bn-BD$/i.test(v.lang)
-    );
-
-  if(voice) return voice;
-
-
-  voice =
-    voices.find(v =>
-      /^bn-IN$/i.test(v.lang)
-    );
-
-  if(voice) return voice;
-
-
-  voice =
-    voices.find(v =>
-      /^bn/i.test(v.lang)
-    );
-
-  if(voice) return voice;
-
-
-  return null;
-
-}
-
-
-/* =========================================
-   REMOVE EMOJI FOR TTS
+   REMOVE EMOJI FROM SPEECH
 ========================================= */
 
 function cleanForSpeech(text){
 
   return text
-
     .replace(
       /[\u{1F000}-\u{1FAFF}]/gu,
       ""
     )
-
     .replace(
       /[\u{2600}-\u{27BF}]/gu,
       ""
     )
-
     .replace(
       /\s+/g,
       " "
     )
-
     .trim();
+
+}
+
+
+/* =========================================
+   GET BANGLA VOICE
+========================================= */
+
+function getBanglaVoice(){
+
+  const voices =
+    speechSynthesis.getVoices();
+
+  return (
+    voices.find(v =>
+      v.lang === "bn-BD"
+    ) ||
+
+    voices.find(v =>
+      v.lang === "bn-IN"
+    ) ||
+
+    voices.find(v =>
+      v.lang &&
+      v.lang.toLowerCase()
+       .startsWith("bn")
+    ) ||
+
+    null
+  );
 
 }
 
@@ -723,48 +840,60 @@ function speak(text){
   if(!("speechSynthesis" in window))
     return;
 
-
   speechSynthesis.cancel();
-
 
   const clean =
     cleanForSpeech(text);
 
-
   if(!clean)
     return;
-
 
   const utter =
     new SpeechSynthesisUtterance(clean);
 
-
-  const banglaVoice =
+  const voice =
     getBanglaVoice();
 
+  if(voice)
+    utter.voice = voice;
 
-  if(banglaVoice){
+  utter.lang =
+    voice?.lang || "bn-BD";
 
-    utter.voice =
-      banglaVoice;
+  /*
+     একটু মিষ্টি/স্বাভাবিক করার জন্য
+  */
 
-    utter.lang =
-      banglaVoice.lang;
-
-  }else{
-
-    utter.lang =
-      "bn-BD";
-
-  }
-
-
-  utter.rate = 0.86;
-
-  utter.pitch = 1.18;
-
+  utter.rate = 0.88;
+  utter.pitch = 1.12;
   utter.volume = 1;
 
+  utter.onstart = () => {
+
+    girl.classList.add("talking");
+
+    statusText.textContent =
+      "আমি কথা বলছি... 🩷";
+
+  };
+
+  utter.onend = () => {
+
+    girl.classList.remove("talking");
+
+    statusText.textContent =
+      "আর কিছু বলবে?";
+
+  };
+
+  utter.onerror = () => {
+
+    girl.classList.remove("talking");
+
+    statusText.textContent =
+      "আবার বলো...";
+
+  };
 
   speechSynthesis.speak(utter);
 
@@ -772,33 +901,47 @@ function speak(text){
 
 
 /* =========================================
-   RESPONSE
+   STOP SPEAKING
 ========================================= */
 
-function respond(text){
+function stopSpeaking(){
 
-  answer.innerText =
-    text;
+  if("speechSynthesis" in window)
+    speechSynthesis.cancel();
 
-  speak(text);
+  girl.classList.remove("talking");
+
+  statusText.textContent =
+    "আমি শুনছি...";
+
+}
 
 
-  if(conversationMode){
+/* =========================================
+   VOICE TOGGLE
+========================================= */
 
-    setTimeout(() => {
+function toggleVoice(){
 
-      if(!speechSynthesis.speaking &&
-         recognition){
+  voiceEnabled =
+    !voiceEnabled;
 
-        try{
+  const btn =
+    document.getElementById("voiceBtn");
 
-          recognition.start();
+  if(voiceEnabled){
 
-        }catch(e){}
+    btn.textContent =
+      "🔊 ভয়েস চালু";
 
-      }
+  }else{
 
-    },2200);
+    speechSynthesis.cancel();
+
+    girl.classList.remove("talking");
+
+    btn.textContent =
+      "🔇 ভয়েস বন্ধ";
 
   }
 
@@ -806,245 +949,297 @@ function respond(text){
 
 
 /* =========================================
-   NORMALIZE TEXT
+   LOADING
 ========================================= */
 
-function normalize(text){
+function showLoading(){
 
-  return text
+  const div =
+    document.createElement("div");
 
-    .toLowerCase()
+  div.className =
+    "message ai";
 
-    .replace(/[?!।,.]/g,"")
+  div.id =
+    "loadingMessage";
 
-    .replace(
-      /ময়না পাখি/g,
-      ""
-    )
+  div.innerHTML = `
+    <div class="loading">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  `;
 
-    .trim();
+  chat.appendChild(div);
+
+  chat.scrollTop =
+    chat.scrollHeight;
+
+}
+
+
+function removeLoading(){
+
+  const el =
+    document.getElementById(
+      "loadingMessage"
+    );
+
+  if(el)
+    el.remove();
 
 }
 
 
 /* =========================================
-   BANGLA NUMBER CONVERTER
+   SEND TEXT
 ========================================= */
 
-function convertBanglaNumbers(text){
+async function sendText(){
 
-  const map = {
+  const text =
+    input.value.trim();
 
-    "০":"0",
-    "১":"1",
-    "২":"2",
-    "৩":"3",
-    "৪":"4",
-    "৫":"5",
-    "৬":"6",
-    "৭":"7",
-    "৮":"8",
-    "৯":"9"
+  if(!text)
+    return;
 
-  };
+  input.value = "";
 
-  return text.replace(
-    /[০-৯]/g,
-    n => map[n]
+  await askAI(text);
+
+}
+
+
+/* =========================================
+   QUICK ASK
+========================================= */
+
+function quickAsk(text){
+
+  askAI(text);
+
+}
+
+
+/* =========================================
+   ASK AI
+========================================= */
+
+async function askAI(message){
+
+  if(!message)
+    return;
+
+  addMessage(
+    message,
+    "user"
   );
 
-}
+  statusText.textContent =
+    "ভাবছি... 🤔";
+
+  showLoading();
+
+  try{
+
+    const response =
+      await fetch(
+        RENDER_URL + "/api/ai",
+        {
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
+
+          body:
+            JSON.stringify({
+              message: message
+            })
+        }
+      );
 
 
-/* =========================================
-   PHONE COMMAND
-========================================= */
-
-function openPhone(){
-
-  window.location.href =
-    "tel:";
-
-}
+    const data =
+      await response.json();
 
 
-/* =========================================
-   SMS
-========================================= */
-
-function openSMS(){
-
-  window.location.href =
-    "sms:";
-
-}
+    removeLoading();
 
 
-/* =========================================
-   CONTACTS
-========================================= */
+    if(!response.ok){
 
-function openContacts(){
+      throw new Error(
+        data.error ||
+        "AI উত্তর পাওয়া যায়নি"
+      );
 
-  window.location.href =
-    "content://contacts/people/";
-
-}
+    }
 
 
-/* =========================================
-   CAMERA
-========================================= */
-
-function openCamera(){
-
-  window.location.href =
-    "intent://camera/#Intent;scheme=android-app;package=com.android.camera;end";
-
-}
+    const answer =
+      data.answer ||
+      "দুঃখিত, কোনো উত্তর পাওয়া যায়নি।";
 
 
-/* =========================================
-   SETTINGS
-========================================= */
-
-function openSettings(){
-
-  window.location.href =
-    "intent://settings/#Intent;scheme=android-app;package=com.android.settings;end";
-
-}
-
-
-/* =========================================
-   GALLERY
-========================================= */
-
-function openGallery(){
-
-  window.location.href =
-    "intent://#Intent;action=android.intent.action.VIEW;type=image/*;end";
-
-}
-
-
-/* =========================================
-   GOOGLE
-========================================= */
-
-function openGoogle(){
-
-  window.open(
-    "https://www.google.com/",
-    "_blank"
-  );
-
-}
-
-
-/* =========================================
-   YOUTUBE
-========================================= */
-
-function openYouTube(){
-
-  window.open(
-    "https://www.youtube.com/",
-    "_blank"
-  );
-
-}
-
-
-/* =========================================
-   MAPS
-========================================= */
-
-function openMaps(){
-
-  window.open(
-    "https://maps.google.com/",
-    "_blank"
-  );
-
-}
-
-
-/* =========================================
-   GMAIL
-========================================= */
-
-function openGmail(){
-
-  window.open(
-    "https://mail.google.com/",
-    "_blank"
-  );
-
-}
-
-
-/* =========================================
-   GOOGLE SEARCH
-========================================= */
-
-function googleSearch(){
-
-  const query =
-    prompt(
-      "কী সার্চ করতে চাও?"
+    addMessage(
+      answer,
+      "ai"
     );
 
 
-  if(!query)
+    speak(answer);
+
+
+  }catch(error){
+
+    removeLoading();
+
+    console.error(error);
+
+    const errorText =
+      "দুঃখিত, AI-এর সাথে এখন যোগাযোগ করা যাচ্ছে না। একটু পরে আবার চেষ্টা করো।";
+
+    addMessage(
+      errorText,
+      "ai"
+    );
+
+    speak(errorText);
+
+    statusText.textContent =
+      "সংযোগে সমস্যা হয়েছে";
+
+  }
+
+}
+
+
+/* =========================================
+   SPEECH RECOGNITION
+========================================= */
+
+function setupRecognition(){
+
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+
+  if(!SpeechRecognition){
+
+    micBtn.disabled =
+      true;
+
+    micBtn.textContent =
+      "❌";
+
+    statusText.textContent =
+      "এই ব্রাউজারে ভয়েস ইনপুট নেই";
+
+    return;
+
+  }
+
+
+  recognition =
+    new SpeechRecognition();
+
+
+  recognition.lang =
+    "bn-BD";
+
+  recognition.continuous =
+    false;
+
+  recognition.interimResults =
+    false;
+
+  recognition.maxAlternatives =
+    1;
+
+
+  recognition.onstart =
+    () => {
+
+      listening = true;
+
+      document.body.classList.add(
+        "listening"
+      );
+
+      micBtn.textContent =
+        "⏹️";
+
+      statusText.textContent =
+        "আমি শুনছি... বলো 🩷";
+
+    };
+
+
+  recognition.onresult =
+    event => {
+
+      const text =
+        event.results[0][0].transcript;
+
+      input.value =
+        text;
+
+      askAI(text);
+
+    };
+
+
+  recognition.onerror =
+    event => {
+
+      console.log(
+        "Speech error:",
+        event.error
+      );
+
+      statusText.textContent =
+        "ঠিকমতো শুনতে পারিনি";
+
+    };
+
+
+  recognition.onend =
+    () => {
+
+      listening = false;
+
+      document.body.classList.remove(
+        "listening"
+      );
+
+      micBtn.textContent =
+        "🎙️";
+
+    };
+
+}
+
+
+/* =========================================
+   START LISTENING
+========================================= */
+
+function startListening(){
+
+  if(!recognition)
+    setupRecognition();
+
+  if(!recognition)
     return;
 
 
-  window.open(
-    "https://www.google.com/search?q=" +
-    encodeURIComponent(query),
-    "_blank"
-  );
+  if(listening){
 
-}
-
-
-/* =========================================
-   YOUTUBE SEARCH
-========================================= */
-
-function youtubeSearch(){
-
-  const query =
-    prompt(
-      "YouTube-এ কী খুঁজবে?"
-    );
-
-
-  if(!query)
-    return;
-
-
-  window.open(
-    "https://www.youtube.com/results?search_query=" +
-    encodeURIComponent(query),
-    "_blank"
-  );
-
-}
-
-
-/* =========================================
-   BATTERY
-========================================= */
-
-async function batteryInfo(){
-
-  if(!navigator.getBattery){
-
-    respond(
-      "তোমার ব্রাউজার ব্যাটারির তথ্য দেওয়া সমর্থন করে না।"
-    );
+    recognition.stop();
 
     return;
 
@@ -1053,39 +1248,11 @@ async function batteryInfo(){
 
   try{
 
-    const battery =
-      await navigator.getBattery();
+    recognition.start();
 
+  }catch(error){
 
-    const level =
-      Math.round(
-        battery.level * 100
-      );
-
-
-    if(battery.charging){
-
-      respond(
-        "তোমার ফোনের ব্যাটারি " +
-        level +
-        " শতাংশ। এখন চার্জ হচ্ছে। 🔋"
-      );
-
-    }else{
-
-      respond(
-        "তোমার ফোনের ব্যাটারি " +
-        level +
-        " শতাংশ। 🔋"
-      );
-
-    }
-
-  }catch(e){
-
-    respond(
-      "ব্যাটারির তথ্য পাওয়া যাচ্ছে না।"
-    );
+    console.log(error);
 
   }
 
@@ -1093,768 +1260,61 @@ async function batteryInfo(){
 
 
 /* =========================================
-   TIME
+   ENTER KEY
 ========================================= */
 
-function tellTime(){
+input.addEventListener(
+  "keydown",
+  event => {
 
-  const now =
-    new Date();
+    if(event.key === "Enter"){
+
+      event.preventDefault();
+
+      sendText();
+
+    }
+
+  }
+);
 
 
-  let time =
-    now.toLocaleTimeString(
-      "bn-BD",
-      {
-        hour:"numeric",
-        minute:"2-digit"
-      }
-    );
+/* =========================================
+   CLEAR CHAT
+========================================= */
 
+function clearChat(){
 
-  respond(
-    "এখন সময় " +
-    time +
-    "। 🕐"
-  );
+  chat.innerHTML = `
+    <div class="message ai">
+      ঠিক আছে। আবার নতুন করে শুরু করি। 🩷
+    </div>
+  `;
 
 }
 
 
 /* =========================================
-   DATE
+   LOAD VOICES
 ========================================= */
 
-function tellDate(){
+if("speechSynthesis" in window){
 
-  const now =
-    new Date();
+  speechSynthesis.onvoiceschanged =
+    () => {
 
+      speechSynthesis.getVoices();
 
-  const date =
-    now.toLocaleDateString(
-      "bn-BD",
-      {
-        weekday:"long",
-        year:"numeric",
-        month:"long",
-        day:"numeric"
-      }
-    );
-
-
-  respond(
-    "আজ " +
-    date +
-    "। 📅"
-  );
+    };
 
 }
 
 
 /* =========================================
-   OPEN EMAIL
+   START
 ========================================= */
 
-function openEmail(){
-
-  window.location.href =
-    "mailto:";
-
-}
-
-
-/* =========================================
-   PROCESS COMMAND
-========================================= */
-
-function processCommand(originalText){
-
-  let text =
-    normalize(originalText);
-
-
-  text =
-    convertBanglaNumbers(text);
-
-
-  if(!text)
-    return;
-
-
-  /* ---------- GREETING ---------- */
-
-  if(
-    text.includes("হ্যালো") ||
-    text.includes("হাই") ||
-    text.includes("hello")
-  ){
-
-    respond(
-      "হ্যালো ❤️ আমি এখানে আছি। বলো কী করতে হবে?"
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- HOW ARE YOU ---------- */
-
-  if(
-    text.includes("কেমন আছো") ||
-    text.includes("কেমন আছ")
-  ){
-
-    respond(
-      "আমি ভালো আছি। তোমার সাথে কথা বলতে পেরে আমারও ভালো লাগছে। 🐦❤️"
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- WHO ---------- */
-
-  if(
-    text.includes("তুমি কে") ||
-    text.includes("তোমার নাম কি") ||
-    text.includes("তোমার নাম কী")
-  ){
-
-    respond(
-      "আমি ময়না পাখি। তোমার ছোট্ট ভয়েস অ্যাসিস্ট্যান্ট। 🐦"
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- CAPABILITY ---------- */
-
-  if(
-    text.includes("কি করতে পারো") ||
-    text.includes("কী করতে পারো") ||
-    text.includes("কি পারো") ||
-    text.includes("কী পারো")
-  ){
-
-    respond(
-      "আমি সময় ও তারিখ বলতে পারি, ব্যাটারি দেখতে পারি, গুগল, ইউটিউব, ম্যাপ, জিমেইল, ক্যামেরা, গ্যালারি, সেটিংস, ফোন ও মেসেজের মতো কাজ খুলে দিতে পারি।"
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- PHONE ---------- */
-
-  if(
-    text.includes("ফোন করো") ||
-    text.includes("কল করো") ||
-    text.includes("ফোন খোলো") ||
-    text.includes("ডায়ালার খোলো") ||
-    text.includes("ডায়ালার খোলো")
-  ){
-
-    respond(
-      "ফোন অ্যাপ খোলার চেষ্টা করছি। 📞"
-    );
-
-    setTimeout(
-      openPhone,
-      700
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- SMS ---------- */
-
-  if(
-    text.includes("মেসেজ খোলো") ||
-    text.includes("এসএমএস খোলো") ||
-    text.includes("sms খোলো")
-  ){
-
-    respond(
-      "মেসেজ অ্যাপ খোলার চেষ্টা করছি। 💬"
-    );
-
-    setTimeout(
-      openSMS,
-      700
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- CONTACT ---------- */
-
-  if(
-    text.includes("কন্টাক্ট খোলো") ||
-    text.includes("কনট্যাক্ট খোলো") ||
-    text.includes("নাম্বার খোলো")
-  ){
-
-    respond(
-      "কন্টাক্ট খোলার চেষ্টা করছি। 👤"
-    );
-
-    setTimeout(
-      openContacts,
-      700
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- CAMERA ---------- */
-
-  if(
-    text.includes("ক্যামেরা খোলো") ||
-    text.includes("ক্যামেরা চালু করো")
-  ){
-
-    respond(
-      "ক্যামেরা খোলার চেষ্টা করছি। 📷"
-    );
-
-    setTimeout(
-      openCamera,
-      700
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- GALLERY ---------- */
-
-  if(
-    text.includes("গ্যালারি খোলো") ||
-    text.includes("ছবি খোলো")
-  ){
-
-    respond(
-      "গ্যালারি খোলার চেষ্টা করছি। 🖼️"
-    );
-
-    setTimeout(
-      openGallery,
-      700
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- SETTINGS ---------- */
-
-  if(
-    text.includes("সেটিংস খোলো") ||
-    text.includes("সেটিং খোলো")
-  ){
-
-    respond(
-      "ফোনের সেটিংস খোলার চেষ্টা করছি। ⚙️"
-    );
-
-    setTimeout(
-      openSettings,
-      700
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- GOOGLE ---------- */
-
-  if(
-    text.includes("গুগল খোলো") ||
-    text.includes("google খোলো")
-  ){
-
-    respond(
-      "গুগল খুলছি। 🌐"
-    );
-
-    setTimeout(
-      openGoogle,
-      700
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- YOUTUBE ---------- */
-
-  if(
-    text.includes("ইউটিউব খোলো") ||
-    text.includes("youtube খোলো")
-  ){
-
-    respond(
-      "YouTube খুলছি। ▶️"
-    );
-
-    setTimeout(
-      openYouTube,
-      700
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- MAP ---------- */
-
-  if(
-    text.includes("ম্যাপ খোলো") ||
-    text.includes("গুগল ম্যাপ খোলো") ||
-    text.includes("মানচিত্র খোলো")
-  ){
-
-    respond(
-      "Google Maps খুলছি। 📍"
-    );
-
-    setTimeout(
-      openMaps,
-      700
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- GMAIL ---------- */
-
-  if(
-    text.includes("জিমেইল খোলো") ||
-    text.includes("gmail খোলো") ||
-    text.includes("ইমেইল খোলো")
-  ){
-
-    respond(
-      "Gmail খুলছি। 📧"
-    );
-
-    setTimeout(
-      openGmail,
-      700
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- EMAIL ---------- */
-
-  if(
-    text.includes("ইমেইল লিখব") ||
-    text.includes("মেইল লিখব")
-  ){
-
-    respond(
-      "ইমেইল লেখার জায়গা খুলছি। 📧"
-    );
-
-    setTimeout(
-      openEmail,
-      700
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- SEARCH ---------- */
-
-  if(
-    text.includes("গুগলে সার্চ করো") ||
-    text.includes("গুগলে খুঁজো") ||
-    text.includes("কিছু সার্চ করো")
-  ){
-
-    respond(
-      "গুগলে কী খুঁজবে সেটা বলো।"
-    );
-
-    setTimeout(
-      googleSearch,
-      1000
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- YOUTUBE SEARCH ---------- */
-
-  if(
-    text.includes("ইউটিউবে সার্চ করো") ||
-    text.includes("ইউটিউবে খুঁজো")
-  ){
-
-    respond(
-      "YouTube-এ কী খুঁজবে সেটা বলো।"
-    );
-
-    setTimeout(
-      youtubeSearch,
-      1000
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- BATTERY ---------- */
-
-  if(
-    text.includes("ব্যাটারি কত") ||
-    text.includes("চার্জ কত") ||
-    text.includes("ব্যাটারি দেখাও")
-  ){
-
-    batteryInfo();
-
-    return;
-
-  }
-
-
-  /* ---------- TIME ---------- */
-
-  if(
-    text.includes("সময় কত") ||
-    text.includes("সময় কত") ||
-    text.includes("এখন কয়টা") ||
-    text.includes("এখন কয়টা")
-  ){
-
-    tellTime();
-
-    return;
-
-  }
-
-
-  /* ---------- DATE ---------- */
-
-  if(
-    text.includes("আজ কত তারিখ") ||
-    text.includes("আজকের তারিখ") ||
-    text.includes("আজ কি বার") ||
-    text.includes("আজ কী বার")
-  ){
-
-    tellDate();
-
-    return;
-
-  }
-
-
-  /* ---------- THANKS ---------- */
-
-  if(
-    text.includes("ধন্যবাদ") ||
-    text.includes("থ্যাংক ইউ") ||
-    text.includes("thank you")
-  ){
-
-    respond(
-      "তোমাকে স্বাগতম। ❤️"
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- GOOD MORNING ---------- */
-
-  if(
-    text.includes("শুভ সকাল") ||
-    text.includes("সুপ্রভাত")
-  ){
-
-    respond(
-      "শুভ সকাল। তোমার দিনটা সুন্দর হোক। 🌸"
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- GOOD NIGHT ---------- */
-
-  if(
-    text.includes("শুভ রাত্রি") ||
-    text.includes("শুভ রাত")
-  ){
-
-    respond(
-      "শুভ রাত্রি। ভালো থেকো। 🌙❤️"
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- YES ---------- */
-
-  if(
-    text === "হ্যাঁ" ||
-    text === "হ্যা"
-  ){
-
-    respond(
-      "ঠিক আছে। ❤️"
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- NO ---------- */
-
-  if(
-    text === "না"
-  ){
-
-    respond(
-      "ঠিক আছে। 😊"
-    );
-
-    return;
-
-  }
-
-
-  /* ---------- UNKNOWN ---------- */
-
-  respond(
-    "দুঃখিত, এই কমান্ডটি এখনো যোগ করা হয়নি। অন্যভাবে বলো।"
-  );
-
-}
-
-
-/* =========================================
-   MICROPHONE CLICK
-========================================= */
-
-mic.addEventListener(
-  "click",
-  () => {
-
-    if(!recognition){
-
-      respond(
-        "তোমার ব্রাউজারে ভয়েস কমান্ড সাপোর্ট নেই।"
-      );
-
-      return;
-
-    }
-
-
-    try{
-
-      recognition.start();
-
-    }catch(e){
-
-      console.log(e);
-
-    }
-
-  }
-);
-
-
-/* =========================================
-   VOICE ON/OFF
-========================================= */
-
-voiceBtn.addEventListener(
-  "click",
-  () => {
-
-    voiceEnabled =
-      !voiceEnabled;
-
-
-    if(voiceEnabled){
-
-      voiceBtn.innerText =
-        "🔊 ভয়েস ON";
-
-      voiceBtn.classList.add(
-        "active"
-      );
-
-      respond(
-        "ভয়েস চালু করেছি।"
-      );
-
-    }else{
-
-      speechSynthesis.cancel();
-
-      voiceBtn.innerText =
-        "🔇 ভয়েস OFF";
-
-      voiceBtn.classList.remove(
-        "active"
-      );
-
-    }
-
-  }
-);
-
-
-/* =========================================
-   STOP VOICE
-========================================= */
-
-stopBtn.addEventListener(
-  "click",
-  () => {
-
-    if("speechSynthesis" in window){
-
-      speechSynthesis.cancel();
-
-    }
-
-    answer.innerText =
-      "ভয়েস বন্ধ করা হয়েছে।";
-
-  }
-);
-
-
-/* =========================================
-   CONVERSATION MODE
-========================================= */
-
-conversationBtn.addEventListener(
-  "click",
-  () => {
-
-    conversationMode =
-      !conversationMode;
-
-
-    if(conversationMode){
-
-      conversationBtn.innerText =
-        "🗣️ কথোপকথন ON";
-
-      conversationBtn.classList.add(
-        "active"
-      );
-
-      respond(
-        "কথোপকথন মোড চালু করেছি। আমি শুনতে থাকব।"
-      );
-
-    }else{
-
-      conversationBtn.innerText =
-        "🗣️ কথোপকথন OFF";
-
-      conversationBtn.classList.remove(
-        "active"
-      );
-
-      respond(
-        "কথোপকথন মোড বন্ধ করেছি।"
-      );
-
-    }
-
-  }
-);
-
-
-/* =========================================
-   CLEAR
-========================================= */
-
-clearBtn.addEventListener(
-  "click",
-  () => {
-
-    answer.innerText =
-      "তোমার কথা শোনার অপেক্ষায় আছি ❤️";
-
-    speechSynthesis.cancel();
-
-  }
-);
-
-
-/* =========================================
-   QUICK COMMAND BUTTONS
-========================================= */
-
-document
-  .querySelectorAll(".command")
-  .forEach(button => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        const command =
-          button.dataset.command;
-
-        processCommand(command);
-
-      }
-    );
-
-  });
-
-
-/* =========================================
-   INITIAL VOICE LOAD
-========================================= */
-
-setTimeout(
-  loadVoices,
-  1000
-);
+setupRecognition();
 
 </script>
 
