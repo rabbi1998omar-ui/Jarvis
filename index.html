@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="bn">
-
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#120b1d">
 
-<title>ময়না পাখি 🐦</title>
-
-<meta name="theme-color" content="#ffd6e8">
+<title>🐦 ময়না পাখি</title>
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -19,165 +16,124 @@
 
 body{
   min-height:100vh;
-  font-family:Arial,"Noto Sans Bengali",sans-serif;
-  color:#5b3850;
-
+  font-family:
+    system-ui,
+    -apple-system,
+    "Noto Sans Bengali",
+    sans-serif;
   background:
-    radial-gradient(circle at 20% 10%,#fff5fa 0%,transparent 30%),
-    radial-gradient(circle at 85% 20%,#eee4ff 0%,transparent 30%),
-    linear-gradient(160deg,#fff0f7,#f6edff,#fff8fb);
-
+    radial-gradient(circle at top,#3b2050 0%,#160d20 42%,#08070c 100%);
+  color:white;
   overflow-x:hidden;
 }
 
-button{
-  font-family:inherit;
-}
-
-.heart{
+body::before,
+body::after{
+  content:"";
   position:fixed;
-  font-size:20px;
-  opacity:.35;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  filter:blur(70px);
+  opacity:.25;
   pointer-events:none;
-  animation:floatHeart 7s linear infinite;
 }
 
-.heart1{left:8%;top:80%}
-.heart2{left:85%;top:65%;animation-delay:2s}
-.heart3{left:15%;top:30%;animation-delay:4s}
-.heart4{left:75%;top:35%;animation-delay:1s}
-
-@keyframes floatHeart{
-  0%{
-    transform:translateY(30px);
-    opacity:0;
-  }
-
-  30%{
-    opacity:.4;
-  }
-
-  100%{
-    transform:translateY(-160px);
-    opacity:0;
-  }
+body::before{
+  background:#ff4f91;
+  top:-80px;
+  left:-70px;
 }
 
-.app{
-  width:100%;
-  max-width:520px;
-  min-height:100vh;
+body::after{
+  background:#814cff;
+  bottom:-90px;
+  right:-70px;
+}
+
+.container{
+  width:min(94%,520px);
   margin:auto;
-  padding:20px 18px;
-  display:flex;
-  flex-direction:column;
+  padding:20px 0 40px;
 }
 
 .header{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  padding:10px 4px;
+  align-items:center;
+  padding:12px 5px 20px;
 }
 
 .logo{
-  font-size:23px;
-  font-weight:bold;
-  color:#b34f83;
-  letter-spacing:1px;
-}
-
-.logo span{
-  font-size:27px;
+  font-size:22px;
+  font-weight:800;
 }
 
 .status{
   display:flex;
   align-items:center;
-  gap:7px;
-  font-size:11px;
-  color:#58a87a;
-  background:rgba(255,255,255,.72);
-  padding:7px 11px;
-  border-radius:20px;
-  box-shadow:0 5px 15px rgba(150,80,120,.08);
+  gap:6px;
+  font-size:12px;
+  color:#cfc5d8;
 }
 
-.statusDot{
-  width:7px;
-  height:7px;
+.dot{
+  width:9px;
+  height:9px;
   border-radius:50%;
-  background:#58c98a;
-  box-shadow:0 0 10px #58c98a;
+  background:#35e878;
+  box-shadow:0 0 12px #35e878;
 }
 
-.character{
-  width:215px;
-  height:215px;
-  margin:30px auto 20px;
+.card{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.11);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-radius:25px;
+  padding:22px;
+  margin-bottom:15px;
+  box-shadow:0 15px 45px rgba(0,0,0,.25);
+}
+
+.hero{
+  text-align:center;
+  padding:30px 20px;
+}
+
+.bird{
+  width:150px;
+  height:150px;
+  margin:auto;
   border-radius:50%;
   position:relative;
   display:flex;
-  align-items:center;
   justify-content:center;
-
+  align-items:center;
   background:
-    radial-gradient(
-      circle,
-      #ffffff 0%,
-      #ffe3ef 42%,
-      #f7c5dd 70%,
-      transparent 71%
-    );
-
+    radial-gradient(circle at 35% 25%,#ffd7ec,#ff94c7 42%,#9b56ff 100%);
   box-shadow:
-    0 15px 50px rgba(196,104,150,.22),
-    inset 0 0 30px rgba(255,255,255,.8);
+    0 0 45px rgba(255,79,145,.35),
+    inset 0 0 30px rgba(255,255,255,.2);
+  animation:float 3s ease-in-out infinite;
 }
 
-.character::before{
-  content:"";
-  position:absolute;
-  width:215px;
-  height:215px;
-  border-radius:50%;
-  border:1px solid rgba(211,111,161,.3);
-  animation:rotate 12s linear infinite;
-}
-
-.character::after{
-  content:"";
-  position:absolute;
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  border:1px dashed rgba(166,126,201,.35);
-  animation:rotateReverse 9s linear infinite;
-}
-
-.myna{
-  position:relative;
-  width:120px;
-  height:120px;
-  border-radius:50%;
-
-  background:
-    linear-gradient(145deg,#fffdfd,#ffe4ef);
-
-  box-shadow:
-    0 10px 30px rgba(150,70,110,.15);
-
-  animation:breathe 3s ease-in-out infinite;
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
 }
 
 .eye{
   position:absolute;
-  width:15px;
-  height:18px;
+  top:52px;
+  width:18px;
+  height:22px;
+  background:#17111b;
   border-radius:50%;
-  background:#5b3d52;
-  top:42px;
 }
+
+.eye.left{left:43px}
+.eye.right{right:43px}
 
 .eye::after{
   content:"";
@@ -186,537 +142,373 @@ button{
   height:5px;
   background:white;
   border-radius:50%;
-  left:3px;
-  top:3px;
-}
-
-.eye.left{
-  left:29px;
-}
-
-.eye.right{
-  right:29px;
-}
-
-.blush{
-  position:absolute;
-  width:25px;
-  height:12px;
-  border-radius:50%;
-  background:#ffb6d0;
-  opacity:.65;
-  top:68px;
-}
-
-.blush.left{
-  left:13px;
-}
-
-.blush.right{
-  right:13px;
+  top:4px;
+  left:4px;
 }
 
 .beak{
   position:absolute;
-  left:50%;
-  top:57px;
-  transform:translateX(-50%);
+  top:75px;
   width:0;
   height:0;
-  border-left:13px solid transparent;
-  border-right:13px solid transparent;
-  border-top:18px solid #f3a04e;
+  border-left:20px solid transparent;
+  border-right:20px solid transparent;
+  border-top:30px solid #ffca4b;
 }
 
 .ribbon{
   position:absolute;
-  top:-8px;
-  right:15px;
-  font-size:31px;
+  bottom:22px;
+  font-size:27px;
 }
 
-@keyframes breathe{
-  0%,100%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.04);
-  }
+.title{
+  font-size:27px;
+  font-weight:900;
+  margin-top:20px;
 }
 
-@keyframes rotate{
-  from{
-    transform:rotate(0deg);
-  }
-
-  to{
-    transform:rotate(360deg);
-  }
-}
-
-@keyframes rotateReverse{
-  from{
-    transform:rotate(360deg);
-  }
-
-  to{
-    transform:rotate(0deg);
-  }
-}
-
-.greeting{
-  text-align:center;
+.subtitle{
+  color:#d6c9dc;
   margin-top:8px;
-}
-
-.greeting h1{
-  font-size:28px;
-  color:#a94c79;
-  margin-bottom:7px;
-}
-
-.greeting p{
-  color:#9a7488;
-  font-size:14px;
-}
-
-.commandCard{
-  margin-top:24px;
-  min-height:110px;
-  padding:18px;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-
-  text-align:center;
-
-  border-radius:24px;
-
-  background:rgba(255,255,255,.75);
-
-  border:1px solid rgba(255,255,255,.95);
-
-  box-shadow:
-    0 12px 35px rgba(155,83,125,.12);
-
-  backdrop-filter:blur(15px);
-}
-
-#command{
-  font-size:15px;
   line-height:1.7;
-  color:#68465a;
-}
-
-.userText{
-  margin-top:6px;
-  font-size:12px;
-  color:#b0889c;
-}
-
-.micArea{
-  display:flex;
-  justify-content:center;
-  margin-top:25px;
 }
 
 .mic{
-  width:84px;
-  height:84px;
-  border:none;
+  width:90px;
+  height:90px;
+  margin:25px auto 10px;
+  border:0;
   border-radius:50%;
   cursor:pointer;
   color:white;
-  font-size:31px;
-
-  background:
-    linear-gradient(145deg,#ff8fba,#bd80e8);
-
+  font-size:38px;
+  background:linear-gradient(135deg,#ff4f91,#814cff);
   box-shadow:
-    0 12px 30px rgba(190,100,155,.28),
-    0 0 25px rgba(255,143,186,.25);
-
+    0 0 30px rgba(255,79,145,.35),
+    0 10px 30px rgba(0,0,0,.35);
   transition:.2s;
 }
 
 .mic:active{
-  transform:scale(.90);
+  transform:scale(.92);
 }
 
-.mic.listening{
-  animation:listening 1s infinite;
+.listening{
+  animation:pulse 1s infinite;
 }
 
-@keyframes listening{
-
-  0%,100%{
-    transform:scale(1);
-    box-shadow:0 0 20px #ff8fba;
-  }
-
+@keyframes pulse{
   50%{
-    transform:scale(1.1);
-    box-shadow:0 0 50px #bd80e8;
+    box-shadow:
+      0 0 0 18px rgba(255,79,145,.08),
+      0 0 45px rgba(255,79,145,.65);
   }
-
 }
 
-.controlArea{
+.answer{
+  min-height:70px;
   display:flex;
+  align-items:center;
   justify-content:center;
-  gap:9px;
-  margin-top:14px;
-  flex-wrap:wrap;
-}
-
-.controlBtn{
-  border:none;
-  padding:9px 13px;
-  border-radius:20px;
-
-  background:rgba(255,255,255,.75);
-
-  color:#81566e;
-
-  font-size:11px;
-
-  box-shadow:
-    0 5px 15px rgba(150,80,120,.08);
-
-  cursor:pointer;
-}
-
-.controlBtn.active{
-  background:linear-gradient(
-    135deg,
-    #ff8fba,
-    #bd80e8
-  );
-
-  color:white;
-}
-
-.sectionTitle{
-  margin-top:30px;
-  margin-bottom:12px;
   text-align:center;
+  line-height:1.7;
+  color:#fff;
+  font-size:16px;
+}
+
+.command-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.command{
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.06);
+  color:white;
+  border-radius:15px;
+  padding:13px 8px;
   font-size:13px;
-  color:#a2788c;
-}
-
-.commands{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:9px;
-}
-
-.commandTag{
-  padding:10px 14px;
-  border-radius:22px;
-
-  background:rgba(255,255,255,.72);
-
-  border:1px solid rgba(255,255,255,.9);
-
-  color:#795569;
-  font-size:12px;
-
-  box-shadow:
-    0 5px 15px rgba(150,80,120,.07);
-
   cursor:pointer;
-
-  transition:.2s;
 }
 
-.commandTag:active{
-  transform:scale(.94);
+.command:active{
+  transform:scale(.97);
+  background:rgba(255,255,255,.12);
 }
 
-.footer{
-  margin-top:auto;
-  padding-top:35px;
-  text-align:center;
-  color:#b08e9f;
-  font-size:11px;
+.section-title{
+  font-size:17px;
+  font-weight:800;
+  margin-bottom:14px;
 }
 
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:25px;
+.controls{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
 
-  transform:
-    translateX(-50%)
-    translateY(30px);
-
-  background:rgba(80,50,75,.92);
+.control{
+  border:0;
+  border-radius:15px;
+  padding:13px;
   color:white;
+  background:rgba(255,255,255,.08);
+  cursor:pointer;
+}
 
-  padding:10px 17px;
+.control.active{
+  background:linear-gradient(135deg,#ff4f91,#814cff);
+}
 
-  border-radius:20px;
+.help{
+  color:#cfc4d7;
+  font-size:13px;
+  line-height:1.8;
+}
 
+footer{
+  text-align:center;
+  color:#9d92a6;
   font-size:12px;
-
-  opacity:0;
-
-  pointer-events:none;
-
-  transition:.3s;
-
-  z-index:999;
+  margin-top:15px;
 }
-
-.toast.show{
-  opacity:1;
-  transform:
-    translateX(-50%)
-    translateY(0);
-}
-
-@media(max-height:700px){
-
-  .character{
-    width:175px;
-    height:175px;
-  }
-
-  .character::before{
-    width:175px;
-    height:175px;
-  }
-
-  .character::after{
-    width:145px;
-    height:145px;
-  }
-
-  .myna{
-    width:100px;
-    height:100px;
-  }
-
-  .eye{
-    top:34px;
-  }
-
-  .beak{
-    top:49px;
-  }
-
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="heart heart1">♡</div>
-<div class="heart heart2">♡</div>
-<div class="heart heart3">♡</div>
-<div class="heart heart4">♡</div>
-
-<div class="app">
+<div class="container">
 
   <div class="header">
-
-    <div class="logo">
-      <span>🐦</span>
-      ময়না পাখি
-    </div>
+    <div class="logo">🐦 ময়না পাখি</div>
 
     <div class="status">
-      <span class="statusDot"></span>
+      <span class="dot"></span>
       ONLINE
     </div>
-
   </div>
 
 
-  <div class="character">
+  <div class="card hero">
 
-    <div class="myna">
-
-      <div class="ribbon">🎀</div>
+    <div class="bird">
 
       <div class="eye left"></div>
       <div class="eye right"></div>
 
-      <div class="blush left"></div>
-      <div class="blush right"></div>
-
       <div class="beak"></div>
 
+      <div class="ribbon">🎀</div>
+
     </div>
 
-  </div>
-
-
-  <div class="greeting">
-
-    <h1>হ্যালো 🌸</h1>
-
-    <p>
-      আমি তোমার ময়না পাখি 🐦
-    </p>
-
-  </div>
-
-
-  <div class="commandCard">
-
-    <div id="command">
-      মাইক্রোফোনে চাপ দিয়ে কথা বলো... 💕
+    <div class="title">
+      হ্যালো 🌸
     </div>
 
-    <div
-      class="userText"
-      id="userText">
+    <div class="subtitle">
+      আমি তোমার ময়না পাখি 🐦<br>
+      যা জানতে চাও বা করতে বলো।
     </div>
 
-  </div>
-
-
-  <div class="micArea">
-
-    <button
-      class="mic"
-      id="mic"
-      aria-label="ময়না পাখির সাথে কথা বলুন">
+    <button class="mic" id="mic">
       🎙️
     </button>
 
-  </div>
-
-
-  <div class="controlArea">
-
-    <button
-      class="controlBtn"
-      id="conversationBtn">
-      🔄 কথোপকথন
-    </button>
-
-    <button
-      class="controlBtn active"
-      id="voiceBtn">
-      🔊 ভয়েস চালু
-    </button>
-
-    <button
-      class="controlBtn"
-      id="stopBtn">
-      ⏹ থামাও
-    </button>
-
-  </div>
-
-
-  <div class="sectionTitle">
-    আমাকে যা বলতে পারো 🌷
-  </div>
-
-
-  <div class="commands">
-
-    <div
-      class="commandTag"
-      data-command="হ্যালো">
-      হ্যালো 👋
-    </div>
-
-    <div
-      class="commandTag"
-      data-command="ময়না পাখি">
-      ময়না পাখি 🐦
-    </div>
-
-    <div
-      class="commandTag"
-      data-command="কেমন আছো">
-      কেমন আছো? 😊
-    </div>
-
-    <div
-      class="commandTag"
-      data-command="সময় কত">
-      সময় কত? ⏰
-    </div>
-
-    <div
-      class="commandTag"
-      data-command="আজ কত তারিখ">
-      আজ কত তারিখ? 📅
-    </div>
-
-    <div
-      class="commandTag"
-      data-command="YouTube খোলো">
-      YouTube ▶️
-    </div>
-
-    <div
-      class="commandTag"
-      data-command="Google খোলো">
-      Google 🔎
-    </div>
-
-    <div
-      class="commandTag"
-      data-command="কী করতে পারো">
-      কী করতে পারো? 🌸
-    </div>
-
-    <div
-      class="commandTag"
-      data-command="পাঁচ মিনিটের টাইমার">
-      ৫ মিনিট টাইমার ⏱️
-    </div>
-
-    <div
-      class="commandTag"
-      data-command="আবহাওয়া দেখাও">
-      আবহাওয়া 🌤️
+    <div id="micStatus" class="subtitle">
+      কথা বলার জন্য মাইক্রোফোন চাপো
     </div>
 
   </div>
 
 
-  <div class="footer">
-    ময়না পাখি 🐦 • Personal AI Assistant
+  <div class="card">
+
+    <div class="section-title">
+      💬 ময়না পাখির উত্তর
+    </div>
+
+    <div class="answer" id="answer">
+      তোমার কথা শোনার অপেক্ষায় আছি ❤️
+    </div>
+
   </div>
 
-</div>
+
+  <div class="card">
+
+    <div class="section-title">
+      🎛️ নিয়ন্ত্রণ
+    </div>
+
+    <div class="controls">
+
+      <button class="control active" id="voiceBtn">
+        🔊 ভয়েস ON
+      </button>
+
+      <button class="control" id="stopBtn">
+        ⏹️ ভয়েস বন্ধ
+      </button>
+
+      <button class="control" id="conversationBtn">
+        🗣️ কথোপকথন OFF
+      </button>
+
+      <button class="control" id="clearBtn">
+        🧹 পরিষ্কার
+      </button>
+
+    </div>
+
+  </div>
 
 
-<div
-  class="toast"
-  id="toast">
+  <div class="card">
+
+    <div class="section-title">
+      📱 ফোন কমান্ড
+    </div>
+
+    <div class="command-grid">
+
+      <button class="command" data-command="ফোন করো">
+        📞 ফোন
+      </button>
+
+      <button class="command" data-command="মেসেজ খোলো">
+        💬 SMS
+      </button>
+
+      <button class="command" data-command="কন্টাক্ট খোলো">
+        👤 Contacts
+      </button>
+
+      <button class="command" data-command="ক্যামেরা খোলো">
+        📷 Camera
+      </button>
+
+      <button class="command" data-command="গ্যালারি খোলো">
+        🖼️ Gallery
+      </button>
+
+      <button class="command" data-command="সেটিংস খোলো">
+        ⚙️ Settings
+      </button>
+
+      <button class="command" data-command="গুগল খোলো">
+        🌐 Google
+      </button>
+
+      <button class="command" data-command="ইউটিউব খোলো">
+        ▶️ YouTube
+      </button>
+
+      <button class="command" data-command="ম্যাপ খোলো">
+        📍 Maps
+      </button>
+
+      <button class="command" data-command="জিমেইল খোলো">
+        📧 Gmail
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="section-title">
+      🧠 সাধারণ কমান্ড
+    </div>
+
+    <div class="command-grid">
+
+      <button class="command" data-command="হ্যালো">
+        👋 হ্যালো
+      </button>
+
+      <button class="command" data-command="কেমন আছো">
+        😊 কেমন আছো
+      </button>
+
+      <button class="command" data-command="তুমি কে">
+        🐦 তুমি কে
+      </button>
+
+      <button class="command" data-command="তুমি কি করতে পারো">
+        ❓ কী পারো
+      </button>
+
+      <button class="command" data-command="সময় কত">
+        🕐 সময়
+      </button>
+
+      <button class="command" data-command="আজ কত তারিখ">
+        📅 তারিখ
+      </button>
+
+      <button class="command" data-command="ব্যাটারি কত">
+        🔋 ব্যাটারি
+      </button>
+
+      <button class="command" data-command="গুগলে সার্চ করো">
+        🔎 Search
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="section-title">
+      📖 কীভাবে বলবে?
+    </div>
+
+    <div class="help">
+
+      “ময়না পাখি, ফোন করো”<br>
+      “ময়না পাখি, মেসেজ খোলো”<br>
+      “ময়না পাখি, ক্যামেরা খোলো”<br>
+      “ময়না পাখি, গ্যালারি খোলো”<br>
+      “ময়না পাখি, সেটিংস খোলো”<br>
+      “ময়না পাখি, ইউটিউব খোলো”<br>
+      “ময়না পাখি, গুগলে সার্চ করো”<br>
+      “ময়না পাখি, সময় কত?”<br>
+      “ময়না পাখি, ব্যাটারি কত?”
+
+    </div>
+
+  </div>
+
+
+  <footer>
+    🐦 ময়না পাখি • তোমার ছোট্ট ভয়েস অ্যাসিস্ট্যান্ট ❤️
+  </footer>
+
 </div>
 
 
 <script>
 
-/* =================================================
+/* =========================================
    ELEMENTS
-================================================= */
+========================================= */
 
 const mic =
   document.getElementById("mic");
 
-const command =
-  document.getElementById("command");
+const answer =
+  document.getElementById("answer");
 
-const userText =
-  document.getElementById("userText");
-
-const conversationBtn =
-  document.getElementById("conversationBtn");
+const micStatus =
+  document.getElementById("micStatus");
 
 const voiceBtn =
   document.getElementById("voiceBtn");
@@ -724,1555 +516,1344 @@ const voiceBtn =
 const stopBtn =
   document.getElementById("stopBtn");
 
-const toast =
-  document.getElementById("toast");
+const conversationBtn =
+  document.getElementById("conversationBtn");
+
+const clearBtn =
+  document.getElementById("clearBtn");
 
 
-/* =================================================
+/* =========================================
    SETTINGS
-================================================= */
-
-let conversationMode = false;
+========================================= */
 
 let voiceEnabled = true;
 
-let recognitionRunning = false;
+let conversationMode = false;
 
-let timerId = null;
+let recognition = null;
 
-
-/* =================================================
-   TOAST
-================================================= */
-
-function showToast(text){
-
-  toast.innerText = text;
-
-  toast.classList.add("show");
-
-  setTimeout(function(){
-
-    toast.classList.remove("show");
-
-  },2200);
-
-}
+let voices = [];
 
 
-/* =================================================
+/* =========================================
    SPEECH RECOGNITION
-================================================= */
+========================================= */
 
 const SpeechRecognition =
   window.SpeechRecognition ||
   window.webkitSpeechRecognition;
-
-let recognition = null;
-
 
 if(SpeechRecognition){
 
   recognition =
     new SpeechRecognition();
 
-  recognition.lang =
-    "bn-BD";
+  recognition.lang = "bn-BD";
 
-  recognition.continuous =
-    false;
+  recognition.continuous = false;
 
-  recognition.interimResults =
-    false;
+  recognition.interimResults = false;
 
-  recognition.maxAlternatives =
-    1;
+  recognition.maxAlternatives = 1;
 
 
-  recognition.onstart =
-    function(){
+  recognition.onstart = () => {
 
-      recognitionRunning = true;
+    mic.classList.add("listening");
 
-      mic.classList.add("listening");
+    mic.innerText = "🔴";
 
-      command.innerText =
-        "হুম... বলো, শুনছি 😊";
+    micStatus.innerText =
+      "শুনছি... বলো ❤️";
 
-    };
-
-
-  recognition.onend =
-    function(){
-
-      recognitionRunning = false;
-
-      mic.classList.remove("listening");
-
-    };
+  };
 
 
-  recognition.onerror =
-    function(event){
+  recognition.onend = () => {
 
-      recognitionRunning = false;
+    mic.classList.remove("listening");
 
-      mic.classList.remove("listening");
+    mic.innerText = "🎙️";
 
-      console.log(
-        "Recognition error:",
-        event.error
+    micStatus.innerText =
+      "আবার কথা বলতে মাইক্রোফোন চাপো";
+
+  };
+
+
+  recognition.onerror = (event) => {
+
+    mic.classList.remove("listening");
+
+    mic.innerText = "🎙️";
+
+    if(event.error === "not-allowed"){
+
+      respond(
+        "মাইক্রোফোন ব্যবহারের অনুমতি দেওয়া হয়নি।"
       );
 
-      if(event.error === "not-allowed"){
+    }else{
 
-        respond(
-          "মাইক্রোফোনের অনুমতি দেওয়া হয়নি। Chrome-এর microphone permission চালু করো।"
-        );
+      micStatus.innerText =
+        "কথা ঠিকমতো বুঝতে পারিনি। আবার বলো।";
 
-        return;
+    }
 
-      }
-
-      if(event.error === "no-speech"){
-
-        command.innerText =
-          "কোনো কথা শুনতে পাইনি। আবার বলো 😊";
-
-        return;
-
-      }
-
-      command.innerText =
-        "কথাটা ঠিক বুঝতে পারিনি। আবার বলো 😊";
-
-    };
+  };
 
 
-  recognition.onresult =
-    function(event){
+  recognition.onresult = (event) => {
 
-      const text =
-        event.results[0][0].transcript;
+    const text =
+      event.results[0][0].transcript;
 
-      userText.innerText =
-        "তুমি বলেছ: " + text;
+    processCommand(text);
 
-      processCommand(text);
+  };
 
-    };
+}else{
 
-}
-else{
-
-  command.innerText =
-    "এই ব্রাউজারে Voice Recognition নেই। Chrome ব্যবহার করো।";
+  micStatus.innerText =
+    "এই ব্রাউজারে ভয়েস রিকগনিশন সাপোর্ট নেই।";
 
 }
 
 
-/* =================================================
-   START LISTENING
-================================================= */
-
-function startListening(){
-
-  if(!recognition){
-
-    alert(
-      "Chrome ব্যবহার করে আবার চেষ্টা করো।"
-    );
-
-    return;
-
-  }
-
-  if(recognitionRunning){
-
-    return;
-
-  }
-
-  try{
-
-    recognition.start();
-
-  }
-  catch(error){
-
-    console.log(
-      "Recognition error:",
-      error
-    );
-
-  }
-
-}
-
-
-/* =================================================
-   MICROPHONE BUTTON
-================================================= */
-
-mic.addEventListener(
-  "click",
-  function(){
-
-    startListening();
-
-  }
-);
-
-
-/* =================================================
-   CONVERSATION MODE
-================================================= */
-
-conversationBtn.addEventListener(
-  "click",
-  function(){
-
-    conversationMode =
-      !conversationMode;
-
-    conversationBtn.classList.toggle(
-      "active",
-      conversationMode
-    );
-
-    if(conversationMode){
-
-      conversationBtn.innerText =
-        "🔄 কথোপকথন চালু";
-
-      showToast(
-        "কথোপকথন মোড চালু হয়েছে"
-      );
-
-      startListening();
-
-    }
-    else{
-
-      conversationBtn.innerText =
-        "🔄 কথোপকথন";
-
-      showToast(
-        "কথোপকথন মোড বন্ধ"
-      );
-
-    }
-
-  }
-);
-
-
-/* =================================================
-   VOICE ON/OFF
-================================================= */
-
-voiceBtn.addEventListener(
-  "click",
-  function(){
-
-    voiceEnabled =
-      !voiceEnabled;
-
-    voiceBtn.classList.toggle(
-      "active",
-      voiceEnabled
-    );
-
-    if(voiceEnabled){
-
-      voiceBtn.innerText =
-        "🔊 ভয়েস চালু";
-
-      showToast(
-        "ময়না পাখির ভয়েস চালু"
-      );
-
-    }
-    else{
-
-      voiceBtn.innerText =
-        "🔇 ভয়েস বন্ধ";
-
-      speechSynthesis.cancel();
-
-      showToast(
-        "ভয়েস বন্ধ করা হয়েছে"
-      );
-
-    }
-
-  }
-);
-
-
-/* =================================================
-   STOP VOICE
-================================================= */
-
-stopBtn.addEventListener(
-  "click",
-  function(){
-
-    if(
-      "speechSynthesis" in window
-    ){
-
-      speechSynthesis.cancel();
-
-    }
-
-    if(
-      recognition &&
-      recognitionRunning
-    ){
-
-      try{
-
-        recognition.stop();
-
-      }
-      catch(e){}
-
-    }
-
-    command.innerText =
-      "ঠিক আছে, থামলাম 😊";
-
-  }
-);
-
-
-/* =================================================
-   REMOVE EMOJI FROM TTS
-================================================= */
-
-function cleanForSpeech(text){
-
-  let result =
-    String(text);
-
-
-  /*
-     Unicode emoji
-  */
-
-  result =
-    result.replace(
-      /[\u{1F000}-\u{1FAFF}]/gu,
-      ""
-    );
-
-
-  result =
-    result.replace(
-      /[\u{2600}-\u{27BF}]/gu,
-      ""
-    );
-
-
-  /*
-     অতিরিক্ত symbols
-  */
-
-  result =
-    result.replace(
-      /[❤️💕💗💖💓💞💝💘💟💜💙💚💛🧡🤍🖤🤎🩷🩵🩶🫶🥰😘😊😄😃😁😌🌸🌷🌹🌺🌻🌼🎀🐦👋⏰📅▶️🔎🌤️⏱️🔊🔇⏹🔄]/gu,
-      ""
-    );
-
-
-  /*
-     Website URL-এর অদ্ভুত অংশ বাদ
-  */
-
-  result =
-    result.replace(
-      /https?:\/\/\S+/gi,
-      ""
-    );
-
-
-  result =
-    result.replace(
-      /\s+/g,
-      " "
-    );
-
-
-  return result.trim();
-
-}
-
-
-/* =================================================
-   VOICE STORAGE
-================================================= */
-
-let availableVoices = [];
-
-
-/* =================================================
-   LOAD VOICES
-================================================= */
+/* =========================================
+   VOICES
+========================================= */
 
 function loadVoices(){
 
-  if(
-    !("speechSynthesis" in window)
-  ){
-
-    return;
-
-  }
-
-  availableVoices =
-    speechSynthesis.getVoices();
-
-  console.log(
-    "Available voices:",
-    availableVoices.map(
-      v =>
-        v.name +
-        " | " +
-        v.lang
-    )
-  );
+  voices =
+    window.speechSynthesis
+      ? speechSynthesis.getVoices()
+      : [];
 
 }
 
+loadVoices();
 
-if(
-  "speechSynthesis" in window
-){
-
-  loadVoices();
+if("speechSynthesis" in window){
 
   speechSynthesis.onvoiceschanged =
-    function(){
-
-      loadVoices();
-
-    };
+    loadVoices;
 
 }
 
 
-/* =================================================
+/* =========================================
    FIND BANGLA VOICE
-================================================= */
+========================================= */
 
 function getBanglaVoice(){
 
-  if(!availableVoices.length){
-
-    loadVoices();
-
-  }
-
-  const voices =
-    availableVoices;
-
-
-  if(!voices.length){
-
+  if(!voices.length)
     return null;
 
-  }
 
-
-  const bangla =
-    voices.filter(
-      function(v){
-
-        const lang =
-          String(
-            v.lang || ""
-          ).toLowerCase();
-
-        return(
-          lang === "bn-bd" ||
-          lang === "bn-in" ||
-          lang.startsWith("bn")
-        );
-
-      }
+  let voice =
+    voices.find(v =>
+      /^bn-BD$/i.test(v.lang)
     );
 
-
-  if(!bangla.length){
-
-    return null;
-
-  }
+  if(voice) return voice;
 
 
-  /*
-     সম্ভাব্য natural/female voice
-  */
-
-  const femaleKeywords = [
-
-    "female",
-    "woman",
-    "girl",
-    "zira",
-    "samantha",
-    "susan",
-    "karen",
-    "aria",
-    "jenny",
-    "ava",
-    "emma",
-    "salli",
-    "neural",
-    "premium",
-    "natural"
-
-  ];
-
-
-  const female =
-    bangla.find(
-      function(v){
-
-        const name =
-          String(
-            v.name || ""
-          ).toLowerCase();
-
-        return femaleKeywords.some(
-          keyword =>
-            name.includes(keyword)
-        );
-
-      }
+  voice =
+    voices.find(v =>
+      /^bn-IN$/i.test(v.lang)
     );
 
-
-  if(female){
-
-    return female;
-
-  }
+  if(voice) return voice;
 
 
-  /*
-     Google voice
-  */
-
-  const google =
-    bangla.find(
-      function(v){
-
-        return String(
-          v.name || ""
-        )
-        .toLowerCase()
-        .includes("google");
-
-      }
+  voice =
+    voices.find(v =>
+      /^bn/i.test(v.lang)
     );
 
+  if(voice) return voice;
 
-  if(google){
-
-    return google;
-
-  }
-
-
-  return bangla[0];
-
-}
-
-
-/* =================================================
-   SPEAK
-================================================= */
-
-function speak(text){
-
-  if(!voiceEnabled){
-
-    return;
-
-  }
-
-
-  if(
-    !("speechSynthesis" in window)
-  ){
-
-    return;
-
-  }
-
-
-  const cleanText =
-    cleanForSpeech(text);
-
-
-  if(!cleanText){
-
-    return;
-
-  }
-
-
-  speechSynthesis.cancel();
-
-  loadVoices();
-
-
-  const voice =
-    getBanglaVoice();
-
-
-  const speech =
-    new SpeechSynthesisUtterance(
-      cleanText
-    );
-
-
-  speech.lang =
-    voice && voice.lang
-      ? voice.lang
-      : "bn-BD";
-
-
-  if(voice){
-
-    speech.voice =
-      voice;
-
-    console.log(
-      "Selected voice:",
-      voice.name,
-      voice.lang
-    );
-
-  }
-
-
-  /*
-     মিষ্টি গতি
-  */
-
-  speech.rate =
-    0.86;
-
-
-  /*
-     Pitch সামান্য বেশি
-  */
-
-  speech.pitch =
-    1.18;
-
-
-  speech.volume =
-    1;
-
-
-  speech.onerror =
-    function(event){
-
-      console.log(
-        "TTS error:",
-        event
-      );
-
-    };
-
-
-  speechSynthesis.speak(
-    speech
-  );
-
-}
-
-
-/* =================================================
-   RESPONSE
-================================================= */
-
-function respond(text){
-
-  command.innerText =
-    text;
-
-  speak(text);
-
-
-  /*
-     কথোপকথন মোডে উত্তর দেওয়ার
-     কিছুক্ষণ পর আবার শুনবে
-  */
-
-  if(conversationMode){
-
-    setTimeout(
-      function(){
-
-        if(conversationMode){
-
-          startListening();
-
-        }
-
-      },
-      1800
-    );
-
-  }
-
-}
-
-
-/* =================================================
-   OPEN URL
-================================================= */
-
-function openURL(url){
-
-  window.location.href =
-    url;
-
-}
-
-
-/* =================================================
-   GOOGLE SEARCH
-================================================= */
-
-function googleSearch(query){
-
-  const url =
-    "https://www.google.com/search?q=" +
-    encodeURIComponent(query);
-
-  window.location.href =
-    url;
-
-}
-
-
-/* =================================================
-   YOUTUBE SEARCH
-================================================= */
-
-function youtubeSearch(query){
-
-  const url =
-    "https://www.youtube.com/results?search_query=" +
-    encodeURIComponent(query);
-
-  window.location.href =
-    url;
-
-}
-
-
-/* =================================================
-   CALCULATOR
-================================================= */
-
-function calculateExpression(text){
-
-  let expression =
-    text
-      .replace(/যোগ/gi,"+")
-      .replace(/বিয়োগ/gi,"-")
-      .replace(/বিয়োগ/gi,"-")
-      .replace(/গুণ/gi,"*")
-      .replace(/ভাগ/gi,"/")
-      .replace(/প্লাস/gi,"+")
-      .replace(/মাইনাস/gi,"-")
-      .replace(/×/g,"*")
-      .replace(/÷/g,"/");
-
-
-  /*
-     শুধু নিরাপদ mathematical characters
-  */
-
-  expression =
-    expression.replace(
-      /[^0-9+\-*/().\s]/g,
-      ""
-    );
-
-
-  if(!expression){
-
-    return null;
-
-  }
-
-
-  try{
-
-    const result =
-      Function(
-        '"use strict";return (' +
-        expression +
-        ')'
-      )();
-
-
-    if(
-      typeof result === "number" &&
-      Number.isFinite(result)
-    ){
-
-      return result;
-
-    }
-
-  }
-  catch(error){
-
-    return null;
-
-  }
 
   return null;
 
 }
 
 
-/* =================================================
-   TIMER
-================================================= */
+/* =========================================
+   REMOVE EMOJI FOR TTS
+========================================= */
 
-function startTimer(minutes){
+function cleanForSpeech(text){
 
-  if(timerId){
+  return text
 
-    clearTimeout(timerId);
+    .replace(
+      /[\u{1F000}-\u{1FAFF}]/gu,
+      ""
+    )
+
+    .replace(
+      /[\u{2600}-\u{27BF}]/gu,
+      ""
+    )
+
+    .replace(
+      /\s+/g,
+      " "
+    )
+
+    .trim();
+
+}
+
+
+/* =========================================
+   SPEAK
+========================================= */
+
+function speak(text){
+
+  if(!voiceEnabled)
+    return;
+
+  if(!("speechSynthesis" in window))
+    return;
+
+
+  speechSynthesis.cancel();
+
+
+  const clean =
+    cleanForSpeech(text);
+
+
+  if(!clean)
+    return;
+
+
+  const utter =
+    new SpeechSynthesisUtterance(clean);
+
+
+  const banglaVoice =
+    getBanglaVoice();
+
+
+  if(banglaVoice){
+
+    utter.voice =
+      banglaVoice;
+
+    utter.lang =
+      banglaVoice.lang;
+
+  }else{
+
+    utter.lang =
+      "bn-BD";
 
   }
 
 
-  const milliseconds =
-    minutes * 60 * 1000;
+  utter.rate = 0.86;
+
+  utter.pitch = 1.18;
+
+  utter.volume = 1;
 
 
-  timerId =
-    setTimeout(
-      function(){
+  speechSynthesis.speak(utter);
 
-        respond(
-          "তোমার " +
-          minutes +
-          " মিনিটের টাইমার শেষ হয়েছে।"
-        );
-
-      },
-      milliseconds
-    );
+}
 
 
-  respond(
-    minutes +
-    " মিনিটের টাইমার শুরু করেছি।"
+/* =========================================
+   RESPONSE
+========================================= */
+
+function respond(text){
+
+  answer.innerText =
+    text;
+
+  speak(text);
+
+
+  if(conversationMode){
+
+    setTimeout(() => {
+
+      if(!speechSynthesis.speaking &&
+         recognition){
+
+        try{
+
+          recognition.start();
+
+        }catch(e){}
+
+      }
+
+    },2200);
+
+  }
+
+}
+
+
+/* =========================================
+   NORMALIZE TEXT
+========================================= */
+
+function normalize(text){
+
+  return text
+
+    .toLowerCase()
+
+    .replace(/[?!।,.]/g,"")
+
+    .replace(
+      /ময়না পাখি/g,
+      ""
+    )
+
+    .trim();
+
+}
+
+
+/* =========================================
+   BANGLA NUMBER CONVERTER
+========================================= */
+
+function convertBanglaNumbers(text){
+
+  const map = {
+
+    "০":"0",
+    "১":"1",
+    "২":"2",
+    "৩":"3",
+    "৪":"4",
+    "৫":"5",
+    "৬":"6",
+    "৭":"7",
+    "৮":"8",
+    "৯":"9"
+
+  };
+
+  return text.replace(
+    /[০-৯]/g,
+    n => map[n]
   );
 
 }
 
 
-/* =================================================
-   COMMAND PROCESSOR
-================================================= */
+/* =========================================
+   PHONE COMMAND
+========================================= */
 
-function processCommand(text){
+function openPhone(){
 
-  const c =
-    text
-      .toLowerCase()
-      .trim();
+  window.location.href =
+    "tel:";
 
+}
 
-  /* -----------------------------------------------
-     EMPTY
-  ----------------------------------------------- */
 
-  if(!c){
+/* =========================================
+   SMS
+========================================= */
 
-    return;
+function openSMS(){
 
-  }
+  window.location.href =
+    "sms:";
 
+}
 
-  /* -----------------------------------------------
-     MYNA
-  ----------------------------------------------- */
 
-  if(
-    c.includes("ময়না") ||
-    c.includes("ময়না") ||
-    c.includes("পাখি") ||
-    c.includes("moyna")
-  ){
+/* =========================================
+   CONTACTS
+========================================= */
 
-    respond(
-      "হুম, ময়না পাখি এখানে আছি। বলো, কী করতে হবে?"
-    );
+function openContacts(){
 
-    return;
+  window.location.href =
+    "content://contacts/people/";
 
-  }
+}
 
 
-  /* -----------------------------------------------
-     HELLO
-  ----------------------------------------------- */
+/* =========================================
+   CAMERA
+========================================= */
 
-  if(
-    c.includes("হ্যালো") ||
-    c.includes("হাই") ||
-    c.includes("হেই") ||
-    c.includes("hello") ||
-    c.includes("hi")
-  ){
+function openCamera(){
 
-    respond(
-      "হ্যালো। বলো, কীভাবে সাহায্য করতে পারি?"
-    );
+  window.location.href =
+    "intent://camera/#Intent;scheme=android-app;package=com.android.camera;end";
 
-    return;
+}
 
-  }
 
+/* =========================================
+   SETTINGS
+========================================= */
 
-  /* -----------------------------------------------
-     HOW ARE YOU
-  ----------------------------------------------- */
+function openSettings(){
 
-  if(
-    c.includes("কেমন আছ") ||
-    c.includes("কেমন আছো") ||
-    c.includes("ভালো আছ")
-  ){
+  window.location.href =
+    "intent://settings/#Intent;scheme=android-app;package=com.android.settings;end";
 
-    respond(
-      "আমি ভালো আছি। তোমার কথা শুনতে প্রস্তুত।"
-    );
+}
 
-    return;
 
-  }
+/* =========================================
+   GALLERY
+========================================= */
 
+function openGallery(){
 
-  /* -----------------------------------------------
-     WHAT ARE YOU DOING
-  ----------------------------------------------- */
+  window.location.href =
+    "intent://#Intent;action=android.intent.action.VIEW;type=image/*;end";
 
-  if(
-    c.includes("কি করছ") ||
-    c.includes("কী করছ") ||
-    c.includes("কি করছো") ||
-    c.includes("কী করছো")
-  ){
+}
 
-    respond(
-      "তোমার কমান্ডের অপেক্ষায় আছি। বলো কী কাজ করব?"
-    );
 
-    return;
+/* =========================================
+   GOOGLE
+========================================= */
 
-  }
+function openGoogle(){
 
-
-  /* -----------------------------------------------
-     WHO ARE YOU
-  ----------------------------------------------- */
-
-  if(
-    c.includes("তুমি কে") ||
-    c.includes("কে তুমি")
-  ){
-
-    respond(
-      "আমি ময়না পাখি। তোমার ব্যক্তিগত এআই অ্যাসিস্ট্যান্ট।"
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     WHAT CAN YOU DO
-  ----------------------------------------------- */
-
-  if(
-    c.includes("কি করতে পার") ||
-    c.includes("কী করতে পার") ||
-    c.includes("কি কি করতে পার") ||
-    c.includes("কী কী করতে পার")
-  ){
-
-    respond(
-      "আমি সময় ও তারিখ বলতে, গুগল সার্চ করতে, ইউটিউব খুলতে, হিসাব করতে, টাইমার দিতে এবং আরও কিছু কাজ করতে পারি।"
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     TIME
-  ----------------------------------------------- */
-
-  if(
-    c.includes("সময়") ||
-    c.includes("সময়") ||
-    c.includes("টাইম") ||
-    c.includes("কয়টা বাজে") ||
-    c.includes("কয়টা বাজে")
-  ){
-
-    const now =
-      new Date();
-
-
-    const time =
-      now.toLocaleTimeString(
-        "bn-BD",
-        {
-          hour:"numeric",
-          minute:"numeric"
-        }
-      );
-
-
-    respond(
-      "এখন সময় " +
-      time +
-      "।"
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     DATE
-  ----------------------------------------------- */
-
-  if(
-    c.includes("আজ কত তারিখ") ||
-    c.includes("আজকের তারিখ") ||
-    c.includes("তারিখ কত")
-  ){
-
-    const now =
-      new Date();
-
-
-    const date =
-      now.toLocaleDateString(
-        "bn-BD",
-        {
-          year:"numeric",
-          month:"long",
-          day:"numeric"
-        }
-      );
-
-
-    respond(
-      "আজ " +
-      date +
-      "।"
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     CALCULATOR
-  ----------------------------------------------- */
-
-  if(
-    c.includes("কত হবে") ||
-    c.includes("হিসাব কর") ||
-    c.includes("হিসাব") ||
-    c.includes("যোগ") ||
-    c.includes("বিয়োগ") ||
-    c.includes("বিয়োগ") ||
-    c.includes("গুণ") ||
-    c.includes("ভাগ")
-  ){
-
-    const result =
-      calculateExpression(c);
-
-
-    if(result !== null){
-
-      respond(
-        "হিসাবের ফলাফল " +
-        result +
-        "।"
-      );
-
-      return;
-
-    }
-
-  }
-
-
-  /* -----------------------------------------------
-     GOOGLE SEARCH
-  ----------------------------------------------- */
-
-  if(
-    c.startsWith("গুগলে") ||
-    c.startsWith("google এ") ||
-    c.startsWith("google-এ") ||
-    c.startsWith("গুগল সার্চ")
-  ){
-
-    let query =
-      c
-        .replace("গুগলে","")
-        .replace("google এ","")
-        .replace("google-এ","")
-        .replace("গুগল সার্চ","")
-        .trim();
-
-
-    if(!query){
-
-      respond(
-        "কী সার্চ করতে হবে বলো।"
-      );
-
-      return;
-
-    }
-
-
-    respond(
-      "ঠিক আছে। গুগলে সার্চ করছি।"
-    );
-
-
-    setTimeout(
-      function(){
-
-        googleSearch(query);
-
-      },
-      1000
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     YOUTUBE SEARCH
-  ----------------------------------------------- */
-
-  if(
-    c.startsWith("ইউটিউবে") ||
-    c.startsWith("youtube এ") ||
-    c.startsWith("youtube-এ") ||
-    c.startsWith("ইউটিউব সার্চ")
-  ){
-
-    let query =
-      c
-        .replace("ইউটিউবে","")
-        .replace("youtube এ","")
-        .replace("youtube-এ","")
-        .replace("ইউটিউব সার্চ","")
-        .trim();
-
-
-    if(!query){
-
-      respond(
-        "ইউটিউবে কী খুঁজতে হবে বলো।"
-      );
-
-      return;
-
-    }
-
-
-    respond(
-      "ঠিক আছে। ইউটিউবে সার্চ করছি।"
-    );
-
-
-    setTimeout(
-      function(){
-
-        youtubeSearch(query);
-
-      },
-      1000
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     YOUTUBE OPEN
-  ----------------------------------------------- */
-
-  if(
-    c.includes("youtube") ||
-    c.includes("ইউটিউব")
-  ){
-
-    respond(
-      "আচ্ছা। ইউটিউব খুলছি।"
-    );
-
-
-    setTimeout(
-      function(){
-
-        openURL(
-          "https://www.youtube.com/"
-        );
-
-      },
-      1000
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     GOOGLE OPEN
-  ----------------------------------------------- */
-
-  if(
-    c.includes("google") ||
-    c.includes("গুগল")
-  ){
-
-    respond(
-      "ঠিক আছে। গুগল খুলছি।"
-    );
-
-
-    setTimeout(
-      function(){
-
-        openURL(
-          "https://www.google.com/"
-        );
-
-      },
-      1000
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     FACEBOOK
-  ----------------------------------------------- */
-
-  if(
-    c.includes("facebook") ||
-    c.includes("ফেসবুক")
-  ){
-
-    respond(
-      "আচ্ছা। ফেসবুক খুলছি।"
-    );
-
-
-    setTimeout(
-      function(){
-
-        openURL(
-          "https://www.facebook.com/"
-        );
-
-      },
-      1000
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     WEATHER
-  ----------------------------------------------- */
-
-  if(
-    c.includes("আবহাওয়া") ||
-    c.includes("আবহাওয়া") ||
-    c.includes("weather")
-  ){
-
-    respond(
-      "ঠিক আছে। আবহাওয়ার তথ্য দেখাচ্ছি।"
-    );
-
-
-    setTimeout(
-      function(){
-
-        openURL(
-          "https://www.google.com/search?q=আজকের+আবহাওয়া"
-        );
-
-      },
-      1000
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     TIMER
-  ----------------------------------------------- */
-
-  if(
-    c.includes("মিনিটের টাইমার") ||
-    c.includes("মিনিট টাইমার")
-  ){
-
-    const match =
-      c.match(
-        /(\d+)\s*মিনিট/
-      );
-
-
-    if(match){
-
-      const minutes =
-        Number(
-          match[1]
-        );
-
-
-      if(
-        minutes > 0 &&
-        minutes <= 120
-      ){
-
-        startTimer(
-          minutes
-        );
-
-        return;
-
-      }
-
-    }
-
-
-    respond(
-      "কত মিনিটের টাইমার দিতে হবে বলো।"
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     THANK YOU
-  ----------------------------------------------- */
-
-  if(
-    c.includes("ধন্যবাদ") ||
-    c.includes("থ্যাংক ইউ") ||
-    c.includes("thank you")
-  ){
-
-    respond(
-      "স্বাগতম। আর কোনো কাজে সাহায্য করতে পারি?"
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     GOOD MORNING
-  ----------------------------------------------- */
-
-  if(
-    c.includes("শুভ সকাল") ||
-    c.includes("গুড মর্নিং")
-  ){
-
-    respond(
-      "শুভ সকাল। আশা করি আজকের দিনটা ভালো কাটবে।"
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     GOOD NIGHT
-  ----------------------------------------------- */
-
-  if(
-    c.includes("শুভ রাত্রি") ||
-    c.includes("শুভ রাত") ||
-    c.includes("গুড নাইট")
-  ){
-
-    respond(
-      "শুভ রাত্রি। ভালোভাবে বিশ্রাম নাও।"
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     YES
-  ----------------------------------------------- */
-
-  if(
-    c === "হ্যাঁ" ||
-    c === "হ্যা" ||
-    c === "হুম"
-  ){
-
-    respond(
-      "ঠিক আছে।"
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     NO
-  ----------------------------------------------- */
-
-  if(
-    c === "না"
-  ){
-
-    respond(
-      "আচ্ছা, ঠিক আছে।"
-    );
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     UNKNOWN
-  ----------------------------------------------- */
-
-  respond(
-    "হুম, এই কাজটা এখনো আমাকে শেখানো হয়নি। চাইলে আমাকে আরও কাজ শেখানো যাবে।"
+  window.open(
+    "https://www.google.com/",
+    "_blank"
   );
 
 }
 
 
-/* =================================================
-   CLICK COMMAND TAG
-================================================= */
+/* =========================================
+   YOUTUBE
+========================================= */
 
-const commandTags =
-  document.querySelectorAll(
-    ".commandTag"
+function openYouTube(){
+
+  window.open(
+    "https://www.youtube.com/",
+    "_blank"
   );
 
-
-commandTags.forEach(
-  function(tag){
-
-    tag.addEventListener(
-      "click",
-      function(){
-
-        const text =
-          tag.getAttribute(
-            "data-command"
-          );
+}
 
 
-        userText.innerText =
-          "তুমি বলেছ: " +
-          text;
+/* =========================================
+   MAPS
+========================================= */
+
+function openMaps(){
+
+  window.open(
+    "https://maps.google.com/",
+    "_blank"
+  );
+
+}
 
 
-        processCommand(
-          text
-        );
+/* =========================================
+   GMAIL
+========================================= */
 
+function openGmail(){
+
+  window.open(
+    "https://mail.google.com/",
+    "_blank"
+  );
+
+}
+
+
+/* =========================================
+   GOOGLE SEARCH
+========================================= */
+
+function googleSearch(){
+
+  const query =
+    prompt(
+      "কী সার্চ করতে চাও?"
+    );
+
+
+  if(!query)
+    return;
+
+
+  window.open(
+    "https://www.google.com/search?q=" +
+    encodeURIComponent(query),
+    "_blank"
+  );
+
+}
+
+
+/* =========================================
+   YOUTUBE SEARCH
+========================================= */
+
+function youtubeSearch(){
+
+  const query =
+    prompt(
+      "YouTube-এ কী খুঁজবে?"
+    );
+
+
+  if(!query)
+    return;
+
+
+  window.open(
+    "https://www.youtube.com/results?search_query=" +
+    encodeURIComponent(query),
+    "_blank"
+  );
+
+}
+
+
+/* =========================================
+   BATTERY
+========================================= */
+
+async function batteryInfo(){
+
+  if(!navigator.getBattery){
+
+    respond(
+      "তোমার ব্রাউজার ব্যাটারির তথ্য দেওয়া সমর্থন করে না।"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    const battery =
+      await navigator.getBattery();
+
+
+    const level =
+      Math.round(
+        battery.level * 100
+      );
+
+
+    if(battery.charging){
+
+      respond(
+        "তোমার ফোনের ব্যাটারি " +
+        level +
+        " শতাংশ। এখন চার্জ হচ্ছে। 🔋"
+      );
+
+    }else{
+
+      respond(
+        "তোমার ফোনের ব্যাটারি " +
+        level +
+        " শতাংশ। 🔋"
+      );
+
+    }
+
+  }catch(e){
+
+    respond(
+      "ব্যাটারির তথ্য পাওয়া যাচ্ছে না।"
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   TIME
+========================================= */
+
+function tellTime(){
+
+  const now =
+    new Date();
+
+
+  let time =
+    now.toLocaleTimeString(
+      "bn-BD",
+      {
+        hour:"numeric",
+        minute:"2-digit"
       }
     );
+
+
+  respond(
+    "এখন সময় " +
+    time +
+    "। 🕐"
+  );
+
+}
+
+
+/* =========================================
+   DATE
+========================================= */
+
+function tellDate(){
+
+  const now =
+    new Date();
+
+
+  const date =
+    now.toLocaleDateString(
+      "bn-BD",
+      {
+        weekday:"long",
+        year:"numeric",
+        month:"long",
+        day:"numeric"
+      }
+    );
+
+
+  respond(
+    "আজ " +
+    date +
+    "। 📅"
+  );
+
+}
+
+
+/* =========================================
+   OPEN EMAIL
+========================================= */
+
+function openEmail(){
+
+  window.location.href =
+    "mailto:";
+
+}
+
+
+/* =========================================
+   PROCESS COMMAND
+========================================= */
+
+function processCommand(originalText){
+
+  let text =
+    normalize(originalText);
+
+
+  text =
+    convertBanglaNumbers(text);
+
+
+  if(!text)
+    return;
+
+
+  /* ---------- GREETING ---------- */
+
+  if(
+    text.includes("হ্যালো") ||
+    text.includes("হাই") ||
+    text.includes("hello")
+  ){
+
+    respond(
+      "হ্যালো ❤️ আমি এখানে আছি। বলো কী করতে হবে?"
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- HOW ARE YOU ---------- */
+
+  if(
+    text.includes("কেমন আছো") ||
+    text.includes("কেমন আছ")
+  ){
+
+    respond(
+      "আমি ভালো আছি। তোমার সাথে কথা বলতে পেরে আমারও ভালো লাগছে। 🐦❤️"
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- WHO ---------- */
+
+  if(
+    text.includes("তুমি কে") ||
+    text.includes("তোমার নাম কি") ||
+    text.includes("তোমার নাম কী")
+  ){
+
+    respond(
+      "আমি ময়না পাখি। তোমার ছোট্ট ভয়েস অ্যাসিস্ট্যান্ট। 🐦"
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- CAPABILITY ---------- */
+
+  if(
+    text.includes("কি করতে পারো") ||
+    text.includes("কী করতে পারো") ||
+    text.includes("কি পারো") ||
+    text.includes("কী পারো")
+  ){
+
+    respond(
+      "আমি সময় ও তারিখ বলতে পারি, ব্যাটারি দেখতে পারি, গুগল, ইউটিউব, ম্যাপ, জিমেইল, ক্যামেরা, গ্যালারি, সেটিংস, ফোন ও মেসেজের মতো কাজ খুলে দিতে পারি।"
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- PHONE ---------- */
+
+  if(
+    text.includes("ফোন করো") ||
+    text.includes("কল করো") ||
+    text.includes("ফোন খোলো") ||
+    text.includes("ডায়ালার খোলো") ||
+    text.includes("ডায়ালার খোলো")
+  ){
+
+    respond(
+      "ফোন অ্যাপ খোলার চেষ্টা করছি। 📞"
+    );
+
+    setTimeout(
+      openPhone,
+      700
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- SMS ---------- */
+
+  if(
+    text.includes("মেসেজ খোলো") ||
+    text.includes("এসএমএস খোলো") ||
+    text.includes("sms খোলো")
+  ){
+
+    respond(
+      "মেসেজ অ্যাপ খোলার চেষ্টা করছি। 💬"
+    );
+
+    setTimeout(
+      openSMS,
+      700
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- CONTACT ---------- */
+
+  if(
+    text.includes("কন্টাক্ট খোলো") ||
+    text.includes("কনট্যাক্ট খোলো") ||
+    text.includes("নাম্বার খোলো")
+  ){
+
+    respond(
+      "কন্টাক্ট খোলার চেষ্টা করছি। 👤"
+    );
+
+    setTimeout(
+      openContacts,
+      700
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- CAMERA ---------- */
+
+  if(
+    text.includes("ক্যামেরা খোলো") ||
+    text.includes("ক্যামেরা চালু করো")
+  ){
+
+    respond(
+      "ক্যামেরা খোলার চেষ্টা করছি। 📷"
+    );
+
+    setTimeout(
+      openCamera,
+      700
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- GALLERY ---------- */
+
+  if(
+    text.includes("গ্যালারি খোলো") ||
+    text.includes("ছবি খোলো")
+  ){
+
+    respond(
+      "গ্যালারি খোলার চেষ্টা করছি। 🖼️"
+    );
+
+    setTimeout(
+      openGallery,
+      700
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- SETTINGS ---------- */
+
+  if(
+    text.includes("সেটিংস খোলো") ||
+    text.includes("সেটিং খোলো")
+  ){
+
+    respond(
+      "ফোনের সেটিংস খোলার চেষ্টা করছি। ⚙️"
+    );
+
+    setTimeout(
+      openSettings,
+      700
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- GOOGLE ---------- */
+
+  if(
+    text.includes("গুগল খোলো") ||
+    text.includes("google খোলো")
+  ){
+
+    respond(
+      "গুগল খুলছি। 🌐"
+    );
+
+    setTimeout(
+      openGoogle,
+      700
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- YOUTUBE ---------- */
+
+  if(
+    text.includes("ইউটিউব খোলো") ||
+    text.includes("youtube খোলো")
+  ){
+
+    respond(
+      "YouTube খুলছি। ▶️"
+    );
+
+    setTimeout(
+      openYouTube,
+      700
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- MAP ---------- */
+
+  if(
+    text.includes("ম্যাপ খোলো") ||
+    text.includes("গুগল ম্যাপ খোলো") ||
+    text.includes("মানচিত্র খোলো")
+  ){
+
+    respond(
+      "Google Maps খুলছি। 📍"
+    );
+
+    setTimeout(
+      openMaps,
+      700
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- GMAIL ---------- */
+
+  if(
+    text.includes("জিমেইল খোলো") ||
+    text.includes("gmail খোলো") ||
+    text.includes("ইমেইল খোলো")
+  ){
+
+    respond(
+      "Gmail খুলছি। 📧"
+    );
+
+    setTimeout(
+      openGmail,
+      700
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- EMAIL ---------- */
+
+  if(
+    text.includes("ইমেইল লিখব") ||
+    text.includes("মেইল লিখব")
+  ){
+
+    respond(
+      "ইমেইল লেখার জায়গা খুলছি। 📧"
+    );
+
+    setTimeout(
+      openEmail,
+      700
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- SEARCH ---------- */
+
+  if(
+    text.includes("গুগলে সার্চ করো") ||
+    text.includes("গুগলে খুঁজো") ||
+    text.includes("কিছু সার্চ করো")
+  ){
+
+    respond(
+      "গুগলে কী খুঁজবে সেটা বলো।"
+    );
+
+    setTimeout(
+      googleSearch,
+      1000
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- YOUTUBE SEARCH ---------- */
+
+  if(
+    text.includes("ইউটিউবে সার্চ করো") ||
+    text.includes("ইউটিউবে খুঁজো")
+  ){
+
+    respond(
+      "YouTube-এ কী খুঁজবে সেটা বলো।"
+    );
+
+    setTimeout(
+      youtubeSearch,
+      1000
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- BATTERY ---------- */
+
+  if(
+    text.includes("ব্যাটারি কত") ||
+    text.includes("চার্জ কত") ||
+    text.includes("ব্যাটারি দেখাও")
+  ){
+
+    batteryInfo();
+
+    return;
+
+  }
+
+
+  /* ---------- TIME ---------- */
+
+  if(
+    text.includes("সময় কত") ||
+    text.includes("সময় কত") ||
+    text.includes("এখন কয়টা") ||
+    text.includes("এখন কয়টা")
+  ){
+
+    tellTime();
+
+    return;
+
+  }
+
+
+  /* ---------- DATE ---------- */
+
+  if(
+    text.includes("আজ কত তারিখ") ||
+    text.includes("আজকের তারিখ") ||
+    text.includes("আজ কি বার") ||
+    text.includes("আজ কী বার")
+  ){
+
+    tellDate();
+
+    return;
+
+  }
+
+
+  /* ---------- THANKS ---------- */
+
+  if(
+    text.includes("ধন্যবাদ") ||
+    text.includes("থ্যাংক ইউ") ||
+    text.includes("thank you")
+  ){
+
+    respond(
+      "তোমাকে স্বাগতম। ❤️"
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- GOOD MORNING ---------- */
+
+  if(
+    text.includes("শুভ সকাল") ||
+    text.includes("সুপ্রভাত")
+  ){
+
+    respond(
+      "শুভ সকাল। তোমার দিনটা সুন্দর হোক। 🌸"
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- GOOD NIGHT ---------- */
+
+  if(
+    text.includes("শুভ রাত্রি") ||
+    text.includes("শুভ রাত")
+  ){
+
+    respond(
+      "শুভ রাত্রি। ভালো থেকো। 🌙❤️"
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- YES ---------- */
+
+  if(
+    text === "হ্যাঁ" ||
+    text === "হ্যা"
+  ){
+
+    respond(
+      "ঠিক আছে। ❤️"
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- NO ---------- */
+
+  if(
+    text === "না"
+  ){
+
+    respond(
+      "ঠিক আছে। 😊"
+    );
+
+    return;
+
+  }
+
+
+  /* ---------- UNKNOWN ---------- */
+
+  respond(
+    "দুঃখিত, এই কমান্ডটি এখনো যোগ করা হয়নি। অন্যভাবে বলো।"
+  );
+
+}
+
+
+/* =========================================
+   MICROPHONE CLICK
+========================================= */
+
+mic.addEventListener(
+  "click",
+  () => {
+
+    if(!recognition){
+
+      respond(
+        "তোমার ব্রাউজারে ভয়েস কমান্ড সাপোর্ট নেই।"
+      );
+
+      return;
+
+    }
+
+
+    try{
+
+      recognition.start();
+
+    }catch(e){
+
+      console.log(e);
+
+    }
 
   }
 );
 
 
-/* =================================================
-   PAGE LOAD
-================================================= */
+/* =========================================
+   VOICE ON/OFF
+========================================= */
 
-window.addEventListener(
-  "load",
-  function(){
+voiceBtn.addEventListener(
+  "click",
+  () => {
 
-    loadVoices();
+    voiceEnabled =
+      !voiceEnabled;
 
-    setTimeout(
-      function(){
 
-        if(
-          availableVoices.length
-        ){
+    if(voiceEnabled){
 
-          console.log(
-            "Voice system ready"
-          );
+      voiceBtn.innerText =
+        "🔊 ভয়েস ON";
 
-        }
+      voiceBtn.classList.add(
+        "active"
+      );
 
-      },
-      1000
-    );
+      respond(
+        "ভয়েস চালু করেছি।"
+      );
+
+    }else{
+
+      speechSynthesis.cancel();
+
+      voiceBtn.innerText =
+        "🔇 ভয়েস OFF";
+
+      voiceBtn.classList.remove(
+        "active"
+      );
+
+    }
 
   }
+);
+
+
+/* =========================================
+   STOP VOICE
+========================================= */
+
+stopBtn.addEventListener(
+  "click",
+  () => {
+
+    if("speechSynthesis" in window){
+
+      speechSynthesis.cancel();
+
+    }
+
+    answer.innerText =
+      "ভয়েস বন্ধ করা হয়েছে।";
+
+  }
+);
+
+
+/* =========================================
+   CONVERSATION MODE
+========================================= */
+
+conversationBtn.addEventListener(
+  "click",
+  () => {
+
+    conversationMode =
+      !conversationMode;
+
+
+    if(conversationMode){
+
+      conversationBtn.innerText =
+        "🗣️ কথোপকথন ON";
+
+      conversationBtn.classList.add(
+        "active"
+      );
+
+      respond(
+        "কথোপকথন মোড চালু করেছি। আমি শুনতে থাকব।"
+      );
+
+    }else{
+
+      conversationBtn.innerText =
+        "🗣️ কথোপকথন OFF";
+
+      conversationBtn.classList.remove(
+        "active"
+      );
+
+      respond(
+        "কথোপকথন মোড বন্ধ করেছি।"
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+clearBtn.addEventListener(
+  "click",
+  () => {
+
+    answer.innerText =
+      "তোমার কথা শোনার অপেক্ষায় আছি ❤️";
+
+    speechSynthesis.cancel();
+
+  }
+);
+
+
+/* =========================================
+   QUICK COMMAND BUTTONS
+========================================= */
+
+document
+  .querySelectorAll(".command")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const command =
+          button.dataset.command;
+
+        processCommand(command);
+
+      }
+    );
+
+  });
+
+
+/* =========================================
+   INITIAL VOICE LOAD
+========================================= */
+
+setTimeout(
+  loadVoices,
+  1000
 );
 
 </script>
