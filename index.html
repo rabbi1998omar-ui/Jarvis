@@ -2,23 +2,14 @@
 <html lang="bn">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ময়না পাখি 🐦</title>
 
-<meta name="theme-color"
-content="#ffd6e8">
-
+<meta name="theme-color" content="#ffd6e8">
 
 <style>
-
-/* =========================
-   BASIC
-========================= */
 
 *{
   box-sizing:border-box;
@@ -27,229 +18,102 @@ content="#ffd6e8">
 }
 
 body{
-
   min-height:100vh;
-
-  font-family:
-    Arial,
-    "Noto Sans Bengali",
-    sans-serif;
-
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
   color:#5b3850;
 
   background:
-
-    radial-gradient(
-      circle at 20% 10%,
-      #fff5fa 0%,
-      transparent 30%
-    ),
-
-    radial-gradient(
-      circle at 85% 20%,
-      #eee4ff 0%,
-      transparent 30%
-    ),
-
-    linear-gradient(
-      160deg,
-      #fff0f7,
-      #f6edff,
-      #fff8fb
-    );
+    radial-gradient(circle at 20% 10%,#fff5fa 0%,transparent 30%),
+    radial-gradient(circle at 85% 20%,#eee4ff 0%,transparent 30%),
+    linear-gradient(160deg,#fff0f7,#f6edff,#fff8fb);
 
   overflow-x:hidden;
 }
 
-
-/* =========================
-   FLOATING HEARTS
-========================= */
-
 .heart{
-
   position:fixed;
-
   font-size:20px;
-
   opacity:.35;
-
   pointer-events:none;
-
-  animation:
-    floatHeart 7s linear infinite;
-
+  animation:floatHeart 7s linear infinite;
 }
 
-.heart1{
-  left:8%;
-  top:80%;
-}
-
-.heart2{
-  left:85%;
-  top:65%;
-  animation-delay:2s;
-}
-
-.heart3{
-  left:15%;
-  top:30%;
-  animation-delay:4s;
-}
-
-.heart4{
-  left:75%;
-  top:35%;
-  animation-delay:1s;
-}
-
+.heart1{left:8%;top:80%}
+.heart2{left:85%;top:65%;animation-delay:2s}
+.heart3{left:15%;top:30%;animation-delay:4s}
+.heart4{left:75%;top:35%;animation-delay:1s}
 
 @keyframes floatHeart{
-
   0%{
     transform:translateY(30px);
     opacity:0;
   }
-
-  30%{
-    opacity:.4;
-  }
-
+  30%{opacity:.4}
   100%{
     transform:translateY(-160px);
     opacity:0;
   }
-
 }
-
-
-/* =========================
-   APP
-========================= */
 
 .app{
-
   width:100%;
-
   max-width:520px;
-
   min-height:100vh;
-
   margin:auto;
-
   padding:20px 18px;
-
   display:flex;
-
   flex-direction:column;
-
 }
-
-
-/* =========================
-   HEADER
-========================= */
 
 .header{
-
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
-
   padding:10px 4px;
-
 }
-
 
 .logo{
-
   font-size:23px;
-
   font-weight:bold;
-
   color:#b34f83;
-
   letter-spacing:1px;
-
 }
-
 
 .logo span{
-
   font-size:27px;
-
 }
-
 
 .status{
-
   display:flex;
-
   align-items:center;
-
   gap:7px;
-
   font-size:11px;
-
   color:#58a87a;
-
-  background:
-    rgba(255,255,255,.72);
-
+  background:rgba(255,255,255,.72);
   padding:7px 11px;
-
   border-radius:20px;
-
-  box-shadow:
-    0 5px 15px
-    rgba(150,80,120,.08);
-
+  box-shadow:0 5px 15px rgba(150,80,120,.08);
 }
-
 
 .statusDot{
-
   width:7px;
-
   height:7px;
-
   border-radius:50%;
-
   background:#58c98a;
-
-  box-shadow:
-    0 0 10px #58c98a;
-
+  box-shadow:0 0 10px #58c98a;
 }
 
-
-/* =========================
-   CHARACTER AREA
-========================= */
-
 .character{
-
   width:215px;
-
   height:215px;
-
   margin:30px auto 20px;
-
   border-radius:50%;
-
   position:relative;
-
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
   background:
-
     radial-gradient(
       circle,
       #ffffff 0%,
@@ -259,633 +123,307 @@ body{
     );
 
   box-shadow:
-
-    0 15px 50px
-    rgba(196,104,150,.22),
-
-    inset 0 0 30px
-    rgba(255,255,255,.8);
-
+    0 15px 50px rgba(196,104,150,.22),
+    inset 0 0 30px rgba(255,255,255,.8);
 }
-
-
-/* rotating ring */
 
 .character::before{
-
   content:"";
-
   position:absolute;
-
   width:215px;
-
   height:215px;
-
   border-radius:50%;
-
-  border:1px solid
-    rgba(211,111,161,.3);
-
-  animation:
-    rotate 12s linear infinite;
-
+  border:1px solid rgba(211,111,161,.3);
+  animation:rotate 12s linear infinite;
 }
-
-
-/* second ring */
 
 .character::after{
-
   content:"";
-
   position:absolute;
-
   width:180px;
-
   height:180px;
-
   border-radius:50%;
-
-  border:1px dashed
-    rgba(166,126,201,.35);
-
-  animation:
-    rotateReverse 9s linear infinite;
-
+  border:1px dashed rgba(166,126,201,.35);
+  animation:rotateReverse 9s linear infinite;
 }
-
-
-/* =========================
-   MYNA FACE
-========================= */
 
 .myna{
-
   position:relative;
-
   width:120px;
-
   height:120px;
-
   border-radius:50%;
 
   background:
-
-    linear-gradient(
-      145deg,
-      #fffdfd,
-      #ffe4ef
-    );
+    linear-gradient(145deg,#fffdfd,#ffe4ef);
 
   box-shadow:
-    0 10px 30px
-    rgba(150,70,110,.15);
+    0 10px 30px rgba(150,70,110,.15);
 
-  animation:
-    breathe 3s ease-in-out infinite;
-
+  animation:breathe 3s ease-in-out infinite;
 }
-
-
-/* eyes */
 
 .eye{
-
   position:absolute;
-
   width:15px;
-
   height:18px;
-
   border-radius:50%;
-
   background:#5b3d52;
-
   top:42px;
-
 }
-
 
 .eye::after{
-
   content:"";
-
   position:absolute;
-
   width:5px;
-
   height:5px;
-
   background:white;
-
   border-radius:50%;
-
   left:3px;
-
   top:3px;
-
 }
 
-
-.eye.left{
-  left:29px;
-}
-
-
-.eye.right{
-  right:29px;
-}
-
-
-/* blush */
+.eye.left{left:29px}
+.eye.right{right:29px}
 
 .blush{
-
   position:absolute;
-
   width:25px;
-
   height:12px;
-
   border-radius:50%;
-
   background:#ffb6d0;
-
   opacity:.65;
-
   top:68px;
-
 }
 
-
-.blush.left{
-  left:13px;
-}
-
-
-.blush.right{
-  right:13px;
-}
-
-
-/* beak */
+.blush.left{left:13px}
+.blush.right{right:13px}
 
 .beak{
-
   position:absolute;
-
   left:50%;
-
   top:57px;
-
-  transform:
-    translateX(-50%);
-
+  transform:translateX(-50%);
   width:0;
-
   height:0;
-
-  border-left:
-    13px solid transparent;
-
-  border-right:
-    13px solid transparent;
-
-  border-top:
-    18px solid #f3a04e;
-
+  border-left:13px solid transparent;
+  border-right:13px solid transparent;
+  border-top:18px solid #f3a04e;
 }
-
-
-/* ribbon */
 
 .ribbon{
-
   position:absolute;
-
   top:-8px;
-
   right:15px;
-
   font-size:31px;
-
 }
-
-
-/* =========================
-   ANIMATIONS
-========================= */
 
 @keyframes breathe{
-
-  0%,100%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.04);
-  }
-
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.04)}
 }
-
 
 @keyframes rotate{
-
-  from{
-    transform:rotate(0deg);
-  }
-
-  to{
-    transform:rotate(360deg);
-  }
-
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
 }
-
 
 @keyframes rotateReverse{
-
-  from{
-    transform:rotate(360deg);
-  }
-
-  to{
-    transform:rotate(0deg);
-  }
-
+  from{transform:rotate(360deg)}
+  to{transform:rotate(0deg)}
 }
-
-
-/* =========================
-   GREETING
-========================= */
 
 .greeting{
-
   text-align:center;
-
   margin-top:8px;
-
 }
-
 
 .greeting h1{
-
   font-size:28px;
-
   color:#a94c79;
-
   margin-bottom:7px;
-
 }
-
 
 .greeting p{
-
   color:#9a7488;
-
   font-size:14px;
-
 }
-
-
-/* =========================
-   COMMAND CARD
-========================= */
 
 .commandCard{
-
   margin-top:24px;
-
   min-height:95px;
-
   padding:18px;
-
   display:flex;
-
   justify-content:center;
-
   align-items:center;
-
   text-align:center;
-
   border-radius:24px;
 
-  background:
-    rgba(255,255,255,.75);
+  background:rgba(255,255,255,.75);
 
-  border:
-    1px solid
-    rgba(255,255,255,.95);
+  border:1px solid rgba(255,255,255,.95);
 
   box-shadow:
+    0 12px 35px rgba(155,83,125,.12);
 
-    0 12px 35px
-    rgba(155,83,125,.12);
-
-  backdrop-filter:
-    blur(15px);
-
+  backdrop-filter:blur(15px);
 }
-
 
 #command{
-
   font-size:15px;
-
   line-height:1.7;
-
   color:#68465a;
-
 }
-
-
-/* =========================
-   MICROPHONE
-========================= */
 
 .micArea{
-
   display:flex;
-
   justify-content:center;
-
   margin-top:25px;
-
 }
 
-
 .mic{
-
   width:84px;
-
   height:84px;
-
   border:none;
-
   border-radius:50%;
-
   cursor:pointer;
-
   color:white;
-
   font-size:31px;
 
   background:
-
-    linear-gradient(
-      145deg,
-      #ff8fba,
-      #bd80e8
-    );
+    linear-gradient(145deg,#ff8fba,#bd80e8);
 
   box-shadow:
-
-    0 12px 30px
-    rgba(190,100,155,.28),
-
-    0 0 25px
-    rgba(255,143,186,.25);
+    0 12px 30px rgba(190,100,155,.28),
+    0 0 25px rgba(255,143,186,.25);
 
   transition:.2s;
-
 }
-
 
 .mic:active{
-
   transform:scale(.90);
-
 }
-
 
 .mic.listening{
-
-  animation:
-    listening 1s infinite;
-
+  animation:listening 1s infinite;
 }
 
-
 @keyframes listening{
-
   0%,100%{
-
     transform:scale(1);
-
-    box-shadow:
-      0 0 20px #ff8fba;
-
+    box-shadow:0 0 20px #ff8fba;
   }
 
   50%{
-
     transform:scale(1.1);
-
-    box-shadow:
-      0 0 50px #bd80e8;
-
+    box-shadow:0 0 50px #bd80e8;
   }
-
 }
-
-
-/* =========================
-   COMMAND TITLE
-========================= */
 
 .sectionTitle{
-
   margin-top:30px;
-
   margin-bottom:12px;
-
   text-align:center;
-
   font-size:13px;
-
   color:#a2788c;
-
 }
-
-
-/* =========================
-   COMMAND BUTTONS
-========================= */
 
 .commands{
-
   display:flex;
-
   flex-wrap:wrap;
-
   justify-content:center;
-
   gap:9px;
-
 }
 
-
 .commandTag{
-
   padding:10px 14px;
-
   border-radius:22px;
 
-  background:
-    rgba(255,255,255,.72);
+  background:rgba(255,255,255,.72);
 
-  border:
-    1px solid
-    rgba(255,255,255,.9);
+  border:1px solid rgba(255,255,255,.9);
 
   color:#795569;
-
   font-size:12px;
 
   box-shadow:
-    0 5px 15px
-    rgba(150,80,120,.07);
-
+    0 5px 15px rgba(150,80,120,.07);
 }
-
-
-/* =========================
-   FOOTER
-========================= */
 
 .footer{
-
   margin-top:auto;
-
   padding-top:35px;
-
   text-align:center;
-
   color:#b08e9f;
-
   font-size:11px;
-
 }
-
-
-/* =========================
-   MOBILE
-========================= */
 
 @media(max-height:700px){
 
   .character{
-
     width:175px;
-
     height:175px;
-
   }
 
   .character::before{
-
     width:175px;
-
     height:175px;
-
   }
 
   .character::after{
-
     width:145px;
-
     height:145px;
-
   }
 
   .myna{
-
     width:100px;
-
     height:100px;
-
   }
 
   .eye{
-
     top:34px;
-
   }
 
   .beak{
-
     top:49px;
-
   }
-
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- FLOATING DECORATION -->
-
 <div class="heart heart1">♡</div>
-
 <div class="heart heart2">♡</div>
-
 <div class="heart heart3">♡</div>
-
 <div class="heart heart4">♡</div>
 
-
 <div class="app">
-
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <div class="header">
 
   <div class="logo">
-
     <span>🐦</span>
-
     ময়না পাখি
-
   </div>
 
-
   <div class="status">
-
     <span class="statusDot"></span>
-
     ONLINE
-
   </div>
 
 </div>
-
-
-<!-- =========================
-     MYNA CHARACTER
-========================= -->
 
 <div class="character">
 
   <div class="myna">
 
-    <div class="ribbon">
-      🎀
-    </div>
+    <div class="ribbon">🎀</div>
 
     <div class="eye left"></div>
-
     <div class="eye right"></div>
 
     <div class="blush left"></div>
-
     <div class="blush right"></div>
 
     <div class="beak"></div>
@@ -894,16 +432,9 @@ body{
 
 </div>
 
-
-<!-- =========================
-     GREETING
-========================= -->
-
 <div class="greeting">
 
-  <h1>
-    হ্যালো 🌸
-  </h1>
+  <h1>হ্যালো 🌸</h1>
 
   <p>
     আমি তোমার ময়না পাখি 🐦
@@ -911,25 +442,13 @@ body{
 
 </div>
 
-
-<!-- =========================
-     COMMAND RESULT
-========================= -->
-
 <div class="commandCard">
 
   <div id="command">
-
     মাইক্রোফোনে চাপ দিয়ে কথা বলো... 💕
-
   </div>
 
 </div>
-
-
-<!-- =========================
-     MICROPHONE
-========================= -->
 
 <div class="micArea">
 
@@ -937,82 +456,35 @@ body{
     class="mic"
     id="mic"
     aria-label="ময়না পাখির সাথে কথা বলুন">
-
     🎙️
-
   </button>
 
 </div>
 
-
-<!-- =========================
-     COMMAND TITLE
-========================= -->
-
 <div class="sectionTitle">
-
   আমাকে যা বলতে পারো 🌷
-
 </div>
-
-
-<!-- =========================
-     COMMAND LIST
-========================= -->
 
 <div class="commands">
 
-  <div class="commandTag">
-    হ্যালো 👋
-  </div>
-
-  <div class="commandTag">
-    ময়না পাখি 🐦
-  </div>
-
-  <div class="commandTag">
-    কেমন আছো? 😊
-  </div>
-
-  <div class="commandTag">
-    সময় কত? ⏰
-  </div>
-
-  <div class="commandTag">
-    আজ কত তারিখ? 📅
-  </div>
-
-  <div class="commandTag">
-    YouTube খোলো ▶️
-  </div>
-
-  <div class="commandTag">
-    Google খোলো 🔎
-  </div>
-
-  <div class="commandTag">
-    কী করতে পারো? 🌸
-  </div>
+  <div class="commandTag">হ্যালো 👋</div>
+  <div class="commandTag">ময়না পাখি 🐦</div>
+  <div class="commandTag">কেমন আছো? 😊</div>
+  <div class="commandTag">সময় কত? ⏰</div>
+  <div class="commandTag">আজ কত তারিখ? 📅</div>
+  <div class="commandTag">YouTube খোলো ▶️</div>
+  <div class="commandTag">Google খোলো 🔎</div>
+  <div class="commandTag">কী করতে পারো? 🌸</div>
 
 </div>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <div class="footer">
-
   ময়না পাখি 🐦 • Personal AI Assistant
-
 </div>
 
-
 </div>
-
 
 <script>
-
 
 /* =================================================
    ELEMENTS
@@ -1033,59 +505,42 @@ const SpeechRecognition =
   window.SpeechRecognition ||
   window.webkitSpeechRecognition;
 
-
 let recognition = null;
-
 
 if(SpeechRecognition){
 
   recognition =
     new SpeechRecognition();
 
-
   recognition.lang =
     "bn-BD";
-
 
   recognition.continuous =
     false;
 
-
   recognition.interimResults =
     false;
-
 
   recognition.onstart =
     function(){
 
-      mic.classList.add(
-        "listening"
-      );
-
+      mic.classList.add("listening");
 
       command.innerText =
         "হুম... বলো, শুনছি 😊";
-
     };
-
 
   recognition.onend =
     function(){
 
-      mic.classList.remove(
-        "listening"
-      );
+      mic.classList.remove("listening");
 
     };
-
 
   recognition.onerror =
     function(){
 
-      mic.classList.remove(
-        "listening"
-      );
-
+      mic.classList.remove("listening");
 
       respond(
         "উফ্, কথাটা ঠিক বুঝতে পারিনি। আবার বলো তো"
@@ -1093,26 +548,20 @@ if(SpeechRecognition){
 
     };
 
-
   recognition.onresult =
     function(event){
 
       const text =
-        event.results[0][0]
-        .transcript;
-
+        event.results[0][0].transcript;
 
       command.innerText =
         "তুমি বলেছ: " + text;
-
 
       processCommand(text);
 
     };
 
 }
-
-
 else{
 
   command.innerText =
@@ -1139,13 +588,11 @@ mic.addEventListener(
 
     }
 
-
     try{
 
       recognition.start();
 
     }
-
     catch(error){
 
       console.log(
@@ -1160,7 +607,7 @@ mic.addEventListener(
 
 
 /* =================================================
-   EMOJI REMOVE FOR SPEECH
+   REMOVE EMOJI
 ================================================= */
 
 function cleanForSpeech(text){
@@ -1168,21 +615,11 @@ function cleanForSpeech(text){
   let result =
     String(text);
 
-
-  /*
-    সাধারণ emoji বাদ
-  */
-
   result =
     result.replace(
       /[\u{1F000}-\u{1FAFF}]/gu,
       ""
     );
-
-
-  /*
-    বিভিন্ন symbol বাদ
-  */
 
   result =
     result.replace(
@@ -1190,21 +627,11 @@ function cleanForSpeech(text){
       ""
     );
 
-
-  /*
-    কিছু বিশেষ emoji
-  */
-
   result =
     result.replace(
       /[❤️💕💗💖💓💞💝💘💟💜💙💚💛🧡🤍🖤🤎🩷🩵🩶🫶🥰😘😊😄😃😁😌🌸🌷🌹🌺🌻🌼🎀🐦👋⏰📅▶️🔎]/gu,
       ""
     );
-
-
-  /*
-    অতিরিক্ত space ঠিক করা
-  */
 
   result =
     result.replace(
@@ -1212,20 +639,73 @@ function cleanForSpeech(text){
       " "
     );
 
-
   return result.trim();
 
 }
 
 
 /* =================================================
-   FIND BEST VOICE
+   VOICE STORAGE
 ================================================= */
 
-function getBestVoice(){
+let availableVoices = [];
+
+
+/* =================================================
+   LOAD VOICES
+================================================= */
+
+function loadVoices(){
+
+  if(!("speechSynthesis" in window)){
+    return;
+  }
+
+  availableVoices =
+    speechSynthesis.getVoices();
+
+  console.log(
+    "Available voices:",
+    availableVoices.map(
+      v => v.name + " | " + v.lang
+    )
+  );
+
+}
+
+
+/*
+   Android Chrome-এ voice পরে load হতে পারে।
+*/
+
+if("speechSynthesis" in window){
+
+  loadVoices();
+
+  speechSynthesis.onvoiceschanged =
+    function(){
+
+      loadVoices();
+
+    };
+
+}
+
+
+/* =================================================
+   FIND BANGLA VOICE
+================================================= */
+
+function getBanglaVoice(){
+
+  if(!availableVoices.length){
+
+    loadVoices();
+
+  }
 
   const voices =
-    speechSynthesis.getVoices();
+    availableVoices;
 
 
   if(!voices.length){
@@ -1235,125 +715,103 @@ function getBestVoice(){
   }
 
 
-  /*
-    ১. বাংলা female voice
-  */
+  /* -----------------------------------------------
+     বাংলা voice
+  ----------------------------------------------- */
 
-  let voice =
-    voices.find(
+  const bangla =
+    voices.filter(
       function(v){
-
-        const name =
-          (v.name || "")
-          .toLowerCase();
 
         const lang =
-          (v.lang || "")
-          .toLowerCase();
-
+          String(v.lang || "")
+            .toLowerCase();
 
         return (
-
+          lang === "bn-bd" ||
+          lang === "bn-in" ||
           lang.startsWith("bn")
-
-          &&
-
-          (
-            name.includes("female") ||
-            name.includes("woman") ||
-            name.includes("girl") ||
-            name.includes("zira") ||
-            name.includes("samantha")
-          )
-
         );
 
       }
     );
 
 
-  if(voice){
-
-    return voice;
-
-  }
-
-
-  /*
-    ২. যেকোনো বাংলা voice
-  */
-
-  voice =
-    voices.find(
-      function(v){
-
-        return (
-
-          v.lang &&
-
-          v.lang
-            .toLowerCase()
-            .startsWith("bn")
-
-        );
-
-      }
-    );
+  console.log(
+    "Bangla voices:",
+    bangla.map(
+      v => v.name + " | " + v.lang
+    )
+  );
 
 
-  if(voice){
+  if(!bangla.length){
 
-    return voice;
+    return null;
 
   }
 
 
-  /*
-    ৩. পরিচিত female voice
-  */
+  /* -----------------------------------------------
+     নারী voice-এর সম্ভাব্য নাম
+  ----------------------------------------------- */
 
-  voice =
-    voices.find(
+  const femaleKeywords = [
+
+    "female",
+    "woman",
+    "girl",
+    "zira",
+    "samantha",
+    "susan",
+    "karen",
+    "aria",
+    "jenny",
+    "ava",
+    "emma",
+    "salli",
+    "neural",
+    "premium",
+    "natural"
+
+  ];
+
+
+  const female =
+    bangla.find(
       function(v){
 
         const name =
-          (v.name || "")
-          .toLowerCase();
+          String(v.name || "")
+            .toLowerCase();
 
-
-        return (
-
-          name.includes("female") ||
-          name.includes("woman") ||
-          name.includes("girl") ||
-          name.includes("zira") ||
-          name.includes("samantha")
-
+        return femaleKeywords.some(
+          keyword =>
+            name.includes(keyword)
         );
 
       }
     );
 
 
-  if(voice){
+  if(female){
 
-    return voice;
+    return female;
 
   }
 
 
   /*
-    ৪. Google voice
+     Google Bangla voice অগ্রাধিকার
   */
 
-  voice =
-    voices.find(
+  const google =
+    bangla.find(
       function(v){
 
         const name =
-          (v.name || "")
-          .toLowerCase();
-
+          String(v.name || "")
+            .toLowerCase();
 
         return name.includes("google");
 
@@ -1361,24 +819,24 @@ function getBestVoice(){
     );
 
 
-  if(voice){
+  if(google){
 
-    return voice;
+    return google;
 
   }
 
 
   /*
-    ৫. প্রথম voice
+     Bangla voice-এর প্রথমটি
   */
 
-  return voices[0] || null;
+  return bangla[0];
 
 }
 
 
 /* =================================================
-   TEXT TO SPEECH
+   SPEAK
 ================================================= */
 
 function speak(text){
@@ -1392,13 +850,6 @@ function speak(text){
   }
 
 
-  speechSynthesis.cancel();
-
-
-  /*
-    emoji বাদ দিয়ে text তৈরি
-  */
-
   const cleanText =
     cleanForSpeech(text);
 
@@ -1410,8 +861,22 @@ function speak(text){
   }
 
 
+  /*
+     আগের speech বন্ধ
+  */
+
+  speechSynthesis.cancel();
+
+
+  /*
+     Voice list এখনো না এলে আবার load
+  */
+
+  loadVoices();
+
+
   const voice =
-    getBestVoice();
+    getBanglaVoice();
 
 
   const speech =
@@ -1421,7 +886,17 @@ function speak(text){
 
 
   /*
-    voice নির্বাচন
+     বাংলা language
+  */
+
+  speech.lang =
+    voice && voice.lang
+      ? voice.lang
+      : "bn-BD";
+
+
+  /*
+     নির্বাচিত voice
   */
 
   if(voice){
@@ -1429,34 +904,56 @@ function speak(text){
     speech.voice =
       voice;
 
-
-    speech.lang =
-      voice.lang;
-
-  }
-
-  else{
-
-    speech.lang =
-      "bn-BD";
+    console.log(
+      "Selected voice:",
+      voice.name,
+      voice.lang
+    );
 
   }
 
 
   /*
-    নরম ও মিষ্টি sound
+     মিষ্টি ও স্বাভাবিক গতি
   */
 
   speech.rate =
-    0.88;
+    0.86;
 
+
+  /*
+     Pitch একটু বাড়ানো হয়েছে।
+     এটি voice-এর gender পরিবর্তন করে না,
+     শুধু স্বর কিছুটা উঁচু করে।
+  */
 
   speech.pitch =
-    1.30;
+    1.18;
 
 
   speech.volume =
     1;
+
+
+  speech.onstart =
+    function(){
+
+      console.log(
+        "Voice started"
+      );
+
+    };
+
+
+  speech.onerror =
+    function(event){
+
+      console.log(
+        "TTS error:",
+        event
+      );
+
+    };
 
 
   speechSynthesis.speak(
@@ -1472,17 +969,8 @@ function speak(text){
 
 function respond(text){
 
-  /*
-    স্ক্রিনে emoji সহ text থাকবে
-  */
-
   command.innerText =
     text;
-
-
-  /*
-    voice-এ emoji যাবে না
-  */
 
   speak(text);
 
@@ -1501,17 +989,11 @@ function processCommand(text){
       .trim();
 
 
-  /* ===============================================
-     MYNA
-  =============================================== */
-
   if(
-
     c.includes("ময়না") ||
     c.includes("ময়না") ||
     c.includes("পাখি") ||
     c.includes("moyna")
-
   ){
 
     respond(
@@ -1523,17 +1005,11 @@ function processCommand(text){
   }
 
 
-  /* ===============================================
-     HELLO
-  =============================================== */
-
   if(
-
     c.includes("হ্যালো") ||
     c.includes("হাই") ||
     c.includes("হেই") ||
     c.includes("hello")
-
   ){
 
     respond(
@@ -1545,16 +1021,10 @@ function processCommand(text){
   }
 
 
-  /* ===============================================
-     HOW ARE YOU
-  =============================================== */
-
   if(
-
     c.includes("কেমন আছ") ||
     c.includes("কেমন আছো") ||
     c.includes("ভালো আছ")
-
   ){
 
     respond(
@@ -1566,17 +1036,11 @@ function processCommand(text){
   }
 
 
-  /* ===============================================
-     WHAT ARE YOU DOING
-  =============================================== */
-
   if(
-
     c.includes("কি করছ") ||
     c.includes("কী করছ") ||
     c.includes("কি করছো") ||
     c.includes("কী করছো")
-
   ){
 
     respond(
@@ -1588,15 +1052,9 @@ function processCommand(text){
   }
 
 
-  /* ===============================================
-     WHO ARE YOU
-  =============================================== */
-
   if(
-
     c.includes("তুমি কে") ||
     c.includes("কে তুমি")
-
   ){
 
     respond(
@@ -1608,17 +1066,11 @@ function processCommand(text){
   }
 
 
-  /* ===============================================
-     WHAT CAN YOU DO
-  =============================================== */
-
   if(
-
     c.includes("কি করতে পার") ||
     c.includes("কী করতে পার") ||
     c.includes("কি কি করতে পার") ||
     c.includes("কী কী করতে পার")
-
   ){
 
     respond(
@@ -1630,23 +1082,16 @@ function processCommand(text){
   }
 
 
-  /* ===============================================
-     TIME
-  =============================================== */
-
   if(
-
     c.includes("সময়") ||
     c.includes("সময়") ||
     c.includes("টাইম") ||
     c.includes("কয়টা বাজে") ||
     c.includes("কয়টা বাজে")
-
   ){
 
     const now =
       new Date();
-
 
     const time =
       now.toLocaleTimeString(
@@ -1657,7 +1102,6 @@ function processCommand(text){
         }
       );
 
-
     respond(
       "এখন সময় " + time + " ⏰"
     );
@@ -1667,21 +1111,14 @@ function processCommand(text){
   }
 
 
-  /* ===============================================
-     DATE
-  =============================================== */
-
   if(
-
     c.includes("আজ কত তারিখ") ||
     c.includes("আজকের তারিখ") ||
     c.includes("তারিখ কত")
-
   ){
 
     const now =
       new Date();
-
 
     const date =
       now.toLocaleDateString(
@@ -1693,7 +1130,6 @@ function processCommand(text){
         }
       );
 
-
     respond(
       "আজ " + date + " 📅"
     );
@@ -1703,21 +1139,14 @@ function processCommand(text){
   }
 
 
-  /* ===============================================
-     YOUTUBE
-  =============================================== */
-
   if(
-
     c.includes("youtube") ||
     c.includes("ইউটিউব")
-
   ){
 
     respond(
       "আচ্ছা 🌸 ইউটিউব খুলছি।"
     );
-
 
     setTimeout(
       function(){
@@ -1729,27 +1158,19 @@ function processCommand(text){
       1200
     );
 
-
     return;
 
   }
 
 
-  /* ===============================================
-     GOOGLE
-  =============================================== */
-
   if(
-
     c.includes("google") ||
     c.includes("গুগল")
-
   ){
 
     respond(
       "ঠিক আছে 🌸 গুগল খুলছি।"
     );
-
 
     setTimeout(
       function(){
@@ -1761,27 +1182,19 @@ function processCommand(text){
       1200
     );
 
-
     return;
 
   }
 
 
-  /* ===============================================
-     FACEBOOK
-  =============================================== */
-
   if(
-
     c.includes("facebook") ||
     c.includes("ফেসবুক")
-
   ){
 
     respond(
       "আচ্ছা 🌸 ফেসবুক খুলছি।"
     );
-
 
     setTimeout(
       function(){
@@ -1793,22 +1206,15 @@ function processCommand(text){
       1200
     );
 
-
     return;
 
   }
 
 
-  /* ===============================================
-     THANK YOU
-  =============================================== */
-
   if(
-
     c.includes("ধন্যবাদ") ||
     c.includes("থ্যাংক ইউ") ||
     c.includes("thank you")
-
   ){
 
     respond(
@@ -1820,15 +1226,9 @@ function processCommand(text){
   }
 
 
-  /* ===============================================
-     GOOD MORNING
-  =============================================== */
-
   if(
-
     c.includes("শুভ সকাল") ||
     c.includes("গুড মর্নিং")
-
   ){
 
     respond(
@@ -1840,16 +1240,10 @@ function processCommand(text){
   }
 
 
-  /* ===============================================
-     GOOD NIGHT
-  =============================================== */
-
   if(
-
     c.includes("শুভ রাত্রি") ||
     c.includes("শুভ রাত") ||
     c.includes("গুড নাইট")
-
   ){
 
     respond(
@@ -1861,16 +1255,10 @@ function processCommand(text){
   }
 
 
-  /* ===============================================
-     YES
-  =============================================== */
-
   if(
-
     c === "হ্যাঁ" ||
     c === "হ্যা" ||
     c === "হুম"
-
   ){
 
     respond(
@@ -1881,10 +1269,6 @@ function processCommand(text){
 
   }
 
-
-  /* ===============================================
-     NO
-  =============================================== */
 
   if(
     c === "না"
@@ -1899,37 +1283,13 @@ function processCommand(text){
   }
 
 
-  /* ===============================================
-     UNKNOWN
-  =============================================== */
-
   respond(
     "হুম, এই কাজটা এখনো আমাকে শেখানো হয়নি 😊"
   );
 
 }
 
-
-/* =================================================
-   LOAD VOICES
-================================================= */
-
-if(
-  "speechSynthesis" in window
-){
-
-  speechSynthesis.onvoiceschanged =
-    function(){
-
-      speechSynthesis.getVoices();
-
-    };
-
-}
-
 </script>
 
-
 </body>
-
 </html>
