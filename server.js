@@ -4,6 +4,7 @@ const path = require("path");
 
 const PORT = process.env.PORT || 10000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+
 const INDEX_FILE = path.join(__dirname, "index.html");
 
 function sendJSON(res, status, data) {
@@ -35,11 +36,11 @@ function sendHTML(res) {
 }
 
 
-// ========================================
+// =====================================================
 // GEMINI AI
-// ========================================
+// =====================================================
 
-async function askAI(message) {
+async function askGemini(message) {
 
   if (!GEMINI_API_KEY) {
     throw new Error("GEMINI_API_KEY পাওয়া যায়নি");
@@ -62,10 +63,12 @@ async function askAI(message) {
         parts: [
           {
             text:
-              "তুমি ময়না পাখি নামে একজন বন্ধুসুলভ বাংলা AI ভয়েস অ্যাসিস্ট্যান্ট। " +
-              "ব্যবহারকারীর সাথে স্বাভাবিক ও সহজ বাংলায় কথা বলবে। " +
-              "উত্তর সংক্ষিপ্ত, পরিষ্কার এবং স্বাভাবিক রাখবে। " +
-              "ব্যবহারকারী বাংলা ভাষায় প্রশ্ন করলে বাংলায় উত্তর দেবে।"
+              "তোমার নাম ময়না পাখি। " +
+              "তুমি একজন বন্ধুসুলভ বাংলা AI ভয়েস অ্যাসিস্ট্যান্ট। " +
+              "ব্যবহারকারীর সাথে স্বাভাবিক, মিষ্টি ও সহজ বাংলায় কথা বলবে। " +
+              "ব্যবহারকারী বাংলা ভাষায় প্রশ্ন করলে বাংলায় উত্তর দেবে। " +
+              "প্রয়োজন হলে সংক্ষিপ্ত কিন্তু তথ্যপূর্ণ উত্তর দেবে। " +
+              "নিজেকে AI assistant হিসেবে পরিচয় দিতে পারো।"
           }
         ]
       },
@@ -73,7 +76,6 @@ async function askAI(message) {
       contents: [
         {
           role: "user",
-
           parts: [
             {
               text: message
@@ -86,7 +88,6 @@ async function askAI(message) {
         temperature: 0.7,
         maxOutputTokens: 1000
       }
-
     })
   });
 
@@ -94,14 +95,13 @@ async function askAI(message) {
 
   if (!response.ok) {
 
-    console.error("Gemini Error:", data);
+    console.error("Gemini API Error:", data);
 
     throw new Error(
       data?.error?.message ||
-      "Gemini থেকে উত্তর পাওয়া যায়নি"
+      "Gemini API থেকে উত্তর পাওয়া যায়নি"
     );
   }
-
 
   let answer = "";
 
@@ -114,7 +114,7 @@ async function askAI(message) {
 
     if (
       candidate.content &&
-      candidate.content.parts
+      Array.isArray(candidate.content.parts)
     ) {
 
       for (const part of candidate.content.parts) {
@@ -127,32 +127,32 @@ async function askAI(message) {
     }
   }
 
-
   if (!answer.trim()) {
     answer =
-      "দুঃখিত, এই মুহূর্তে কোনো উত্তর পাওয়া যায়নি।";
+      "দুঃখিত, এখন কোনো উত্তর পাওয়া যাচ্ছে না।";
   }
 
   return answer.trim();
 }
 
 
-// ========================================
+// =====================================================
 // SERVER
-// ========================================
+// =====================================================
 
 const server = http.createServer(
   async (req, res) => {
 
-    // CORS
+    // -----------------------------------------------
+    // OPTIONS / CORS
+    // -----------------------------------------------
+
     if (req.method === "OPTIONS") {
 
       res.writeHead(204, {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers":
-          "Content-Type",
-        "Access-Control-Allow-Methods":
-          "GET,POST,OPTIONS"
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "GET,POST,OPTIONS"
       });
 
       res.end();
@@ -161,7 +161,10 @@ const server = http.createServer(
     }
 
 
-    // HOME
+    // -----------------------------------------------
+    // HOME PAGE
+    // -----------------------------------------------
+
     if (
       req.method === "GET" &&
       (
@@ -176,7 +179,10 @@ const server = http.createServer(
     }
 
 
+    // -----------------------------------------------
     // HEALTH CHECK
+    // -----------------------------------------------
+
     if (
       req.method === "GET" &&
       req.url === "/health"
@@ -185,14 +191,19 @@ const server = http.createServer(
       sendJSON(res, 200, {
         status: "ok",
         app: "Moyna Pakhi",
-        ai: "Gemini"
+        ai: "Gemini",
+        geminiKeyConfigured:
+          Boolean(GEMINI_API_KEY)
       });
 
       return;
     }
 
 
+    // -----------------------------------------------
     // AI API
+    // -----------------------------------------------
+
     if (
       req.method === "POST" &&
       req.url === "/api/ai"
@@ -231,8 +242,19 @@ const server = http.createServer(
           }
 
 
+          console.log(
+            "User asked:",
+            message
+          );
+
+
           const answer =
-            await askAI(message);
+            await askGemini(message);
+
+
+          console.log(
+            "Gemini answered successfully"
+          );
 
 
           sendJSON(res, 200, {
@@ -243,7 +265,7 @@ const server = http.createServer(
         } catch (error) {
 
           console.error(
-            "Server Error:",
+            "AI Server Error:",
             error
           );
 
@@ -251,7 +273,7 @@ const server = http.createServer(
           sendJSON(res, 500, {
             error:
               error.message ||
-              "Server error"
+              "AI Server Error"
           });
 
         }
@@ -262,7 +284,10 @@ const server = http.createServer(
     }
 
 
-    // NOT FOUND
+    // -----------------------------------------------
+    // 404
+    // -----------------------------------------------
+
     sendJSON(res, 404, {
       error: "Not Found"
     });
@@ -271,9 +296,9 @@ const server = http.createServer(
 );
 
 
-// ========================================
-// START
-// ========================================
+// =====================================================
+// START SERVER
+// =====================================================
 
 server.listen(PORT, () => {
 
