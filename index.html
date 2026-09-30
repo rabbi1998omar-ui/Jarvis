@@ -6,14 +6,19 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width,initial-scale=1.0">
+content="width=device-width, initial-scale=1.0">
 
 <title>ময়না পাখি 🐦</title>
 
 <meta name="theme-color"
 content="#ffd6e8">
 
+
 <style>
+
+/* =========================
+   BASIC
+========================= */
 
 *{
   box-sizing:border-box;
@@ -33,6 +38,7 @@ body{
   color:#5b3850;
 
   background:
+
     radial-gradient(
       circle at 20% 10%,
       #fff5fa 0%,
@@ -64,7 +70,7 @@ body{
 
   position:fixed;
 
-  font-size:18px;
+  font-size:20px;
 
   opacity:.35;
 
@@ -132,7 +138,7 @@ body{
 
   margin:auto;
 
-  padding:22px 18px;
+  padding:20px 18px;
 
   display:flex;
 
@@ -153,7 +159,7 @@ body{
 
   justify-content:space-between;
 
-  padding:12px 5px;
+  padding:10px 4px;
 
 }
 
@@ -172,7 +178,9 @@ body{
 
 
 .logo span{
+
   font-size:27px;
+
 }
 
 
@@ -189,11 +197,15 @@ body{
   color:#58a87a;
 
   background:
-    rgba(255,255,255,.65);
+    rgba(255,255,255,.72);
 
   padding:7px 11px;
 
   border-radius:20px;
+
+  box-shadow:
+    0 5px 15px
+    rgba(150,80,120,.08);
 
 }
 
@@ -215,7 +227,7 @@ body{
 
 
 /* =========================
-   CHARACTER
+   CHARACTER AREA
 ========================= */
 
 .character{
@@ -257,6 +269,8 @@ body{
 }
 
 
+/* rotating ring */
+
 .character::before{
 
   content:"";
@@ -264,6 +278,7 @@ body{
   position:absolute;
 
   width:215px;
+
   height:215px;
 
   border-radius:50%;
@@ -277,6 +292,8 @@ body{
 }
 
 
+/* second ring */
+
 .character::after{
 
   content:"";
@@ -284,6 +301,7 @@ body{
   position:absolute;
 
   width:180px;
+
   height:180px;
 
   border-radius:50%;
@@ -312,6 +330,7 @@ body{
   border-radius:50%;
 
   background:
+
     linear-gradient(
       145deg,
       #fffdfd,
@@ -327,6 +346,8 @@ body{
 
 }
 
+
+/* eyes */
 
 .eye{
 
@@ -376,6 +397,8 @@ body{
 }
 
 
+/* blush */
+
 .blush{
 
   position:absolute;
@@ -405,6 +428,8 @@ body{
 }
 
 
+/* beak */
+
 .beak{
 
   position:absolute;
@@ -432,6 +457,8 @@ body{
 }
 
 
+/* ribbon */
+
 .ribbon{
 
   position:absolute;
@@ -446,7 +473,7 @@ body{
 
 
 /* =========================
-   ANIMATION
+   ANIMATIONS
 ========================= */
 
 @keyframes breathe{
@@ -461,10 +488,11 @@ body{
 
 }
 
+
 @keyframes rotate{
 
   from{
-    transform:rotate(0);
+    transform:rotate(0deg);
   }
 
   to{
@@ -473,6 +501,7 @@ body{
 
 }
 
+
 @keyframes rotateReverse{
 
   from{
@@ -480,7 +509,7 @@ body{
   }
 
   to{
-    transform:rotate(0);
+    transform:rotate(0deg);
   }
 
 }
@@ -494,14 +523,14 @@ body{
 
   text-align:center;
 
-  margin-top:10px;
+  margin-top:8px;
 
 }
 
 
 .greeting h1{
 
-  font-size:27px;
+  font-size:28px;
 
   color:#a94c79;
 
@@ -527,7 +556,7 @@ body{
 
   margin-top:24px;
 
-  min-height:92px;
+  min-height:95px;
 
   padding:18px;
 
@@ -542,13 +571,14 @@ body{
   border-radius:24px;
 
   background:
-    rgba(255,255,255,.72);
+    rgba(255,255,255,.75);
 
   border:
     1px solid
-    rgba(255,255,255,.9);
+    rgba(255,255,255,.95);
 
   box-shadow:
+
     0 12px 35px
     rgba(155,83,125,.12);
 
@@ -570,7 +600,7 @@ body{
 
 
 /* =========================
-   MIC
+   MICROPHONE
 ========================= */
 
 .micArea{
@@ -586,9 +616,9 @@ body{
 
 .mic{
 
-  width:82px;
+  width:84px;
 
-  height:82px;
+  height:84px;
 
   border:none;
 
@@ -598,7 +628,7 @@ body{
 
   color:white;
 
-  font-size:30px;
+  font-size:31px;
 
   background:
 
@@ -622,7 +652,9 @@ body{
 
 
 .mic:active{
-  transform:scale(.91);
+
+  transform:scale(.90);
+
 }
 
 
@@ -658,7 +690,7 @@ body{
 
 
 /* =========================
-   COMMANDS
+   COMMAND TITLE
 ========================= */
 
 .sectionTitle{
@@ -675,6 +707,10 @@ body{
 
 }
 
+
+/* =========================
+   COMMAND BUTTONS
+========================= */
 
 .commands{
 
@@ -696,7 +732,7 @@ body{
   border-radius:22px;
 
   background:
-    rgba(255,255,255,.7);
+    rgba(255,255,255,.72);
 
   border:
     1px solid
@@ -705,6 +741,10 @@ body{
   color:#795569;
 
   font-size:12px;
+
+  box-shadow:
+    0 5px 15px
+    rgba(150,80,120,.07);
 
 }
 
@@ -728,11 +768,16 @@ body{
 }
 
 
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-height:700px){
 
   .character{
 
     width:175px;
+
     height:175px;
 
   }
@@ -740,6 +785,7 @@ body{
   .character::before{
 
     width:175px;
+
     height:175px;
 
   }
@@ -747,6 +793,7 @@ body{
   .character::after{
 
     width:145px;
+
     height:145px;
 
   }
@@ -754,16 +801,21 @@ body{
   .myna{
 
     width:100px;
+
     height:100px;
 
   }
 
   .eye{
+
     top:34px;
+
   }
 
   .beak{
+
     top:49px;
+
   }
 
 }
@@ -776,16 +828,23 @@ body{
 <body>
 
 
+<!-- FLOATING DECORATION -->
+
 <div class="heart heart1">♡</div>
+
 <div class="heart heart2">♡</div>
+
 <div class="heart heart3">♡</div>
+
 <div class="heart heart4">♡</div>
 
 
 <div class="app">
 
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <div class="header">
 
@@ -809,7 +868,9 @@ body{
 </div>
 
 
-<!-- CHARACTER -->
+<!-- =========================
+     MYNA CHARACTER
+========================= -->
 
 <div class="character">
 
@@ -834,7 +895,9 @@ body{
 </div>
 
 
-<!-- GREETING -->
+<!-- =========================
+     GREETING
+========================= -->
 
 <div class="greeting">
 
@@ -849,7 +912,9 @@ body{
 </div>
 
 
-<!-- COMMAND -->
+<!-- =========================
+     COMMAND RESULT
+========================= -->
 
 <div class="commandCard">
 
@@ -862,14 +927,16 @@ body{
 </div>
 
 
-<!-- MIC -->
+<!-- =========================
+     MICROPHONE
+========================= -->
 
 <div class="micArea">
 
   <button
     class="mic"
     id="mic"
-    aria-label="Voice Assistant">
+    aria-label="ময়না পাখির সাথে কথা বলুন">
 
     🎙️
 
@@ -878,7 +945,9 @@ body{
 </div>
 
 
-<!-- COMMAND LIST -->
+<!-- =========================
+     COMMAND TITLE
+========================= -->
 
 <div class="sectionTitle">
 
@@ -886,6 +955,10 @@ body{
 
 </div>
 
+
+<!-- =========================
+     COMMAND LIST
+========================= -->
 
 <div class="commands">
 
@@ -924,6 +997,10 @@ body{
 </div>
 
 
+<!-- =========================
+     FOOTER
+========================= -->
+
 <div class="footer">
 
   ময়না পাখি 🐦 • Personal AI Assistant
@@ -937,9 +1014,9 @@ body{
 <script>
 
 
-/* =========================================
+/* =================================================
    ELEMENTS
-========================================= */
+================================================= */
 
 const mic =
   document.getElementById("mic");
@@ -948,9 +1025,9 @@ const command =
   document.getElementById("command");
 
 
-/* =========================================
+/* =================================================
    SPEECH RECOGNITION
-========================================= */
+================================================= */
 
 const SpeechRecognition =
   window.SpeechRecognition ||
@@ -965,11 +1042,14 @@ if(SpeechRecognition){
   recognition =
     new SpeechRecognition();
 
+
   recognition.lang =
     "bn-BD";
 
+
   recognition.continuous =
     false;
+
 
   recognition.interimResults =
     false;
@@ -981,6 +1061,7 @@ if(SpeechRecognition){
       mic.classList.add(
         "listening"
       );
+
 
       command.innerText =
         "হুম... বলো, শুনছি 😊";
@@ -1005,6 +1086,7 @@ if(SpeechRecognition){
         "listening"
       );
 
+
       respond(
         "উফ্, কথাটা ঠিক বুঝতে পারিনি। আবার বলো তো"
       );
@@ -1019,8 +1101,10 @@ if(SpeechRecognition){
         event.results[0][0]
         .transcript;
 
+
       command.innerText =
         "তুমি বলেছ: " + text;
+
 
       processCommand(text);
 
@@ -1037,9 +1121,9 @@ else{
 }
 
 
-/* =========================================
+/* =================================================
    MICROPHONE
-========================================= */
+================================================= */
 
 mic.addEventListener(
   "click",
@@ -1064,7 +1148,10 @@ mic.addEventListener(
 
     catch(error){
 
-      console.log(error);
+      console.log(
+        "Recognition error:",
+        error
+      );
 
     }
 
@@ -1072,87 +1159,97 @@ mic.addEventListener(
 );
 
 
-/* =========================================
-   REMOVE EMOJI FROM VOICE
-========================================= */
+/* =================================================
+   EMOJI REMOVE FOR SPEECH
+================================================= */
 
 function cleanForSpeech(text){
 
-  return text
+  let result =
+    String(text);
 
-    /* emoji বাদ */
 
-    .replace(
-      /[\u{1F300}-\u{1FAFF}]/gu,
+  /*
+    সাধারণ emoji বাদ
+  */
+
+  result =
+    result.replace(
+      /[\u{1F000}-\u{1FAFF}]/gu,
       ""
-    )
+    );
 
-    .replace(
+
+  /*
+    বিভিন্ন symbol বাদ
+  */
+
+  result =
+    result.replace(
       /[\u{2600}-\u{27BF}]/gu,
       ""
-    )
+    );
 
-    /* অতিরিক্ত punctuation বাদ */
 
-    .replace(
+  /*
+    কিছু বিশেষ emoji
+  */
+
+  result =
+    result.replace(
       /[❤️💕💗💖💓💞💝💘💟💜💙💚💛🧡🤍🖤🤎🩷🩵🩶🫶🥰😘😊😄😃😁😌🌸🌷🌹🌺🌻🌼🎀🐦👋⏰📅▶️🔎]/gu,
       ""
-    )
+    );
 
-    .replace(
+
+  /*
+    অতিরিক্ত space ঠিক করা
+  */
+
+  result =
+    result.replace(
       /\s+/g,
       " "
-    )
+    );
 
-    .trim();
+
+  return result.trim();
 
 }
 
 
-/* =========================================
-   FEMALE VOICE
-========================================= */
+/* =================================================
+   FIND BEST VOICE
+================================================= */
 
-function speak(text){
-
-  if(
-    !("speechSynthesis" in window)
-  ){
-
-    return;
-
-  }
-
-
-  speechSynthesis.cancel();
-
-
-  const cleanText =
-    cleanForSpeech(text);
-
-
-  if(!cleanText){
-    return;
-  }
-
+function getBestVoice(){
 
   const voices =
     speechSynthesis.getVoices();
 
 
+  if(!voices.length){
+
+    return null;
+
+  }
+
+
   /*
-    বাংলা মহিলা voice
+    ১. বাংলা female voice
   */
 
-  let femaleVoice =
+  let voice =
     voices.find(
-      function(voice){
+      function(v){
 
         const name =
-          voice.name.toLowerCase();
+          (v.name || "")
+          .toLowerCase();
 
         const lang =
-          voice.lang.toLowerCase();
+          (v.lang || "")
+          .toLowerCase();
 
 
         return (
@@ -1175,55 +1272,146 @@ function speak(text){
     );
 
 
-  /*
-    বাংলা voice
-  */
+  if(voice){
 
-  if(!femaleVoice){
-
-    femaleVoice =
-      voices.find(
-        function(voice){
-
-          return voice.lang &&
-            voice.lang
-              .toLowerCase()
-              .startsWith("bn");
-
-        }
-      );
+    return voice;
 
   }
 
 
   /*
-    মহিলা English voice
+    ২. যেকোনো বাংলা voice
   */
 
-  if(!femaleVoice){
+  voice =
+    voices.find(
+      function(v){
 
-    femaleVoice =
-      voices.find(
-        function(voice){
+        return (
 
-          const name =
-            voice.name.toLowerCase();
+          v.lang &&
+
+          v.lang
+            .toLowerCase()
+            .startsWith("bn")
+
+        );
+
+      }
+    );
 
 
-          return (
+  if(voice){
 
-            name.includes("female") ||
-            name.includes("woman") ||
-            name.includes("girl") ||
-            name.includes("samantha") ||
-            name.includes("zira")
-
-          );
-
-        }
-      );
+    return voice;
 
   }
+
+
+  /*
+    ৩. পরিচিত female voice
+  */
+
+  voice =
+    voices.find(
+      function(v){
+
+        const name =
+          (v.name || "")
+          .toLowerCase();
+
+
+        return (
+
+          name.includes("female") ||
+          name.includes("woman") ||
+          name.includes("girl") ||
+          name.includes("zira") ||
+          name.includes("samantha")
+
+        );
+
+      }
+    );
+
+
+  if(voice){
+
+    return voice;
+
+  }
+
+
+  /*
+    ৪. Google voice
+  */
+
+  voice =
+    voices.find(
+      function(v){
+
+        const name =
+          (v.name || "")
+          .toLowerCase();
+
+
+        return name.includes("google");
+
+      }
+    );
+
+
+  if(voice){
+
+    return voice;
+
+  }
+
+
+  /*
+    ৫. প্রথম voice
+  */
+
+  return voices[0] || null;
+
+}
+
+
+/* =================================================
+   TEXT TO SPEECH
+================================================= */
+
+function speak(text){
+
+  if(
+    !("speechSynthesis" in window)
+  ){
+
+    return;
+
+  }
+
+
+  speechSynthesis.cancel();
+
+
+  /*
+    emoji বাদ দিয়ে text তৈরি
+  */
+
+  const cleanText =
+    cleanForSpeech(text);
+
+
+  if(!cleanText){
+
+    return;
+
+  }
+
+
+  const voice =
+    getBestVoice();
 
 
   const speech =
@@ -1232,13 +1420,18 @@ function speak(text){
     );
 
 
-  if(femaleVoice){
+  /*
+    voice নির্বাচন
+  */
+
+  if(voice){
 
     speech.voice =
-      femaleVoice;
+      voice;
+
 
     speech.lang =
-      femaleVoice.lang;
+      voice.lang;
 
   }
 
@@ -1257,8 +1450,10 @@ function speak(text){
   speech.rate =
     0.88;
 
+
   speech.pitch =
     1.30;
+
 
   speech.volume =
     1;
@@ -1271,23 +1466,32 @@ function speak(text){
 }
 
 
-/* =========================================
+/* =================================================
    RESPONSE
-========================================= */
+================================================= */
 
 function respond(text){
 
+  /*
+    স্ক্রিনে emoji সহ text থাকবে
+  */
+
   command.innerText =
     text;
+
+
+  /*
+    voice-এ emoji যাবে না
+  */
 
   speak(text);
 
 }
 
 
-/* =========================================
+/* =================================================
    COMMAND PROCESSOR
-========================================= */
+================================================= */
 
 function processCommand(text){
 
@@ -1297,9 +1501,9 @@ function processCommand(text){
       .trim();
 
 
-  /* ==============================
+  /* ===============================================
      MYNA
-  ============================== */
+  =============================================== */
 
   if(
 
@@ -1311,7 +1515,7 @@ function processCommand(text){
   ){
 
     respond(
-      "হুম, ময়না পাখি এখানে আছি। বলো, কী করতে হবে?"
+      "হুম, ময়না পাখি এখানে আছি 😊 বলো, কী করতে হবে?"
     );
 
     return;
@@ -1319,9 +1523,9 @@ function processCommand(text){
   }
 
 
-  /* ==============================
+  /* ===============================================
      HELLO
-  ============================== */
+  =============================================== */
 
   if(
 
@@ -1333,7 +1537,7 @@ function processCommand(text){
   ){
 
     respond(
-      "হ্যালো। বলো, কীভাবে সাহায্য করতে পারি?"
+      "হ্যালো 🌸 বলো, কীভাবে সাহায্য করতে পারি?"
     );
 
     return;
@@ -1341,19 +1545,20 @@ function processCommand(text){
   }
 
 
-  /* ==============================
+  /* ===============================================
      HOW ARE YOU
-  ============================== */
+  =============================================== */
 
   if(
 
     c.includes("কেমন আছ") ||
-    c.includes("কেমন আছো")
+    c.includes("কেমন আছো") ||
+    c.includes("ভালো আছ")
 
   ){
 
     respond(
-      "আমি ভালো আছি। তোমার কথা শুনতে প্রস্তুত।"
+      "আমি ভালো আছি 😊 তোমার কথা শুনতে প্রস্তুত।"
     );
 
     return;
@@ -1361,9 +1566,9 @@ function processCommand(text){
   }
 
 
-  /* ==============================
+  /* ===============================================
      WHAT ARE YOU DOING
-  ============================== */
+  =============================================== */
 
   if(
 
@@ -1375,7 +1580,7 @@ function processCommand(text){
   ){
 
     respond(
-      "তোমার কমান্ডের অপেক্ষায় আছি। বলো কী কাজ করব?"
+      "তোমার কমান্ডের অপেক্ষায় আছি 🌸 বলো কী কাজ করব?"
     );
 
     return;
@@ -1383,9 +1588,9 @@ function processCommand(text){
   }
 
 
-  /* ==============================
+  /* ===============================================
      WHO ARE YOU
-  ============================== */
+  =============================================== */
 
   if(
 
@@ -1395,7 +1600,7 @@ function processCommand(text){
   ){
 
     respond(
-      "আমি ময়না পাখি। তোমার ব্যক্তিগত এআই অ্যাসিস্ট্যান্ট।"
+      "আমি ময়না পাখি 🐦 তোমার ব্যক্তিগত এআই অ্যাসিস্ট্যান্ট।"
     );
 
     return;
@@ -1403,9 +1608,9 @@ function processCommand(text){
   }
 
 
-  /* ==============================
+  /* ===============================================
      WHAT CAN YOU DO
-  ============================== */
+  =============================================== */
 
   if(
 
@@ -1425,9 +1630,9 @@ function processCommand(text){
   }
 
 
-  /* ==============================
+  /* ===============================================
      TIME
-  ============================== */
+  =============================================== */
 
   if(
 
@@ -1454,8 +1659,7 @@ function processCommand(text){
 
 
     respond(
-      "এখন সময় " +
-      time
+      "এখন সময় " + time + " ⏰"
     );
 
     return;
@@ -1463,9 +1667,9 @@ function processCommand(text){
   }
 
 
-  /* ==============================
+  /* ===============================================
      DATE
-  ============================== */
+  =============================================== */
 
   if(
 
@@ -1491,8 +1695,7 @@ function processCommand(text){
 
 
     respond(
-      "আজ " +
-      date
+      "আজ " + date + " 📅"
     );
 
     return;
@@ -1500,9 +1703,9 @@ function processCommand(text){
   }
 
 
-  /* ==============================
+  /* ===============================================
      YOUTUBE
-  ============================== */
+  =============================================== */
 
   if(
 
@@ -1512,7 +1715,7 @@ function processCommand(text){
   ){
 
     respond(
-      "আচ্ছা। ইউটিউব খুলছি।"
+      "আচ্ছা 🌸 ইউটিউব খুলছি।"
     );
 
 
@@ -1532,9 +1735,9 @@ function processCommand(text){
   }
 
 
-  /* ==============================
+  /* ===============================================
      GOOGLE
-  ============================== */
+  =============================================== */
 
   if(
 
@@ -1544,7 +1747,7 @@ function processCommand(text){
   ){
 
     respond(
-      "ঠিক আছে। গুগল খুলছি।"
+      "ঠিক আছে 🌸 গুগল খুলছি।"
     );
 
 
@@ -1564,9 +1767,9 @@ function processCommand(text){
   }
 
 
-  /* ==============================
+  /* ===============================================
      FACEBOOK
-  ============================== */
+  =============================================== */
 
   if(
 
@@ -1576,7 +1779,7 @@ function processCommand(text){
   ){
 
     respond(
-      "আচ্ছা। ফেসবুক খুলছি।"
+      "আচ্ছা 🌸 ফেসবুক খুলছি।"
     );
 
 
@@ -1596,9 +1799,9 @@ function processCommand(text){
   }
 
 
-  /* ==============================
+  /* ===============================================
      THANK YOU
-  ============================== */
+  =============================================== */
 
   if(
 
@@ -1609,7 +1812,7 @@ function processCommand(text){
   ){
 
     respond(
-      "স্বাগতম। আর কোনো কাজে সাহায্য করতে পারি?"
+      "স্বাগতম 😊 আর কোনো কাজে সাহায্য করতে পারি?"
     );
 
     return;
@@ -1617,9 +1820,9 @@ function processCommand(text){
   }
 
 
-  /* ==============================
+  /* ===============================================
      GOOD MORNING
-  ============================== */
+  =============================================== */
 
   if(
 
@@ -1629,7 +1832,7 @@ function processCommand(text){
   ){
 
     respond(
-      "শুভ সকাল। আশা করি আজকের দিনটা ভালো কাটবে।"
+      "শুভ সকাল 🌸 আশা করি আজকের দিনটা ভালো কাটবে।"
     );
 
     return;
@@ -1637,9 +1840,9 @@ function processCommand(text){
   }
 
 
-  /* ==============================
+  /* ===============================================
      GOOD NIGHT
-  ============================== */
+  =============================================== */
 
   if(
 
@@ -1650,7 +1853,7 @@ function processCommand(text){
   ){
 
     respond(
-      "শুভ রাত্রি। ভালোভাবে বিশ্রাম নাও।"
+      "শুভ রাত্রি 🌙 ভালোভাবে বিশ্রাম নাও।"
     );
 
     return;
@@ -1658,20 +1861,58 @@ function processCommand(text){
   }
 
 
-  /* ==============================
+  /* ===============================================
+     YES
+  =============================================== */
+
+  if(
+
+    c === "হ্যাঁ" ||
+    c === "হ্যা" ||
+    c === "হুম"
+
+  ){
+
+    respond(
+      "ঠিক আছে 😊"
+    );
+
+    return;
+
+  }
+
+
+  /* ===============================================
+     NO
+  =============================================== */
+
+  if(
+    c === "না"
+  ){
+
+    respond(
+      "আচ্ছা, ঠিক আছে 😊"
+    );
+
+    return;
+
+  }
+
+
+  /* ===============================================
      UNKNOWN
-  ============================== */
+  =============================================== */
 
   respond(
-    "হুম। এই কাজটা এখনো আমাকে শেখানো হয়নি।"
+    "হুম, এই কাজটা এখনো আমাকে শেখানো হয়নি 😊"
   );
 
 }
 
 
-/* =========================================
+/* =================================================
    LOAD VOICES
-========================================= */
+================================================= */
 
 if(
   "speechSynthesis" in window
@@ -1687,6 +1928,7 @@ if(
 }
 
 </script>
+
 
 </body>
 
