@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JARVIS AI</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top,#24154a 0%,#090912 45%,#030307 100%);
+  color:white;
+  font-family:Arial,sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+.app{
+  width:100%;
+  max-width:500px;
+  min-height:100vh;
+  padding:25px 18px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* HEADER */
+
+.header{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:40px;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:bold;
+  letter-spacing:3px;
+}
+
+.status{
+  font-size:12px;
+  color:#55ff9a;
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#55ff9a;
+  box-shadow:0 0 12px #55ff9a;
+}
+
+/* CORE */
+
+.core{
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  margin-top:25px;
+  margin-bottom:45px;
+}
+
+.core::before,
+.core::after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(150,100,255,.5);
+}
+
+.core::before{
+  width:220px;
+  height:220px;
+  animation:rotate 8s linear infinite;
+}
+
+.core::after{
+  width:175px;
+  height:175px;
+  border-color:rgba(255,80,180,.5);
+  animation:rotateReverse 5s linear infinite;
+}
+
+@keyframes rotate{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+
+@keyframes rotateReverse{
+  from{transform:rotate(360deg)}
+  to{transform:rotate(0deg)}
+}
+
+.orb{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle,#ffffff 0%,#b77aff 12%,#703cff 35%,#301064 70%,transparent 72%);
+  box-shadow:
+    0 0 25px #814cff,
+    0 0 60px #5d20d8,
+    0 0 100px rgba(120,50,255,.5);
+  animation:pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  0%,100%{
+    transform:scale(.95);
+  }
+  50%{
+    transform:scale(1.08);
+  }
+}
+
+/* TEXT */
+
+.greeting{
+  text-align:center;
+  margin-bottom:12px;
+}
+
+.greeting h1{
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+.greeting p{
+  color:#aaa;
+  font-size:14px;
+}
+
+/* COMMAND */
+
+.command{
+  width:100%;
+  margin-top:35px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:18px;
+  padding:15px;
+  min-height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#ddd;
+}
+
+/* MIC */
+
+.mic{
+  margin-top:25px;
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  border:none;
+  background:linear-gradient(135deg,#ff4f91,#814cff);
+  color:white;
+  font-size:30px;
+  cursor:pointer;
+  box-shadow:
+    0 0 20px rgba(255,79,145,.4),
+    0 0 40px rgba(129,76,255,.3);
+  transition:.2s;
+}
+
+.mic:active{
+  transform:scale(.9);
+}
+
+.mic.listening{
+  animation:listen 1s infinite;
+}
+
+@keyframes listen{
+  0%,100%{
+    box-shadow:0 0 15px #ff4f91;
+  }
+  50%{
+    box-shadow:0 0 50px #814cff;
+  }
+}
+
+/* COMMANDS */
+
+.examples{
+  margin-top:30px;
+  width:100%;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.example{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  padding:9px 13px;
+  border-radius:20px;
+  color:#bbb;
+  font-size:12px;
+}
+
+/* FOOTER */
+
+.footer{
+  margin-top:auto;
+  padding-top:30px;
+  color:#666;
+  font-size:11px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="header">
+    <div class="logo">JARVIS</div>
+
+    <div class="status">
+      <span class="dot"></span>
+      ONLINE
+    </div>
+  </div>
+
+
+  <div class="core">
+    <div class="orb"></div>
+  </div>
+
+
+  <div class="greeting">
+
+    <h1>হ্যালো 👋</h1>
+
+    <p>
+      আমি তোমার ব্যক্তিগত AI Assistant
+    </p>
+
+  </div>
+
+
+  <div class="command" id="command">
+    মাইক্রোফোনে চাপ দিয়ে কথা বলো...
+  </div>
+
+
+  <button class="mic" id="mic">
+    🎙️
+  </button>
+
+
+  <div class="examples">
+
+    <div class="example">
+      "হ্যালো"
+    </div>
+
+    <div class="example">
+      "তুমি কে?"
+    </div>
+
+    <div class="example">
+      "সময় কত?"
+    </div>
+
+    <div class="example">
+      "YouTube খোলো"
+    </div>
+
+  </div>
+
+
+  <div class="footer">
+    JARVIS AI • Personal Assistant
+  </div>
+
+</div>
+
+
+<script>
+
+const mic = document.getElementById("mic");
+const command = document.getElementById("command");
+
+
+/* =====================================
+   SPEECH RECOGNITION
+===================================== */
+
+const SpeechRecognition =
+  window.SpeechRecognition ||
+  window.webkitSpeechRecognition;
+
+let recognition = null;
+
+if(SpeechRecognition){
+
+  recognition = new SpeechRecognition();
+
+  recognition.lang = "bn-BD";
+
+  recognition.continuous = false;
+
+  recognition.interimResults = false;
+
+
+  recognition.onstart = function(){
+
+    mic.classList.add("listening");
+
+    command.innerText =
+      "শুনছি... বলো";
+
+  };
+
+
+  recognition.onend = function(){
+
+    mic.classList.remove("listening");
+
+  };
+
+
+  recognition.onerror = function(){
+
+    mic.classList.remove("listening");
+
+    command.innerText =
+      "কথা বুঝতে পারিনি। আবার চেষ্টা করো।";
+
+  };
+
+
+  recognition.onresult = function(event){
+
+    const text =
+      event.results[0][0].transcript;
+
+    command.innerText =
+      "তুমি বলেছ: " + text;
+
+    processCommand(text);
+
+  };
+
+}else{
+
+  command.innerText =
+    "এই ব্রাউজারে Voice Recognition নেই। Chrome ব্যবহার করো।";
+
+}
+
+
+/* =====================================
+   MICROPHONE
+===================================== */
+
+mic.addEventListener("click",function(){
+
+  if(!recognition){
+
+    alert(
+      "Voice Recognition এই ব্রাউজারে নেই। Chrome ব্যবহার করো।"
+    );
+
+    return;
+
+  }
+
+  recognition.start();
+
+});
+
+
+/* =====================================
+   VOICE RESPONSE
+===================================== */
+
+function speak(text){
+
+  if(!("speechSynthesis" in window)){
+
+    return;
+
+  }
+
+  speechSynthesis.cancel();
+
+  const voice =
+    new SpeechSynthesisUtterance(text);
+
+  voice.lang = "bn-BD";
+
+  voice.rate = 0.95;
+
+  voice.pitch = 1;
+
+  speechSynthesis.speak(voice);
+
+}
+
+
+/* =====================================
+   COMMAND PROCESSOR
+===================================== */
+
+function processCommand(text){
+
+  const commandText =
+    text.toLowerCase().trim();
+
+
+  /* HELLO */
+
+  if(
+    commandText.includes("হ্যালো") ||
+    commandText.includes("hello") ||
+    commandText.includes("হাই")
+  ){
+
+    const answer =
+      "হ্যালো। আমি তোমার JARVIS। কী করতে পারি?";
+
+    command.innerText = answer;
+
+    speak(answer);
+
+    return;
+  }
+
+
+  /* WHO ARE YOU */
+
+  if(
+    commandText.includes("তুমি কে") ||
+    commandText.includes("কে তুমি")
+  ){
+
+    const answer =
+      "আমি তোমার ব্যক্তিগত AI Assistant।";
+
+    command.innerText = answer;
+
+    speak(answer);
+
+    return;
+  }
+
+
+  /* TIME */
+
+  if(
+    commandText.includes("সময়") ||
+    commandText.includes("টাইম") ||
+    commandText.includes("কয়টা বাজে")
+  ){
+
+    const now = new Date();
+
+    const time =
+      now.toLocaleTimeString(
+        "bn-BD",
+        {
+          hour:"numeric",
+          minute:"numeric"
+        }
+      );
+
+    const answer =
+      "এখন সময় " + time;
+
+    command.innerText = answer;
+
+    speak(answer);
+
+    return;
+  }
+
+
+  /* YOUTUBE */
+
+  if(
+    commandText.includes("youtube") ||
+    commandText.includes("ইউটিউব")
+  ){
+
+    const answer =
+      "YouTube খোলার চেষ্টা করছি।";
+
+    command.innerText = answer;
+
+    speak(answer);
+
+    setTimeout(function(){
+
+      window.location.href =
+        "https://www.youtube.com/";
+
+    },1200);
+
+    return;
+  }
+
+
+  /* UNKNOWN COMMAND */
+
+  const answer =
+    "দুঃখিত, এই কমান্ডটি এখনো আমাকে শেখানো হয়নি।";
+
+  command.innerText = answer;
+
+  speak(answer);
+
+}
+
+</script>
+
+</body>
+</html>
